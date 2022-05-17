@@ -2,58 +2,25 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-class Investors(db.Model):
+class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(80),  nullable=False)
-    is_premium = db.Column(db.Boolean(), nullable=False)
-    pais = db.Column(db.String(80),  nullable=False)
-    nombre = db.Column(db.String(120))
-
-    def __repr__(self):
-        return f'<Investors {self.email}>'
+    is_premium = db.Column(db.Boolean(), nullable=False, default=False) 
+    country = db.Column(db.String(80),  nullable=False)
+    name = db.Column(db.String(120), nullable=False)
+    last_name = db.Column(db.String(120))
+    user_type = db.Column(db.Integer, db.ForeignKey('usertype.id'), nullable=False ) # debo definir lo que esta dentro de este objeto??
+    investor_type = db.Column(db.Boolean(), nullable=False, default=False) 
     
     def serialize(self):        
         return {
                 "id": self.id,
                 "email": self.email,
-                # do not serialize the password, its a security breach
             }
-
-class Entrepreneurs(db.Model):
+            
+class Usertype(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    password = db.Column(db.String(80),  nullable=False)
-    is_premium = db.Column(db.Boolean(), nullable=False)
-    pais = db.Column(db.String(80),  nullable=False)
-    nombre = db.Column(db.String(120))
-
-    def __repr__(self):
-        return f'<Entrepreneurs {self.email}>'
-
-    def serialize(self):        
-        return {
-                "id": self.id,
-                "email": self.email,
-                # do not serialize the password, its a security breach
-            }
-
-class Admin(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    password = db.Column(db.String(80),  nullable=False)
-    pais = db.Column(db.String(80),  nullable=False)
-    nombre = db.Column(db.String(120))
-
-    def __repr__(self):
-        return f'<Admin {self.email}>'
-
-    def serialize(self):        
-        return {
-            "id": self.id,
-            "email": self.email,
-            # do not serialize the password, its a security breach
-        }
+    user_type = db.Column(db.Integer, nullable=False)
+    name = db.Column(db.String(120), nullable=False)
+    user_id = db.relationship('User', backref='usertype')
