@@ -12,13 +12,17 @@ api = Blueprint('api', __name__)
 def create_user():
     body_email = request.json.get("email")
     body_password = request.json.get("password")
-    body_username = request.json.get("username")
-    body_pais = request.json.get("pais")
-    body_nombre = request.json.get("nombre")
-    # pendiente de saber como es el is_premium??? 
-    if body_email and body_password:
+    body_country = request.json.get("country")
+    body_name = request.json.get("name")
+    body_last_name = request.json.get("last_name")
+    body_user_type = request.json.get("user_type")
+    body_inversor_type = request.json.geet("inversor_type")
+    if body_email and body_password and body_pais and body_nombre :
+        #todos los campos obligatorios
+        used_email = User.query.filter_by(email=body_email).first()
+        if used_email :
+             return jsonify({"created":False, "msg":"Email already in use"}), 400
         new_user = User(email = body_email, password = body_password, is_active=False)
-        # validacion de cuenta existente???
         db.session.add(new_user)
         db.session.commit()
         return jsonify({"created":True, "user":new_user.serialize()}), 200
