@@ -47,6 +47,7 @@ export const Register = () => {
       alert("Contraseña invalida");
     }
   };
+
   const sendUserInfo = async () => {
     if (datos.email != null && datos.password.trim() != "") {
       const response = await fetch("", {
@@ -82,6 +83,15 @@ export const Register = () => {
 
   return (
     <div className="container">
+      <div className="container">
+        <div className="row">
+          <h1>Seleccione tipo de cuenta</h1>
+        </div>
+        <div className="row">
+          <div className="btt-account-type"></div>
+          <div className="btt-account-type"></div>
+        </div>
+      </div>
       <div className="row rw-logo mt-6 align-items-center text-center mx-auto">
         <div className="col-2 m-auto">
           <Link to="./">
@@ -229,7 +239,11 @@ export const Register = () => {
             <div className="row justify-content-center">
               <a
                 type="button"
-                className={buttondisabled}
+                className={
+                  datos.acepted_conditions != true
+                    ? "col-3 btn btn-outline-success disabled"
+                    : "col-3 btn btn-outline-success"
+                }
                 onClick={() => verify()}
                 aria-disabled="false"
               >
