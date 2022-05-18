@@ -3,6 +3,8 @@ import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import { RegisterType } from "/workspace/proyecto-final-capital/src/front/js/component/regUserSelection.jsx";
 import logo2 from "/workspace/proyecto-final-capital/src/front/img/logo2.png";
+import profit from "/workspace/proyecto-final-capital/src/front/img/profit.png";
+import solution from "/workspace/proyecto-final-capital/src/front/img/solution.png";
 import "../../styles/register-styles.css";
 import { useHistory } from "react-router-dom";
 
@@ -10,8 +12,11 @@ export const Register = () => {
   const { store, actions } = useContext(Context);
   let navigate = useHistory();
 
-  const [buttondisabled, setbuttondisabled] = useState(
-    "col-3 btn btn-outline-success disabled"
+  const [notTouched, setnotTouched] = useState(
+    "btt-account-type col-4 text-center shadow m-2 rounded"
+  );
+  const [notTouched2, setnotTouched2] = useState(
+    "btt-account-type col-4 text-center shadow m-2 rounded"
   );
 
   const [datos, setDatos] = useState({
@@ -83,15 +88,6 @@ export const Register = () => {
 
   return (
     <div className="container">
-      <div className="container">
-        <div className="row">
-          <h1>Seleccione tipo de cuenta</h1>
-        </div>
-        <div className="row">
-          <div className="btt-account-type"></div>
-          <div className="btt-account-type"></div>
-        </div>
-      </div>
       <div className="row rw-logo mt-6 align-items-center text-center mx-auto">
         <div className="col-2 m-auto">
           <Link to="./">
@@ -99,160 +95,219 @@ export const Register = () => {
           </Link>
         </div>
       </div>
-      <div className="row rw-main-box  justify-content-center">
-        <div className="col-8 main-box m-auto rounded ">
-          <Link to="./">
-            <i className="fa-solid fa-arrow-left icono-back"></i>
-          </Link>
-          <div className="m-auto">
-            <h1 className="register-title text-center">Account Information</h1>
+      {datos.user_type == "" ? (
+        <div className="container account-type-box rounded justify-content-center">
+          <div className="row d-flex ">
+            <div className="arrow-left-reg1">
+              <Link to="./">
+                <i className="fa-solid fa-arrow-left arrow-left-reg1 icono-back col-1"></i>
+              </Link>
+            </div>
+            <h1 className="col-6 mx-auto">Seleccione tipo de cuenta</h1>
           </div>
-          <div className="d-flex justify-content-center pt-4">
-            <div className="d-flex ">
-              <input
-                className="form-check-input mt-0 me-2"
-                type="checkbox"
-                checked={datos.company}
-                onChange={() => {
-                  setDatos({ ...datos, company: !datos.company });
-                }}
-                aria-label="Checkbox for company"
-                name="company"
-              />
-              <p className="input-text-register me-3 align-middle">Company</p>
+          <div className="d-flex justify-content-center mx-auto">
+            <div
+              className={notTouched}
+              type="button"
+              onMouseOver={() => {
+                setnotTouched(
+                  "btt-account-type-over col-4 text-center m-2 rounded"
+                );
+              }}
+              onMouseOut={() => {
+                setnotTouched(
+                  "btt-account-type col-4 text-center shadow m-2 rounded"
+                );
+              }}
+              onClick={() => {
+                setDatos({ ...datos, user_type: "emprendedor" });
+              }}
+            >
+              <img className="img-account-type pt-2" src={solution} alt="" />
+              <p>Emprendedor/Creador</p>
             </div>
-            <div className="d-flex input-basic-register">
-              <input
-                className="form-check-input mt-0 me-2"
-                type="checkbox"
-                checked={datos.freelance}
-                onChange={() => {
-                  setDatos({ ...datos, freelance: !datos.freelance });
-                }}
-                aria-label="Checkbox for following text input"
-              />
-              <p className="input-text-register me-3 text-center">Freelance</p>
-            </div>
-          </div>
-          <div className="justify-content-center">
-            <div class="input-group input-group-sm mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">
-                  Name
-                </span>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                aria-label="Small"
-                onChange={handleInputChange}
-                aria-describedby="inputGroup-sizing-sm"
-              />
-            </div>
-            <div class="input-group input-group-sm mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">
-                  Last Name
-                </span>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                aria-label="Small"
-                onChange={handleInputChange}
-                aria-describedby="inputGroup-sizing-sm"
-              />
-            </div>
-            <div class="input-group input-group-sm mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">
-                  Email
-                </span>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                aria-label="Small"
-                onChange={handleInputChange}
-                aria-describedby="inputGroup-sizing-sm"
-              />
-            </div>
-            <div class="input-group input-group-sm mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">
-                  Country
-                </span>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                aria-label="Small"
-                onChange={handleInputChange}
-                aria-describedby="inputGroup-sizing-sm"
-              />
-            </div>
-            <div class="input-group input-group-sm mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">
-                  Password
-                </span>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                aria-label="Small"
-                onChange={handleInputChange}
-                aria-describedby="inputGroup-sizing-sm"
-              />
-            </div>
-            <div class="input-group input-group-sm mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">
-                  Repeat Password
-                </span>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                aria-label="Small"
-                onChange={handleInputChange}
-                aria-describedby="inputGroup-sizing-sm"
-              />
-            </div>
-            <div className="d-flex justify-content-center input-basic-register mt-4">
-              <input
-                className="form-check-input mt-0 me-2"
-                type="checkbox"
-                checked={datos.acepted_conditions}
-                onChange={() => {
-                  setDatos({
-                    ...datos,
-                    acepted_conditions: !datos.acepted_conditions,
-                  });
-                }}
-                aria-label="Checkbox for following text input"
-              />
-              <p className="input-text-register me-3 ">
-                Acepto los terminos y condiciones de la pagina
-              </p>
-            </div>
-            <div className="row justify-content-center">
-              <a
-                type="button"
-                className={
-                  datos.acepted_conditions != true
-                    ? "col-3 btn btn-outline-success disabled"
-                    : "col-3 btn btn-outline-success"
-                }
-                onClick={() => verify()}
-                aria-disabled="false"
-              >
-                Registrarse
-              </a>
+            <div
+              className={notTouched2}
+              type="button"
+              onMouseOver={() => {
+                setnotTouched2(
+                  "btt-account-type-over col-4 text-center m-2 rounded"
+                );
+              }}
+              onMouseOut={() => {
+                setnotTouched2(
+                  "btt-account-type col-4 text-center shadow m-2 rounded"
+                );
+              }}
+              onClick={() => {
+                setDatos({ ...datos, user_type: "investor" });
+              }}
+            >
+              <img className="img-account-type pt-2" src={profit} alt="" />
+              <p>Inversor</p>
             </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="row rw-main-box  justify-content-center">
+          <div className="col-8 main-box m-auto rounded ">
+            <Link to="./">
+              <i className="fa-solid fa-arrow-left icono-back"></i>
+            </Link>
+            <div className="m-auto">
+              <h1 className="register-title text-center">
+                Account Information
+              </h1>
+            </div>
+            <div className="d-flex justify-content-center pt-4">
+              <div className="d-flex ">
+                <input
+                  className="form-check-input mt-0 me-2"
+                  type="checkbox"
+                  checked={datos.company}
+                  onChange={() => {
+                    setDatos({ ...datos, company: !datos.company });
+                  }}
+                  aria-label="Checkbox for company"
+                  name="company"
+                />
+                <p className="input-text-register me-3 align-middle">Company</p>
+              </div>
+              <div className="d-flex input-basic-register">
+                <input
+                  className="form-check-input mt-0 me-2"
+                  type="checkbox"
+                  checked={datos.freelance}
+                  onChange={() => {
+                    setDatos({ ...datos, freelance: !datos.freelance });
+                  }}
+                  aria-label="Checkbox for following text input"
+                />
+                <p className="input-text-register me-3 text-center">
+                  Freelance
+                </p>
+              </div>
+            </div>
+            <div className="justify-content-center">
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">
+                    Name
+                  </span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  aria-label="Small"
+                  onChange={handleInputChange}
+                  aria-describedby="inputGroup-sizing-sm"
+                />
+              </div>
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">
+                    Last Name
+                  </span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  aria-label="Small"
+                  onChange={handleInputChange}
+                  aria-describedby="inputGroup-sizing-sm"
+                />
+              </div>
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">
+                    Email
+                  </span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  aria-label="Small"
+                  onChange={handleInputChange}
+                  aria-describedby="inputGroup-sizing-sm"
+                />
+              </div>
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">
+                    Country
+                  </span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  aria-label="Small"
+                  onChange={handleInputChange}
+                  aria-describedby="inputGroup-sizing-sm"
+                />
+              </div>
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">
+                    Password
+                  </span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  aria-label="Small"
+                  onChange={handleInputChange}
+                  aria-describedby="inputGroup-sizing-sm"
+                />
+              </div>
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">
+                    Repeat Password
+                  </span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  aria-label="Small"
+                  onChange={handleInputChange}
+                  aria-describedby="inputGroup-sizing-sm"
+                />
+              </div>
+              <div className="d-flex justify-content-center input-basic-register mt-4">
+                <input
+                  className="form-check-input mt-0 me-2"
+                  type="checkbox"
+                  checked={datos.acepted_conditions}
+                  onChange={() => {
+                    setDatos({
+                      ...datos,
+                      acepted_conditions: !datos.acepted_conditions,
+                    });
+                  }}
+                  aria-label="Checkbox for following text input"
+                />
+                <p className="input-text-register me-3 ">
+                  Acepto los terminos y condiciones de la pagina
+                </p>
+              </div>
+              <div className="row justify-content-center">
+                <a
+                  type="button"
+                  className={
+                    datos.acepted_conditions != true
+                      ? "col-3 btn btn-outline-success disabled"
+                      : "col-3 btn btn-outline-success"
+                  }
+                  onClick={() => verify()}
+                  aria-disabled="false"
+                >
+                  Registrarse
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
