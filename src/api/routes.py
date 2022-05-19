@@ -8,15 +8,6 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 
 api = Blueprint('api', __name__)
 
-@app.route("/token", methods=["POST"])
-def create_token():
-    username = request.json.get("username", None)
-    password = request.json.get("password", None)
-    user = User.filter.query(username=username, password=password).first()
-    if not user :
-        return jsonify({"msg": "Not user find"}), 404
-    access_token = create_access_token(identity=user.id)
-    return jsonify({ "token": access_token, "user_id": user.id })
 
 
 @api.route('/register', methods=["POST"])
@@ -28,7 +19,8 @@ def create_user():
     body_last_name = request.json.get("last_name")
     body_user_type = request.json.get("user_type")
     body_inversor_type = request.json.geet("inversor_type")
-    if body_email and body_password and body_pais and body_nombre :
+    if body_email and body_password and body_country and body_name and body_user_type : 
+        #es obligatorio investor_type??
         #todos los campos obligatorios
         used_email = User.query.filter_by(email=body_email).first()
         if used_email :
@@ -39,8 +31,9 @@ def create_user():
         return jsonify({"created":True, "user":new_user.serialize()}), 200
     else:
         return jsonify({"created":False, "msg":"Lack of Info"}), 400
+#es necesario llamar al token, para no pasar por login!!??
 
-@api.route('/login', methods=["GET"])
+@api.route('/login', methods=["POST"])
 def login_user():
     body_email = request.json.get("email")
     body_password = request.json.get("password")
@@ -50,6 +43,4 @@ def login_user():
             access_token = create_access_token(identity=user.id)
             return jsonify({"logged":True, "user":user.serialize(), "token":access_token}), 200
         else:
-            return jsonify({"logged":False, "msg":"error"}), 400
-    else:
-        return jsonify({"created":False, "msg":"Lack info"}), 400
+            return jsonify({"logged":False, "msg":"user not found"}), 404
