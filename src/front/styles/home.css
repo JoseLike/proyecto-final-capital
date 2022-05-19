@@ -5,3 +5,24 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+
+.footer-contain {
+  background-color: rgb(189, 226, 247);
+  box-shadow: inset 0 20px 50px -5px rgb(255, 255, 255);
+}
+.logo-footer {
+  width: 150px;
+}
+.fsize {
+  width: 50px;
+}
+.navbar {
+  background-color: rgb(189, 226, 247);
+}
+.button-log {
+  width: 4000px;
+}
+
+.img-ilutrator {
+  width: 150px;
+}
