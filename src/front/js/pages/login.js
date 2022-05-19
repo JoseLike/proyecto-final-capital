@@ -13,10 +13,10 @@ export const Login = () => {
     password: "",
   });
 
-  const verify_email = (email) => {
+  const verify_email = (a) => {
     let regex =
       /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    return regex.test(email) ? true : false;
+    return regex.test(a) ? true : false;
   };
 
   const verify_password = (password) => {
@@ -28,26 +28,11 @@ export const Login = () => {
     if (verify_email(datos.email) != true) {
       alert("El formato del email no es valido");
     }
-    if (verify_password(datos.password) != true) {
-      alert("Contraseña invalida");
-    }
-  };
-  const sendUserInfo = async () => {
-    if (datos.email != null && datos.password.trim() != "") {
-      const response = await fetch("", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(datos),
-      });
-      const data = await response.json();
-      localStorage.setItem("token", data.token);
-      if (data.logged == true) {
-        actions.logTrue();
-      }
-      console.log(data);
-      navigate.push("/home");
-    } else {
-      return alert("Falta informacion");
+    //if (verify_password(datos.password) != true) {
+    //alert("Contraseña invalida");
+    //}
+    else {
+      actions.sendUserInfo();
     }
   };
 
@@ -68,7 +53,7 @@ export const Login = () => {
         </div>
       </div>
       <div className="row rw-main-box ">
-        <div className="col-6 main-box m-auto rounded ">
+        <div className="col-6 main-box m-auto rounded justify-content-center p-5">
           <Link to="./">
             <i className="fa-solid fa-arrow-left icono-back"></i>
           </Link>
@@ -101,9 +86,9 @@ export const Login = () => {
               />
             </div>
           </div>
-          <div className="row justify-content-center">
+          <div className="row justify-content-center pt-4">
             <button
-              type="button"
+              type="button "
               className="col-3 btn btn-outline-success"
               onClick={() => verify()}
             >
