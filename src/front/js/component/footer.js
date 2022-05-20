@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import logo2 from "/workspace/proyecto-final-capital/src/front/img/logo2.png";
 import "/workspace/proyecto-final-capital/src/front/styles/home.css";
+import logosimple from "/workspace/proyecto-final-capital/src/front/img/logosimple.png";
 
 export const Footer = () => {
   return (
     <div className="container footer-contain">
       <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top footer-design">
-        <img src={logo2} className="col-md-4 mb-0 logo-footer" />
         <ul className="nav col-md-4 d-flex">
           <li className="ms-3">
             <a className="text-muted" href="#">
@@ -24,6 +24,7 @@ export const Footer = () => {
             </a>
           </li>
         </ul>
+        <img src={logosimple} className="col-md-4 mb-0 logo-footer" />
         <ul className="nav col-md-4 align-items-center justify-content-center">
           <li className="nav-item">
             <a href="#" className="nav-link px-2 text-muted">
@@ -37,7 +38,7 @@ export const Footer = () => {
           </li>
           <li className="nav-item">
             <a href="#" className="nav-link px-2 text-muted">
-              The Project
+              Register
             </a>
           </li>
           <li className="nav-item">
