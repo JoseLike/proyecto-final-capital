@@ -7,8 +7,7 @@
 */
 
 .footer-contain {
-  background-color: rgb(189, 226, 247);
-  box-shadow: inset 0 20px 50px -5px rgb(255, 255, 255);
+  background-color: rgb(191, 227, 247);
 }
 .logo-footer {
   width: 150px;
@@ -25,4 +24,39 @@
 
 .img-ilutrator {
   width: 200px;
+  height: 200px;
+}
+
+p {
+  font-family: "Racing Sans One";
+  font-size: 24px;
+}
+
+.cabecera2 {
+  background: rgb(35, 117, 3);
+  color: white;
+}
+
+.cabecera3 {
+  background: rgb(42, 59, 83);
+  color: white;
+}
+
+h2 {
+  color: white;
+  text-shadow: black 0.2em 0.2em 0.4em;
+}
+
+.btn {
+  color: rgb(42, 59, 83);
+  font-size: 18px;
+}
+
+.btn-outline-light {
+  color: white;
+}
+
+.principal {
+  font-family: "Courgette", cursive;
+  font-size: 34px;
 }

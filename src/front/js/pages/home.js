@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 import logosimple from "/workspace/proyecto-final-capital/src/front/img/logosimple.png";
 import ideacolor from "/workspace/proyecto-final-capital/src/front/img/ideacolor.png";
 import deal from "/workspace/proyecto-final-capital/src/front/img/deal.png";
@@ -36,74 +37,94 @@ export const Home = () => {
         <a class="navbar-brand col-7 d-flex justify-content-center" href="#">
           <img src={logosimple} width="120" height="80" alt="" />
         </a>
-        <div
-          class="btn-group col-2 btn-group-toggle me-5"
-          data-toggle="buttons"
-        >
-          <button type="button" class="btn btn-outline-primary">
-            Login
-          </button>
-          <button type="button" class="btn btn-outline-primary">
-            Register
-          </button>
+        <div className="me-5">
+          <Link to={"/register"}>
+            <button type="button" class="btn ">
+              Registrarse
+            </button>
+          </Link>
+          <Link to={"/login"}>
+            <button type="button" class="btn">
+              Login
+            </button>
+          </Link>
         </div>
       </nav>
       <div className="container">
-        <div className="d-flex flex-wrap row border-bottom mt-4 p-2">
-          <div className="col d-flex justify-content-center">
-            <img className="img-ilutrator" src={ideacolor} />
+        <div className="cabecera1 shadow">
+          <div className="d-flex flex-wrap row  mt-4 p-2">
+            <div className="col d-flex justify-content-center">
+              <img className="img-ilutrator" src={ideacolor} />
+            </div>
+            <div className="col d-flex align-items-center">
+              <p className="principal">
+                La primera plataforma que une ideas y capital
+              </p>
+            </div>
+            <div className="col d-flex justify-content-center">
+              <img className="img-ilutrator" src={inversorcolor} />
+            </div>
           </div>
-          <div className="col d-flex text-center">
-            <p>La primera plataforma que une ideas y capital</p>
-          </div>
-          <div className="col d-flex justify-content-center">
-            <img className="img-ilutrator" src={inversorcolor} />
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col d-flex justify-content-center border-bottom">
-            <img className="img-ilutrator" src={deal} />
-            <p>Para emprendedores e inversores</p>
-            <p>Postea ó Encuentra - Negociar - Exito! </p>
-          </div>
-        </div>
-        <div className="row">
-          <h1>Si eres Emprendedor/Creador ...</h1>
-        </div>
-        <div className="row">
-          <div className="col d-flex justify-content-center border-bottom">
-            <img className="img-ilutrator" src={crear} />
-            <p> Registrate y rellena el formulario de proyecto</p>
-            <p> Gestiona tus proyectos desde tu personal view</p>
+          <div className="row p-5">
+            <div className="col d-flex justify-content-center align-items-center ">
+              <img className="img-ilutrator me-5" src={deal} />
+              <div className="block">
+                <p>Para emprendedores e inversores</p>
+                <p>Postea ó Encuentra - Negociar - Exito! </p>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col d-flex justify-content-center border-bottom">
-            <p> Recibe propuestas o preguntas</p>
-            <p> Mira las estadisticas de tu proyecto</p>
-            <img className="img-ilutrator" src={recibirmensaje} />
+        <div className="cabecera2 shadow-lg mt-5 p-4 rounded">
+          <div className="row ">
+            <h2 className="p-4 ps-5">Para nuestros Emprendedores ...</h2>
+          </div>
+          <div className="row pt-4">
+            <div className="col d-flex justify-content-center align-items-center">
+              <img className="img-ilutrator me-5" src={crear} />
+              <div className="block rounded">
+                <p> Registrate y rellena el formulario de proyecto</p>
+                <p> Gestiona tus proyectos desde tu personal view</p>
+                <Link to={"/register"}>
+                  <button type="button" class="btn btn-outline-light">
+                    Registrarme
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="row pt-5">
+            <div className="col d-flex justify-content-center align-items-center">
+              <div className="block me-5">
+                <p> Recibe propuestas o preguntas</p>
+                <p> Mira las estadisticas de tu proyecto</p>
+              </div>
+              <img className="img-ilutrator" src={recibirmensaje} />
+            </div>
           </div>
         </div>
-        <div className="row">
-          <h1>Si eres Inversor ...</h1>
-        </div>
-        <div className="row">
-          <div className="col d-flex justify-content-center border-bottom">
-            <img className="img-ilutrator" src={growup} />
-            <p> Haz crecer tu capital invirtiendolo en proyectos reales</p>
+        <div className="cabecera3 shadow mt-5 p-4 rounded">
+          <div className="row ">
+            <h2 className="p-4 ps-5">Querido Inversor ...</h2>
+          </div>
+          <div className="row pt-5">
+            <div className="d-flex justify-content-center align-items-center">
+              <img className="img-ilutrator me-5" src={growup} />
+              <p>
+                Haz crecer tu capital<br></br> invirtiendolo en proyectos reales
+              </p>
+            </div>
+          </div>
+          <div className="row pt-5">
+            <div className="col d-flex justify-content-center align-items-center">
+              <p className="me-5">
+                Selecciona los proyectos que mas encajan <br></br> con tu vision
+                o estrategia empresarial
+              </p>
+              <img className="img-ilutrator rounded" src={options} />
+            </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col d-flex justify-content-center border-bottom">
-            <p>
-              Selecciona los proyectos que mas encajan con tu vision o
-              estrategia empresarial
-            </p>
-            <img className="img-ilutrator" src={options} />
-          </div>
-        </div>
-        <div className="row"></div>
       </div>
     </div>
   );
