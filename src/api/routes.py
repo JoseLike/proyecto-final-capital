@@ -4,7 +4,6 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
-from flask_jwt_extended import jwt_required, get_jwt_identity
 
 api = Blueprint('api', __name__)
 
@@ -20,12 +19,11 @@ def create_user():
     body_user_type = request.json.get("user_type")
     body_inversor_type = request.json.geet("inversor_type")
     if body_email and body_password and body_country and body_name and body_user_type : 
-        #es obligatorio investor_type??
         #todos los campos obligatorios
         used_email = User.query.filter_by(email=body_email).first()
         if used_email :
              return jsonify({"created":False, "msg":"Email already in use"}), 400
-        new_user = User(email = body_email, password = body_password, is_active=False)
+        new_user = User(email = body_email, password = body_password, country = country, name = name, last_name = last_name, body_user_type = user_type, body_inversor_type = inversor_type  ) #colocar todos los campos
         db.session.add(new_user)
         db.session.commit()
         return jsonify({"created":True, "user":new_user.serialize()}), 200
