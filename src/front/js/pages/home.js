@@ -11,7 +11,7 @@ export const Home = () => {
       <Router>
         <Navbar />
         <Switch>
-          <Route path="/" exact element={Home} />
+          <Route path="/" element={Home} />
           <Route path="/prueba1" element={Prueba1} />
           <Route path="/prueba2" element={Prueba2} />
         </Switch>

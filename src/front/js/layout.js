@@ -7,6 +7,7 @@ import injectContext from "./store/appContext";
 
 import { Footer } from "./component/footer";
 import Prueba1 from "./pages/prueba1";
+import Prueba2 from "./pages/prueba2";
 
 //create your first component
 const Layout = () => {
@@ -24,6 +25,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/prueba1">
               <Prueba1 />
+            </Route>
+            <Route exact path="/prueba2">
+              <Prueba2 />
             </Route>
             <Route>
               <h1>Not found!</h1>
