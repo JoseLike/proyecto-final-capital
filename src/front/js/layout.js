@@ -4,7 +4,7 @@ import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
 import injectContext from "./store/appContext";
-
+import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import Prueba1 from "./pages/prueba1";
 import Prueba2 from "./pages/prueba2";
@@ -18,23 +18,26 @@ const Layout = () => {
   return (
     <div>
       <BrowserRouter basename={basename}>
-        <ScrollToTop>
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/prueba1">
-              <Prueba1 />
-            </Route>
-            <Route exact path="/prueba2">
-              <Prueba2 />
-            </Route>
-            <Route>
-              <h1>Not found!</h1>
-            </Route>
-          </Switch>
-          <Footer />
-        </ScrollToTop>
+        <Navbar />
+        <div className="pageContent">
+          <ScrollToTop>
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path="/prueba1">
+                <Prueba1 />
+              </Route>
+              <Route exact path="/prueba2">
+                <Prueba2 />
+              </Route>
+              <Route>
+                <h1>Not found!</h1>
+              </Route>
+            </Switch>
+            <Footer />
+          </ScrollToTop>
+        </div>
       </BrowserRouter>
     </div>
   );
