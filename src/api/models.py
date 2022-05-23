@@ -12,6 +12,8 @@ class User(db.Model):
     last_name = db.Column(db.String(120))
     user_type = db.Column(db.Integer, db.ForeignKey('usertype.id'), nullable=False ) 
     is_company = db.Column(db.Boolean(), default=False) 
+    #IMAGEN DE USUARIO??
+
     
     def serialize(self):        
         return {
@@ -24,6 +26,10 @@ class Usertype(db.Model):
     name = db.Column(db.String(120), nullable=False)
     user_id = db.relationship('User', backref='usertype')
 
+class Favorites(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    #llave foranea de title, concept, user_id
+
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80), nullable=False)
@@ -32,6 +38,16 @@ class Project(db.Model):
     raised_capital = db.Column(db.Integer)
     invested_capital = db.Column(db.Integer)
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
+    deadline= db.Column(db.Integer, nullable=False)
+    loans= db.Column(db.Integer, nullable=False)
+    #PLAN NEGOCIO TEXTO EXTENSO???
+    patent= db.Column(db.Boolean(), nullable=False, default=False)
+    terms= db.Column(db.Boolean(), nullable=False, default=False)
+    #DOCUMENTOS ADJUNTOS???
+    #IMAGEN DEL PROYECTO???
+    investment_capacity:(db.Integer)
+    views= db.Column(db.Integer) 
+
     #los espacios que falten por Jose
 
 class Category(db.Model):
