@@ -1,11 +1,10 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-
 import { Home } from "./pages/home";
 import injectContext from "./store/appContext";
-import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Sidebar } from "./component/Sidebar";
 import Prueba1 from "./pages/prueba1";
 import Prueba2 from "./pages/prueba2";
 
@@ -16,9 +15,9 @@ const Layout = () => {
   const basename = process.env.BASENAME || "";
 
   return (
-    <div>
+    <div className="d-flex">
       <BrowserRouter basename={basename}>
-        <Navbar />
+        <Sidebar />
         <div className="pageContent">
           <ScrollToTop>
             <Switch>
