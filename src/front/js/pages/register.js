@@ -43,7 +43,7 @@ export const Register = () => {
   };
 
   const verify_password = (password) => {
-    let exregex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8-10}$/;
+    let exregex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8-10}+$/;
 
     return exregex.test(password) ? true : false;
   };
@@ -52,18 +52,22 @@ export const Register = () => {
     if (verify_email(datos.email) != true) {
       alert("El formato del email no es valido");
     }
-    if (verify_password(datos.password) != true) {
-      alert("Contraseña invalida");
-    }
+    //if (verify_password(datos.password) != true) {
+    //alert("Contraseña invalida");
+    //}
   };
 
   const sendNewUser = async () => {
+    verify();
     if (datos.email != null && datos.password.trim() != "") {
-      const response = await fetch("", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(datos),
-      });
+      const response = await fetch(
+        "https://3001-joselike-proyectofinalc-d2ufbibxbek.ws-eu45.gitpod.io/api/register",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(datos),
+        }
+      );
       const data = await response.json();
       console.log(data);
     } else {
@@ -318,7 +322,7 @@ export const Register = () => {
                       ? "col-3 btn btn-outline-primary disabled"
                       : "col-3 btn btn-primary"
                   }
-                  onClick={() => verify()}
+                  onClick={() => sendNewUser()}
                   aria-disabled="false"
                 >
                   Registrarse

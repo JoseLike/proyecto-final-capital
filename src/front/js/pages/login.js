@@ -13,6 +13,29 @@ export const Login = () => {
     password: "",
   });
 
+  const sendUserInfo = async () => {
+    if (datos.email != null && datos.password.trim() != "") {
+      const response = await fetch(
+        "https://3001-joselike-proyectofinalc-d2ufbibxbek.ws-eu45.gitpod.io/api/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(datos),
+        }
+      );
+      const data = await response.json();
+      localStorage.setItem("token", data.token);
+      //if (data.logged == true) {
+      //actions.logTrue();
+      // setStore({ current_user: data.user });
+      //}
+      console.log(data);
+      //navigate.push("/home");
+    } else {
+      return alert("Falta informacion");
+    }
+  };
+
   const verify_email = (a) => {
     let regex =
       /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -32,7 +55,7 @@ export const Login = () => {
     //alert("Contraseña invalida");
     //}
     else {
-      actions.sendUserInfo();
+      sendUserInfo();
     }
   };
 
