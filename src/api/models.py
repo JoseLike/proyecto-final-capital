@@ -28,6 +28,7 @@ class Usertype(db.Model):
 
 class Favorites(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    project_id= db.Column(db.Integer, db.ForeignKey('project.id'))
     #llave foranea de title, concept, user_id
 
 class Project(db.Model):
