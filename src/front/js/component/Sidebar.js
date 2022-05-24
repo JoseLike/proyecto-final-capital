@@ -6,19 +6,37 @@ import { Link } from "react-router-dom";
 export const Sidebar = () => {
   return (
     <div className="sidebar">
-      <ul className="sidebarList">
+      <ul className="sidebarList mx-auto">
         {SidebarData.map((val) => {
           return (
-            <Link to={val.link} key={val.id}>
-              <li className="row">
-                <div id="icon">{val.icon}</div>
-                <div id="title"> {val.title}</div>
+            <div>
+              <li key={val.id} className="row container">
+                <div className="d-flex">
+                  <div className="icon">{val.icon}</div>
+                  <div className="title">{val.title}</div>
+                </div>
+                <br />
+                <div className="subtitles">
+                  <ul>
+                    {val.subtitle.map((item) => {
+                      return (
+                        <li key={item.id} className="cortos">
+                          <Link to={item.path}>
+                            <p className="text-secondary">{item.name}</p>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
               </li>
-            </Link>
+            </div>
           );
         })}
       </ul>
-      <div className="cuadroPremium"></div>
+      <button className="cuadroPremium btn btn-light">
+        <h4>HAZTE PREMIUM</h4>
+      </button>
     </div>
   );
 };
