@@ -11,6 +11,7 @@ import { useHistory } from "react-router-dom";
 export const Register = () => {
   const { store, actions } = useContext(Context);
   let navigate = useHistory();
+  const [rptpassword, setRptpassword] = useState("form-control");
 
   const [notTouched, setnotTouched] = useState(
     "btt-account-type col-4 text-center shadow m-2 rounded"
@@ -42,7 +43,8 @@ export const Register = () => {
   };
 
   const verify_password = (password) => {
-    let exregex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8}$/;
+    let exregex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8-10}$/;
+
     return exregex.test(password) ? true : false;
   };
 
@@ -79,7 +81,11 @@ export const Register = () => {
   const handlePasswordValidation = (event) => {
     let repeat_password = event.target.value;
     let password = datos.password;
-    if (repeat_password != password);
+    if (repeat_password != password) {
+      setRptpassword("form-control rptpasswordFalse");
+    } else {
+      setRptpassword("form-control rptpasswordTrue");
+    }
     //
   };
 
@@ -281,9 +287,9 @@ export const Register = () => {
                 </div>
                 <input
                   type="text"
-                  className="form-control"
+                  className={rptpassword}
                   aria-label="Small"
-                  onChange={handleInputChange}
+                  onChange={handlePasswordValidation}
                   aria-describedby="inputGroup-sizing-sm"
                 />
               </div>

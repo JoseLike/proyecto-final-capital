@@ -17,28 +17,28 @@ const Layout = () => {
   const basename = process.env.BASENAME || "";
 
   return (
-    <div className="d-flex">
-      <BrowserRouter basename={basename}>
-        <ScrollToTop>
-          <Navbar />
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/login">
+    <BrowserRouter basename={basename}>
+      <ScrollToTop>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/login" className="d-flex">
+            <div className="d-flex">
+              <Sidebar />
               <Login />
-            </Route>
-            <Route exact path="/register">
-              <Register />
-            </Route>
-            <Route>
-              <h1>Not found!</h1>
-            </Route>
-          </Switch>
-          <Footer />
-        </ScrollToTop>
-      </BrowserRouter>
-    </div>
+            </div>
+          </Route>
+          <Route exact path="/register">
+            <Register />
+          </Route>
+          <Route>
+            <h1>Not found!</h1>
+          </Route>
+        </Switch>
+        <Footer />
+      </ScrollToTop>
+    </BrowserRouter>
   );
 };
 
