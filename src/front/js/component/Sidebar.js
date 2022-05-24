@@ -11,10 +11,12 @@ export const Sidebar = () => {
           return (
             <div>
               <li key={val.id} className="row container">
-                <div className="d-flex">
-                  <div className="icon">{val.icon}</div>
-                  <div className="title">{val.title}</div>
-                </div>
+                <Link to={val.link}>
+                  <div className="d-flex">
+                    <div className="icon">{val.icon}</div>
+                    <div className="title">{val.title}</div>
+                  </div>
+                </Link>
                 <br />
                 <div className="subtitles">
                   <ul>

@@ -3,7 +3,7 @@ import React from "react";
 export const SidebarData = [
   {
     id: 1,
-    title: "Home",
+    title: "Mi Perfil",
     icon: <i className="fas fa-home-alt"></i>,
     link: "/",
     subtitle: [],
@@ -12,7 +12,7 @@ export const SidebarData = [
     id: 2,
     title: "Proyectos",
     icon: <i className="fas fa-suitcase"></i>,
-    link: "/proyectos",
+    link: "/mis-proyectos",
     subtitle: [
       { id: 1, name: "Mis Proyectos", path: "/mis-proyectos" },
       { id: 2, name: "Crear Proyecto", path: "/crear-proyecto" },
@@ -22,7 +22,7 @@ export const SidebarData = [
     id: 3,
     title: "Mensajes",
     icon: <i className="fas fa-envelope-open-text"></i>,
-    link: "/prueba2",
+    link: "/msj-recibidos",
     subtitle: [
       { id: 1, name: "Recibidos", path: "/msj-recibidos" },
       { id: 2, name: "Enviados", path: "/msj-enviados" },
@@ -32,7 +32,7 @@ export const SidebarData = [
     id: 4,
     title: "Estadisticas",
     icon: <i className="fas fa-map-signs"></i>,
-    link: "/prueba3",
+    link: "/estadisticas",
     subtitle: [],
   },
 ];
