@@ -4,6 +4,76 @@
   color: white;
 }
 
+    All pages share the styles on index.css but you should create 
+    one more css for each page that will contain the selected used 
+    on that page only (the ones not reused in other pages).
+*/
+
+.footer-contain {
+  background-color: rgb(191, 227, 247);
+}
+.logo-footer {
+  width: 150px;
+}
+.fsize {
+  width: 50px;
+}
+.navbar {
+  background-color: rgb(191, 227, 247);
+}
+.button-log {
+  width: 4000px;
+}
+
+.img-ilutrator {
+  width: 200px;
+  height: 200px;
+}
+
+p {
+  font-family: "Racing Sans One";
+  font-size: 24px;
+}
+
+.cabecera2 {
+  background: rgb(35, 117, 3);
+  color: white;
+}
+
+.cabecera3 {
+  background: rgb(42, 59, 83);
+  color: white;
+}
+
+h2 {
+  color: white;
+  text-shadow: black 0.2em 0.2em 0.4em;
+}
+
+.btn {
+  color: rgb(42, 59, 83);
+  font-size: 18px;
+}
+
+.btn-outline-light {
+  color: white;
+}
+
+.principal {
+  font-family: "Courgette", cursive;
+  font-size: 34px;
+}
+
+.bhome {
+  color: white;
+  font-size: 24px;
+}
+
+.bover {
+  color: white;
+  font-size: 32px;
+  border: none;
+  
 li {
   list-style: none;
 }
