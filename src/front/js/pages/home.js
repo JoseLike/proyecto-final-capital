@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import logosimple from "/workspace/proyecto-final-capital/src/front/img/logosimple.png";
@@ -13,10 +13,12 @@ import "../../styles/home.css";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
+  const [boton, setBoton] = useState("btn bhome");
+  const [btnReg, setBtnReg] = useState("btn bhome");
 
   return (
     <div>
-      <nav class="navbar shadow d-flex justify-content-between">
+      <nav className="navbar shadow d-flex justify-content-between">
         <ul className="nav col-2 d-flex justify-content-center">
           <li className="ms-3">
             <a className="text-muted" href="#">
@@ -34,17 +36,38 @@ export const Home = () => {
             </a>
           </li>
         </ul>
-        <a class="navbar-brand col-7 d-flex justify-content-center" href="#">
+        <a
+          className="navbar-brand col-7 d-flex justify-content-center"
+          href="#"
+        >
           <img src={logosimple} width="120" height="80" alt="" />
         </a>
         <div className="me-5">
           <Link to={"/register"}>
-            <button type="button" class="btn ">
+            <div
+              type="button"
+              className={btnReg}
+              onMouseOver={() => {
+                setBtnReg("btn bover");
+              }}
+              onMouseOut={() => {
+                setBtnReg("btn bhome");
+              }}
+            >
               Registrarse
-            </button>
+            </div>
           </Link>
           <Link to={"/login"}>
-            <button type="button" class="btn">
+            <button
+              type="button"
+              className={boton}
+              onMouseOver={() => {
+                setBoton("btn bover");
+              }}
+              onMouseOut={() => {
+                setBoton("btn bhome");
+              }}
+            >
               Login
             </button>
           </Link>
@@ -75,10 +98,12 @@ export const Home = () => {
             </div>
           </div>
         </div>
-        <div className="cabecera2 shadow-lg mt-5 p-4 rounded">
-          <div className="row ">
-            <h2 className="p-4 ps-5">Para nuestros Emprendedores ...</h2>
-          </div>
+        <div className="row ">
+          <h2 className="cabecera2 mt-5 p-4 ps-5 rounded">
+            Para nuestros Emprendedores ...
+          </h2>
+        </div>
+        <div className="cabecera2 shadow-lg p-4 rounded">
           <div className="row pt-4">
             <div className="col d-flex justify-content-center align-items-center">
               <img className="img-ilutrator me-5" src={crear} />
@@ -86,7 +111,7 @@ export const Home = () => {
                 <p> Registrate y rellena el formulario de proyecto</p>
                 <p> Gestiona tus proyectos desde tu personal view</p>
                 <Link to={"/register"}>
-                  <button type="button" class="btn btn-outline-light">
+                  <button type="button" className="btn btn-outline-light">
                     Registrarme
                   </button>
                 </Link>
@@ -103,10 +128,12 @@ export const Home = () => {
             </div>
           </div>
         </div>
-        <div className="cabecera3 shadow mt-5 p-4 rounded">
-          <div className="row ">
-            <h2 className="p-4 ps-5">Querido Inversor ...</h2>
-          </div>
+        <div className="row ">
+          <h2 className="cabecera3 mt-5 p-4 ps-5 rounded">
+            Querido Inversor ...
+          </h2>
+        </div>
+        <div className="cabecera3 shadow  p-4 rounded">
           <div className="row pt-5">
             <div className="d-flex justify-content-center align-items-center">
               <img className="img-ilutrator me-5" src={growup} />

@@ -60,3 +60,14 @@ h2 {
   font-family: "Courgette", cursive;
   font-size: 34px;
 }
+
+.bhome {
+  color: white;
+  font-size: 24px;
+}
+
+.bover {
+  color: white;
+  font-size: 32px;
+  border: none;
+}
