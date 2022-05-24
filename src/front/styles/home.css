@@ -1,5 +1,8 @@
-/*
-    home.css: This website contains selectors only used in home.css
+.Home {
+  width: 100vw;
+  height: 100vh;
+  color: white;
+}
 
     All pages share the styles on index.css but you should create 
     one more css for each page that will contain the selected used 
@@ -70,4 +73,61 @@ h2 {
   color: white;
   font-size: 32px;
   border: none;
+  
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  font-size: 20px;
+}
+.sidebarList {
+  margin-top: 180px;
+  padding: 0%;
+  margin-left: 15px;
+}
+.subtitles p {
+  text-decoration: none;
+  font-size: 10px;
+  color: black;
+}
+.sidebar {
+  height: 100vh;
+  width: 200px;
+  background-color: #2f4050;
+}
+
+.row {
+  display: flex;
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+  color: black;
+}
+.icon {
+  padding: 0px;
+  margin-right: 10px;
+  color: black;
+}
+
+.title {
+  text-decoration: none;
+  color: black;
+}
+
+.cuadroPremium {
+  text-align: center;
+  justify-content: center;
+  background-color: lightgrey;
+  width: 150px;
+  padding: 0px;
+  border: 2px dotted #b08f26;
+  margin-top: 200px;
+  margin-left: 20px;
+}
+
+.sidebarList .subtitles .cortos:hover {
+  cursor: pointer;
+  background-color: #293846;
 }
