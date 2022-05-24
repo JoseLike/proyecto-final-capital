@@ -19,11 +19,12 @@ def create_user():
     body_user_type = request.json.get("user_type")
     body_inversor_type = request.json.geet("inversor_type")
     if body_email and body_password and body_country and body_name and body_user_type : 
+        #es obligatorio investor_type??
         #todos los campos obligatorios
         used_email = User.query.filter_by(email=body_email).first()
         if used_email :
              return jsonify({"created":False, "msg":"Email already in use"}), 400
-        new_user = User(email = body_email, password = body_password, country = country, name = name, last_name = last_name, body_user_type = user_type, body_inversor_type = inversor_type  ) #colocar todos los campos
+        new_user = User(email = body_email, password = body_password, is_active=False)
         db.session.add(new_user)
         db.session.commit()
         return jsonify({"created":True, "user":new_user.serialize()}), 200
