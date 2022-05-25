@@ -12,6 +12,7 @@ import { Footer } from "./component/footer";
 import { Sidebar } from "./component/Sidebar";
 import Prueba1 from "./pages/prueba1";
 import Prueba2 from "./pages/prueba2";
+import { CrearProyecto } from "/workspace/proyecto-final-capital/src/front/js/pages/CrearProyecto.js";
 
 //create your first component
 const Layout = () => {
@@ -20,45 +21,25 @@ const Layout = () => {
   const basename = process.env.BASENAME || "";
 
   return (
-    <BrowserRouter basename={basename}>
-      <ScrollToTop>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/login" className="d-flex">
-            <div className="d-flex">
-              <Login />
-            </div>
-          </Route>
-          <Route exact path="/register">
-            <Register />
-          </Route>
-          <Route exact path="/project/:theid">
-            <div className="d-flex">
-              <Sidebar />
-              <ProjectView />
-            </div>
-          </Route>
-          <Route exact path="/personal">
-            <div className="d-flex">
-              <Sidebar />
-              <PersonalView />
-            </div>
-          </Route>
-          <Route exact path="/account">
-            <div className="d-flex">
-              <Sidebar />
-              <MyAccount />
-            </div>
-          </Route>
-          <Route>
-            <h1>Not found!</h1>
-          </Route>
-        </Switch>
-        <Footer />
-      </ScrollToTop>
-    </BrowserRouter>
+    <div>
+      <BrowserRouter basename={basename}>
+        <ScrollToTop>
+          <Navbar />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/crearproyecto">
+              <CrearProyecto />
+            </Route>
+            <Route>
+              <h1>Not found!</h1>
+            </Route>
+          </Switch>
+          <Footer />
+        </ScrollToTop>
+      </BrowserRouter>
+    </div>
   );
 };
 
