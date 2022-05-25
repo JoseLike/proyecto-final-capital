@@ -9,7 +9,7 @@ export const CrearProyecto = () => {
       </div>
       <input placeholder="Titulo de proyecto" className="w-100"></input>
       <div className="d-flex">
-        <p>Categoria: </p>
+        <span className="input-group-text">Categoria: </span>
         <select class="form-control" id="exampleFormControlSelect1">
           {/* AQUI TENDRIA QUE HABER UN MAP, DE "CATEGORIAS" */}
           <option>1</option>
@@ -17,7 +17,7 @@ export const CrearProyecto = () => {
         </select>
       </div>
       <div className="d-flex ">
-        <p>Capital deseado</p>
+        <span className="input-group-text">Capital deseado</span>
         <input placeholder="Capital Deseado" className="w-100"></input>
       </div>
       <div class="custom-file d-flex">
@@ -28,7 +28,7 @@ export const CrearProyecto = () => {
       </div>
       <h3 className="text-center">Estado Financiero del proyecto</h3>
       <div className="d-flex">
-        <p>Capicidad de inversion</p>
+        <span className="input-group-text">Capicidad de inversion</span>
         <select class="form-control" id="exampleFormControlSelect1">
           {/* AQUI TENDRIA QUE HABER UN MAP, DE "CATEGORIAS" */}
           <option>de donde ---- hasta donde</option>
@@ -36,20 +36,26 @@ export const CrearProyecto = () => {
         </select>
       </div>
       <div className="d-flex">
-        <p>Importe de actuales deudas del proyecto</p>
+        <span className="input-group-text">
+          Importe de actuales deudas del proyecto
+        </span>
         <input placeholder="Importe"></input>
       </div>
       <div className="d-flex">
-        <p>Capital Invertido a la fecha</p>
+        <span className="input-group-text">Capital Invertido a la fecha</span>
         <input placeholder="Importe" className="w-100"></input>
       </div>
-      <div className="d-flex">
-        <p>Cuentanos tu plan de negocio para el proyecto</p>
+      <div className="justify-content-center">
+        <span className="input-group-text w-25">
+          Cuentanos tu plan de negocio para el proyecto
+        </span>
         <input placeholder="Texto extenso" className="w-100"></input>
       </div>
       <h3 className="text-center">Estado legal del proyecto</h3>
       <div className="d-flex">
-        <p>Posee el proyecto actualmente una patente?</p>
+        <span className="input-group-text">
+          Posee el proyecto actualmente una patente?
+        </span>
         <input
           type="checkbox"
           className="custom-control-input w-15"
@@ -57,7 +63,7 @@ export const CrearProyecto = () => {
         ></input>
       </div>
       <div className="d-flex ">
-        <p className="">Estas seguro de compartir tu proyecto?</p>
+        <span className="">Estas seguro de compartir tu proyecto?</span>
         <input
           type="checkbox"
           className="custom-control-input ml-10"
