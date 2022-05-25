@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       current_user: [],
       logged: false,
+      singleproject: [],
     },
     actions: {
       setLogged: () => {
@@ -35,6 +36,13 @@ const getState = ({ getStore, getActions, setStore }) => {
         } else {
           return alert("Falta informacion");
         }
+      },
+      getSingleProject: async (key) => {
+        const response = await fetch(
+          "https://www.swapi.tech/api/projects/" + key
+        );
+        const gettedproject = await response.json();
+        setStore({ singleproject: gettedproject.result.properties });
       },
     },
   };
