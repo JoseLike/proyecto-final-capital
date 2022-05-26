@@ -45,6 +45,9 @@ export const CuadroPremium = () => {
             <p>Podras visitar un maximo de: Ilimitado</p>
             <p>Podras contactar con tan solo : Ilimitado</p>
           </div>
+          <div className="d-flex justify-content-center ">
+            <h3 className="border border-dark p-2">20€ al mes</h3>
+          </div>
         </div>
       </div>
       <br />
