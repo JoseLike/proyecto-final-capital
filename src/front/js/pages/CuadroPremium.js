@@ -47,6 +47,10 @@ export const CuadroPremium = () => {
           </div>
         </div>
       </div>
+      <br />
+      <div className="container">
+        <button className="btn btn-success offset-10">Hacerme Premium</button>
+      </div>
     </div>
   );
 };
