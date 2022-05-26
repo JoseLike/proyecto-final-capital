@@ -24,7 +24,7 @@ export const Register = () => {
   );
 
   const [datos, setDatos] = useState({
-    user_type: "",
+    user_type: null,
     name: "",
     last_name: "",
     email: "",
@@ -57,7 +57,7 @@ export const Register = () => {
   };
 
   const sendNewUser = async () => {
-    verify();
+    //verify();
     if (datos.email != null && datos.password.trim() != "") {
       const response = await fetch(
         "https://3001-joselike-proyectofinalc-m77gee2opis.ws-eu46.gitpod.io/api/register",
@@ -101,7 +101,7 @@ export const Register = () => {
           </Link>
         </div>
       </div>
-      {datos.user_type == "" ? (
+      {datos.user_type == null ? (
         <div className="container account-type-box rounded justify-content-center">
           <div className="row d-flex ">
             <div className="arrow-left-reg1">
@@ -126,7 +126,7 @@ export const Register = () => {
                 );
               }}
               onClick={() => {
-                setDatos({ ...datos, user_type: "emprendedor" });
+                setDatos({ ...datos, user_type: 2 });
               }}
             >
               <img className="img-account-type pt-2" src={solution} alt="" />
@@ -146,7 +146,7 @@ export const Register = () => {
                 );
               }}
               onClick={() => {
-                setDatos({ ...datos, user_type: "investor" });
+                setDatos({ ...datos, user_type: 3 });
               }}
             >
               <img className="img-account-type pt-2" src={profit} alt="" />

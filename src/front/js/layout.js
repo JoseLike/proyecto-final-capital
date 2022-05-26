@@ -25,7 +25,6 @@ const Layout = () => {
           </Route>
           <Route exact path="/login" className="d-flex">
             <div className="d-flex">
-              <Sidebar />
               <Login />
             </div>
           </Route>
