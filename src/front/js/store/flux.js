@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       current_user: [],
       logged: false,
       singleproject: [],
+      user_projects: [],
     },
     actions: {
       setLogged: () => {
@@ -39,10 +40,18 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       getSingleProject: async (key) => {
         const response = await fetch(
-          "https://www.swapi.tech/api/projects/" + key
+          "https://3001-joselike-proyectofinalc-m77gee2opis.ws-eu46.gitpod.io/api/project/" +
+            key
         );
         const gettedproject = await response.json();
-        setStore({ singleproject: gettedproject.result.properties });
+        //setStore({ singleproject: gettedproject.result.properties });
+      },
+      getUserProjects: async () => {
+        const response = await fetch(
+          "https://3001-joselike-proyectofinalc-m77gee2opis.ws-eu46.gitpod.io/api/projects"
+        );
+        const gettedprojects = await response.json();
+        //setStore({ user_projects: gettedprojects.result.properties });
       },
     },
   };

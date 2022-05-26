@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link, useParams } from "react-router-dom";
 import logosimple from "/workspace/proyecto-final-capital/src/front/img/logosimple.png";
+import { Projectcard } from "/workspace/proyecto-final-capital/src/front/js/component/projectscard.jsx";
 import "../../styles/personalview.css";
 
 export const PersonalView = () => {
@@ -9,23 +10,38 @@ export const PersonalView = () => {
   const { theid } = useParams();
 
   //useEffect(() => {
-  //actions.getSingleProject(theid);
+  //actions.getUserProjects();
   //}, []);
 
   return (
+    //{store.user.user_type != inversor ?}
     <div className="container mt-5">
       <div className="personal-title-row row">
-        <div className="personal-title text-center">Hello</div>
+        <div className="personal-title text-center">
+          Bienvenido a tu vista personal
+        </div>
       </div>
       <div className="personal-title-row row">
-        <div className="personal-title text-center">Hello</div>
+        <div className="personal-title text-center mt-4">Tus proyectos</div>
+        <div className="personal-title text-center">
+          <Projectcard
+          //key={project.id}
+          //id={project.id}
+          // category={project.category}
+          //name={project.category}
+          //eta={project.date}
+          //capital={project.capital}
+          //enlace={project.id}
+          />
+        </div>
       </div>
-      <link to="/newproject">
-        <a href="#" className="btn-flotante text-center align-items-center">
+      <Link to="/newproject">
+        <div href="#" className="btn-flotante text-center align-items-center">
           Nuevo Proyecto
-          <i class="fa-duotone fa-plus fa-2xl"></i>
-        </a>
-      </link>
+          <i className="fa-duotone fa-plus fa-2xl"></i>
+        </div>
+      </Link>
     </div>
+    //:
   );
 };
