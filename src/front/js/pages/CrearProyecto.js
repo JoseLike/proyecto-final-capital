@@ -82,6 +82,17 @@ export const CrearProyecto = () => {
       </div>
       <br />
       <div className="d-flex container">
+        <span className="input-group-text offset-1 w-25">Idea general</span>
+        <input
+          placeholder="Objetivo del proyecto"
+          id="exampleFormControlSelect1"
+          className="w-25"
+          name="concept"
+          onChange={handleInputChange}
+        ></input>
+      </div>
+      <br />
+      <div className="d-flex container">
         <span className="input-group-text offset-1 w-25">Capital deseado</span>
         <input
           placeholder="Capital Deseado"
@@ -199,7 +210,7 @@ export const CrearProyecto = () => {
         <input type="file" className="custom-file-input w-100"></input>
       </div>
       <br />
-      <div className="mx-auto">
+      <div className="d-flex mx-auto align-item-center">
         <button className="btn btn-secondary">Crear proyecto</button>
       </div>
     </div>
