@@ -31,7 +31,6 @@ export const Register = () => {
     country: "",
     password: "",
     inversor_type: "",
-    category: "",
     acepted_conditions: false,
     is_premium: false,
   });
@@ -43,7 +42,7 @@ export const Register = () => {
   };
 
   const verify_password = (password) => {
-    let exregex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8-10}+$/;
+    let exregex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
     return exregex.test(password) ? true : false;
   };
@@ -61,7 +60,7 @@ export const Register = () => {
     verify();
     if (datos.email != null && datos.password.trim() != "") {
       const response = await fetch(
-        "https://3001-joselike-proyectofinalc-d2ufbibxbek.ws-eu45.gitpod.io/api/register",
+        "https://3001-joselike-proyectofinalc-m77gee2opis.ws-eu46.gitpod.io/api/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

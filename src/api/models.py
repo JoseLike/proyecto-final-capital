@@ -11,7 +11,8 @@ class User(db.Model):
     name = db.Column(db.String(120), nullable=False)
     last_name = db.Column(db.String(120))
     user_type = db.Column(db.Integer, db.ForeignKey('usertype.id'), nullable=False ) 
-    is_company = db.Column(db.Boolean(), default=False) 
+    inversor_type = db.Column(db.String(120), default=None) 
+    acepted_conditions = db.Column(db.Boolean(),nullable=False, default=False)
     
     def serialize(self):        
         return {

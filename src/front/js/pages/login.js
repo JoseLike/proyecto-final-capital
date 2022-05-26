@@ -43,7 +43,7 @@ export const Login = () => {
   };
 
   const verify_password = (password) => {
-    let exregex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8}$/;
+    let exregex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
     return exregex.test(password) ? true : false;
   };
 
