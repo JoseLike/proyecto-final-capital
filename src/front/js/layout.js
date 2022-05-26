@@ -9,6 +9,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { CrearProyecto } from "/workspace/proyecto-final-capital/src/front/js/pages/CrearProyecto.js";
 import { BuscarProyecto } from "./pages/BuscarProyecto";
+import { CuadroPremium } from "./pages/CuadroPremium";
 
 //create your first component
 const Layout = () => {
@@ -30,6 +31,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/buscarproyecto">
               <BuscarProyecto />
+            </Route>
+            <Route exact path="/cuadropremium">
+              <CuadroPremium />
             </Route>
             <Route>
               <h1>Not found!</h1>
