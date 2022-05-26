@@ -47,20 +47,30 @@ export const CrearProyecto = () => {
   };
 
   return (
-    <div className="fondo container">
-      <div className="barra">
-        <h3 className="text-center">Informacion basica del proyecto</h3>
+    <div className="fondo container bg-light text-dark">
+      <div className="barra"></div>
+      <div>
+        <h3 className="text-center container mt-5">
+          Informacion basica del proyecto
+        </h3>
+        <br />
       </div>
-      <input
-        placeholder="Titulo de proyecto"
-        className="w-100"
-        name="title"
-        onChange={handleInputChange}
-      ></input>
-      <div className="d-flex">
-        <span className="input-group-text">Rubro del proyecto: </span>
+      <h2>
+        <input
+          placeholder="Titulo de proyecto"
+          className="w-100 text-center"
+          name="title"
+          onChange={handleInputChange}
+        ></input>
+      </h2>
+      <br />
+      <br />
+      <div className="d-flex container">
+        <span className="input-group-text offset-1 w-25">
+          Rubro del proyecto:{" "}
+        </span>
         <select
-          class="form-control"
+          className="form-control w-25"
           id="exampleFormControlSelect1"
           name="category"
           onChange={handleInputChange}
@@ -70,17 +80,23 @@ export const CrearProyecto = () => {
           <option>2</option>
         </select>
       </div>
-      <div className="d-flex ">
-        <span className="input-group-text">Capital deseado</span>
+      <br />
+      <div className="d-flex container">
+        <span className="input-group-text offset-1 w-25">Capital deseado</span>
         <input
           placeholder="Capital Deseado"
-          className="w-100"
+          id="exampleFormControlSelect1"
+          className="w-25"
           name="desired_capital"
           onChange={handleInputChange}
         ></input>
       </div>
-      <div class="custom-file d-flex">
-        <label class="custom-file-label" for="customFileLang">
+      <br />
+      <div class="custom-file d-flex container">
+        <label
+          className="input-group-text custom-file-label offset-1 w-25"
+          for="customFileLang"
+        >
           Imagen del proyecto:
         </label>
         <input
@@ -90,11 +106,15 @@ export const CrearProyecto = () => {
           onChange={handleInputChange}
         ></input>
       </div>
+      <br />
       <h3 className="text-center">Estado Financiero del proyecto</h3>
-      <div className="d-flex">
-        <span className="input-group-text">Capicidad de inversion</span>
+      <br />
+      <div className="d-flex container">
+        <span className="input-group-text w-25 offset-1">
+          Capicidad de inversion
+        </span>
         <select
-          class="form-control"
+          className="form-control w-25"
           id="exampleFormControlSelect1"
           name="investment_capacity"
           onChange={handleInputChange}
@@ -104,67 +124,84 @@ export const CrearProyecto = () => {
           <option>de donde ---- hasta donde</option>
         </select>
       </div>
-      <div className="d-flex">
-        <span className="input-group-text">
-          Importe de actuales deudas del proyecto
+      <br />
+      <div className="d-flex container">
+        <span className="input-group-text offset-1 w-25">
+          Deudas del proyecto
         </span>
         <input
           placeholder="Importe"
+          className="form-control w-25"
+          id="exampleFormControlSelect1"
           name="loans"
           onChange={handleInputChange}
         ></input>
       </div>
-      <div className="d-flex">
-        <span className="input-group-text">Capital Invertido a la fecha</span>
+      <br />
+      <div className="d-flex container">
+        <span className="input-group-text offset-1 w-25">
+          Capital Invertido a la fecha
+        </span>
         <input
           placeholder="Importe"
-          className="w-100"
+          className="w-25"
           name="invested_capital"
           onChange={handleInputChange}
         ></input>
       </div>
-      <div className="justify-content-center">
-        <span className="input-group-text">
+      <br />
+      <div className="justify-content-center container">
+        <span className="input-group-text offset-1 w-50">
           {/* CENTRAR Y RECORTAR ESTA LINEA */}
           Cuentanos tu plan de negocio para el proyecto
         </span>
         <input
           placeholder="Texto extenso"
-          className="w-100"
+          className="offset-1 w-50 h-75 d-inline-block"
           name="business_plan"
           onChange={handleInputChange}
         ></input>
       </div>
+      <br />
       <h3 className="text-center">Estado legal del proyecto</h3>
-      <div className="d-flex">
-        <span className="input-group-text">
+      <br />
+      <div className="d-flex container">
+        <span className="input-group-text offset-1 w-50">
           Posee el proyecto actualmente una patente?
         </span>
         <input
           type="checkbox"
-          className="custom-control-input w-15"
+          className="custom-control-input"
           id="customCheck1"
           name="patent"
           onChange={handleInputChange}
         ></input>
       </div>
-      <div className="d-flex ">
-        <span className="input-group-text">
+      <br />
+      <div className="d-flex container">
+        <span className="input-group-text offset-1 w-50">
           Estas seguro de compartir tu proyecto?
         </span>
         <input
           type="checkbox"
-          className="custom-control-input ml-10"
+          className="custom-control-input "
           id="customCheck1"
         ></input>
       </div>
-      <div class="custom-file d-flex">
-        <label class="custom-file-label" for="customFileLang">
+      <br />
+      <div className="custom-file d-flex container" type="file">
+        <label
+          className="custom-file-label input-group-text offset-1"
+          for="customFileLang"
+        >
           Archivos adjuntos al proyecto:
         </label>
         <input type="file" className="custom-file-input w-100"></input>
       </div>
-      <button>crear proyecto</button>
+      <br />
+      <div className="mx-auto">
+        <button className="btn btn-secondary">Crear proyecto</button>
+      </div>
     </div>
   );
 };
