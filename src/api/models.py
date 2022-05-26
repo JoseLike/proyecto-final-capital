@@ -12,7 +12,8 @@ class User(db.Model):
     last_name = db.Column(db.String(120))
     user_type = db.Column(db.Integer, db.ForeignKey('usertype.id'), nullable=False ) 
     is_company = db.Column(db.Boolean(), default=False) 
-    #IMAGEN DE USUARIO??
+    profile_picture = db.Column(db.String(120))
+    user_longevity = db.Column(db.DateTime()) #O "DATE" SOLO?? 
 
     
     def serialize(self):        
@@ -41,15 +42,13 @@ class Project(db.Model):
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
     deadline= db.Column(db.Integer, nullable=False)
     loans= db.Column(db.Integer, nullable=False)
-    #PLAN NEGOCIO TEXTO EXTENSO???
+    business_plan= db.Column(db.Text, nullable=False)
     patent= db.Column(db.Boolean(), nullable=False, default=False)
     terms= db.Column(db.Boolean(), nullable=False, default=False)
-    #DOCUMENTOS ADJUNTOS???
-    #IMAGEN DEL PROYECTO???
+    project_files= db.Column(db.String())
+    project_picture= db.Column(db.String())
     investment_capacity:(db.Integer)
     views= db.Column(db.Integer) 
-
-    #los espacios que falten por Jose
 
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
