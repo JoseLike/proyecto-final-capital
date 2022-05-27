@@ -1,7 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
-      current_user: [],
+      current_user: { user_type: 3 },
       logged: false,
       singleproject: [],
       user_projects: [],

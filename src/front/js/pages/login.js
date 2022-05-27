@@ -32,7 +32,7 @@ export const Login = () => {
       alert("Contraseña invalida");
     } else {
       actions.sendUserInfo(datos);
-      //navigate.push("/home") linkar a vista personal;
+      navigate.push("/personal");
     }
   };
 
