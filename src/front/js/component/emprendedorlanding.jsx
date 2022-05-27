@@ -39,12 +39,3 @@ export const EmprendedorLanding = (props) => {
     )
 
 };
-
-Projectcard.propTypes = {
-    category: PropTypes.string,
-    id: PropTypes.string,
-    name: PropTypes.string,
-    capital: PropTypes.number,
-    eta: PropTypes.string,
-    enlace: PropTypes.func
-};
