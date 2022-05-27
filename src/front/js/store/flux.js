@@ -3,6 +3,8 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       current_user: [],
       logged: false,
+      singleproject: [],
+      user_projects: [],
     },
     actions: {
       setLogged: () => {
@@ -34,6 +36,21 @@ const getState = ({ getStore, getActions, setStore }) => {
         } else {
           return alert("Falta informacion");
         }
+      },
+      getSingleProject: async (key) => {
+        const response = await fetch(
+          "https://3001-joselike-proyectofinalc-m77gee2opis.ws-eu46.gitpod.io/api/project/" +
+            key
+        );
+        const gettedproject = await response.json();
+        //setStore({ singleproject: gettedproject.result.properties });
+      },
+      getUserProjects: async () => {
+        const response = await fetch(
+          "https://3001-joselike-proyectofinalc-m77gee2opis.ws-eu46.gitpod.io/api/projects"
+        );
+        const gettedprojects = await response.json();
+        //setStore({ user_projects: gettedprojects.result.properties });
       },
     },
   };

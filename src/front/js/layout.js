@@ -4,6 +4,8 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./pages/home";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
+import { ProjectView } from "./pages/projectview";
+import { PersonalView } from "./pages/personalview";
 import injectContext from "./store/appContext";
 import { Footer } from "./component/footer";
 import { Sidebar } from "./component/Sidebar";
@@ -30,6 +32,18 @@ const Layout = () => {
           </Route>
           <Route exact path="/register">
             <Register />
+          </Route>
+          <Route exact path="/project/:theid">
+            <div className="d-flex">
+              <Sidebar />
+              <ProjectView />
+            </div>
+          </Route>
+          <Route exact path="/personal">
+            <div className="d-flex">
+              <Sidebar />
+              <PersonalView />
+            </div>
           </Route>
           <Route>
             <h1>Not found!</h1>
