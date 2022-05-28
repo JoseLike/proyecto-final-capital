@@ -17,9 +17,19 @@ class User(db.Model):
 
     
     def serialize(self):        
-        return {
+                return {
                 "id": self.id,
                 "email": self.email,
+                "is_premium":self.is_premium,
+                "country":self.country,
+                "name":self.name,
+                "last_name":self.last_name,
+                "user_type":self.user_type,
+                "inversor_type":self.inversor_type,
+                "acepted_conditions":self.acepted_conditions,
+                "is_company":self.is_company,
+                "profile_picture":self.profile_picture,
+                "user_longevity":self.user_longevity
             }
             
 class Usertype(db.Model):
