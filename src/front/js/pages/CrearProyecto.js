@@ -13,6 +13,7 @@ export const CrearProyecto = () => {
     patent: false,
     terms: false,
     investment_capacity: "",
+    deadline: "",
   });
 
   const sendNewProject = async () => {
@@ -88,6 +89,19 @@ export const CrearProyecto = () => {
           id="exampleFormControlSelect1"
           className="w-25"
           name="concept"
+          onChange={handleInputChange}
+        ></input>
+      </div>
+      <br />
+      <div className="d-flex container">
+        <span className="input-group-text offset-1 w-25">
+          Tiene fecha limite el proyecto??
+        </span>
+        <input
+          type="checkbox"
+          id="exampleFormControlSelect1"
+          className="w-25"
+          name="deadline"
           onChange={handleInputChange}
         ></input>
       </div>
@@ -195,7 +209,7 @@ export const CrearProyecto = () => {
         </span>
         <input
           type="checkbox"
-          className="custom-control-input "
+          className="custom-control-input"
           id="customCheck1"
         ></input>
       </div>
