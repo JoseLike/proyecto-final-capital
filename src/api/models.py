@@ -40,7 +40,7 @@ class Project(db.Model):
     raised_capital = db.Column(db.Integer)
     invested_capital = db.Column(db.Integer)
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
-    deadline= db.Column(db.Integer, nullable=False)
+    deadline= db.Column(db.Date)
     loans= db.Column(db.Integer, nullable=False)
     business_plan= db.Column(db.Text, nullable=False)
     patent= db.Column(db.Boolean(), nullable=False, default=False)
