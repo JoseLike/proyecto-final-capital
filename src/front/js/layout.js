@@ -6,6 +6,7 @@ import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 import { ProjectView } from "./pages/projectview";
 import { PersonalView } from "./pages/personalview";
+import { MyAccount } from "./pages/myaccount";
 import injectContext from "./store/appContext";
 import { Footer } from "./component/footer";
 import { Sidebar } from "./component/Sidebar";
@@ -43,6 +44,12 @@ const Layout = () => {
             <div className="d-flex">
               <Sidebar />
               <PersonalView />
+            </div>
+          </Route>
+          <Route exact path="/account">
+            <div className="d-flex">
+              <Sidebar />
+              <MyAccount />
             </div>
           </Route>
           <Route>

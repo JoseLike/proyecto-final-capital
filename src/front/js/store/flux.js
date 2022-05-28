@@ -1,10 +1,18 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
-      current_user: { user_type: 3 },
+      current_user: {
+        name: "aaa",
+        last_name: "asasdas",
+        email: "a@a.com",
+        country: "Venezuela",
+        user_type: 3,
+        is_premium: false,
+      },
       logged: false,
       singleproject: [],
       user_projects: [],
+      user_fav_projects: [],
     },
     actions: {
       setLogged: () => {

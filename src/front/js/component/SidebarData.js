@@ -5,7 +5,7 @@ export const SidebarData = [
     id: 1,
     title: "Mi Perfil",
     icon: <i className="fas fa-home-alt"></i>,
-    link: "/",
+    link: "/account",
     subtitle: [],
   },
   {
