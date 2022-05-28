@@ -60,14 +60,14 @@
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   z-index: 99;
 }
-.btn-flotante:hover {
+.btn-flotante-atras:hover {
   background-color: rgb(39, 170, 240); /* Color de fondo al pasar el cursor */
   color: white;
   box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
   transform: translateY(-7px);
 }
 @media only screen and (max-width: 600px) {
-  .btn-flotante {
+  .btn-flotante-atras {
     font-size: 14px;
     padding: 12px 20px;
     right: 20px;
