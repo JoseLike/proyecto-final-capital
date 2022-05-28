@@ -13,7 +13,7 @@ class User(db.Model):
     user_type = db.Column(db.Integer, db.ForeignKey('usertype.id'), nullable=False ) 
     is_company = db.Column(db.Boolean(), default=False) 
     profile_picture = db.Column(db.String(120))
-    user_longevity = db.Column(db.DateTime()) #O "DATE" SOLO?? 
+    user_longevity = db.Column(db.Date()) 
 
     
     def serialize(self):        
@@ -30,7 +30,7 @@ class Usertype(db.Model):
 class Favorites(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     project_id= db.Column(db.Integer, db.ForeignKey('project.id'))
-    #llave foranea de title, concept, user_id
+    #user_id
 
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
