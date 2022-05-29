@@ -71,26 +71,26 @@ export const MyAccount = () => {
             <div className="projectdata col-5 mx-auto">
               <div className="border rounded p-2 shadow p-3">
                 <div className="accountdata mt-3">
-                  <div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping">
+                  <div className="input-group flex-nowrap">
+                    <span className="input-group-text" id="addon-wrapping">
                       Nombre
                     </span>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       placeholder={store.current_user.name}
                       aria-label="Username"
                       aria-describedby="addon-wrapping"
                       onChange={handleInputChange}
                     />
                   </div>
-                  <div class="input-group flex-nowrap pt-1">
-                    <span class="input-group-text" id="addon-wrapping">
+                  <div className="input-group flex-nowrap pt-1">
+                    <span className="input-group-text" id="addon-wrapping">
                       Apellidos
                     </span>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       placeholder={store.current_user.last_name}
                       aria-label="Username"
                       aria-describedby="addon-wrapping"
@@ -98,26 +98,26 @@ export const MyAccount = () => {
                     />
                   </div>
 
-                  <div class="input-group flex-nowrap pt-1">
-                    <span class="input-group-text" id="addon-wrapping">
+                  <div className="input-group flex-nowrap pt-1">
+                    <span className="input-group-text" id="addon-wrapping">
                       Email
                     </span>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       placeholder={store.current_user.email}
                       aria-label="Username"
                       aria-describedby="addon-wrapping"
                       onChange={handleInputChange}
                     />
                   </div>
-                  <div class="input-group flex-nowrap pt-1">
-                    <span class="input-group-text" id="addon-wrapping">
+                  <div className="input-group flex-nowrap pt-1">
+                    <span className="input-group-text" id="addon-wrapping">
                       Pais/Region
                     </span>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       placeholder={store.current_user.country}
                       aria-label="Username"
                       aria-describedby="addon-wrapping"
