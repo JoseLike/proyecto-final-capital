@@ -1,12 +1,17 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-
 import { Home } from "./pages/home";
+import { Login } from "./pages/login";
+import { Register } from "./pages/register";
+import { ProjectView } from "./pages/projectview";
+import { PersonalView } from "./pages/personalview";
+import { MyAccount } from "./pages/myaccount";
 import injectContext from "./store/appContext";
-
-import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Sidebar } from "./component/Sidebar";
+import Prueba1 from "./pages/prueba1";
+import Prueba2 from "./pages/prueba2";
 
 //create your first component
 const Layout = () => {
@@ -15,22 +20,45 @@ const Layout = () => {
   const basename = process.env.BASENAME || "";
 
   return (
-    <div>
-      <BrowserRouter basename={basename}>
-        <ScrollToTop>
-          <Navbar />
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route>
-              <h1>Not found!</h1>
-            </Route>
-          </Switch>
-          <Footer />
-        </ScrollToTop>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter basename={basename}>
+      <ScrollToTop>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/login" className="d-flex">
+            <div className="d-flex">
+              <Login />
+            </div>
+          </Route>
+          <Route exact path="/register">
+            <Register />
+          </Route>
+          <Route exact path="/project/:theid">
+            <div className="d-flex">
+              <Sidebar />
+              <ProjectView />
+            </div>
+          </Route>
+          <Route exact path="/personal">
+            <div className="d-flex">
+              <Sidebar />
+              <PersonalView />
+            </div>
+          </Route>
+          <Route exact path="/account">
+            <div className="d-flex">
+              <Sidebar />
+              <MyAccount />
+            </div>
+          </Route>
+          <Route>
+            <h1>Not found!</h1>
+          </Route>
+        </Switch>
+        <Footer />
+      </ScrollToTop>
+    </BrowserRouter>
   );
 };
 

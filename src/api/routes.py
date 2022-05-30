@@ -6,6 +6,8 @@ from api.models import db, User
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
 
+
+
 api = Blueprint('api', __name__)
 
 
@@ -42,6 +44,7 @@ def login_user():
             #access_token = create_access_token(identity=user.id)
             return jsonify({"logged":True, "user":user.serialize()}), 200
         else:
+
             return jsonify({"logged":False, "msg":"user not found"}), 404
 
 
@@ -68,4 +71,7 @@ def create_project():
         return jsonify({"created":True, "project":new_project.serialize()}), 200
     else:
         return jsonify({"created":False, "msg":"Lack of Info"}), 400
+
+=======
+            return jsonify({"logged":False, "msg":"user not found"}), 404
 

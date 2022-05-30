@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 
+
 db = SQLAlchemy()
 
 class User(db.Model):
@@ -14,6 +15,8 @@ class User(db.Model):
     is_company = db.Column(db.Boolean(), default=False) 
     profile_picture = db.Column(db.String(120))
     user_longevity = db.Column(db.Date()) 
+    inversor_type = db.Column(db.String(120), default=None) 
+    acepted_conditions = db.Column(db.Boolean(),nullable=False, default=False)
 
     
     def serialize(self):        
@@ -30,6 +33,7 @@ class User(db.Model):
                 "is_company":self.is_company,
                 "profile_picture":self.profile_picture,
                 "user_longevity":self.user_longevity
+
             }
             
 class Usertype(db.Model):
