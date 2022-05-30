@@ -12,11 +12,15 @@ class User(db.Model):
     name = db.Column(db.String(120), nullable=False)
     last_name = db.Column(db.String(120))
     user_type = db.Column(db.Integer, db.ForeignKey('usertype.id'), nullable=False ) 
+    is_company = db.Column(db.Boolean(), default=False) 
+    profile_picture = db.Column(db.String(120))
+    user_longevity = db.Column(db.Date()) 
     inversor_type = db.Column(db.String(120), default=None) 
     acepted_conditions = db.Column(db.Boolean(),nullable=False, default=False)
+
     
     def serialize(self):        
-        return {
+                return {
                 "id": self.id,
                 "email": self.email,
                 "is_premium":self.is_premium,
@@ -25,13 +29,22 @@ class User(db.Model):
                 "last_name":self.last_name,
                 "user_type":self.user_type,
                 "inversor_type":self.inversor_type,
-                "acepted_conditions":self.acepted_conditions
+                "acepted_conditions":self.acepted_conditions,
+                "is_company":self.is_company,
+                "profile_picture":self.profile_picture,
+                "user_longevity":self.user_longevity
+
             }
             
 class Usertype(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
     user_id = db.relationship('User', backref='usertype')
+
+class Favorites(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    project_id= db.Column(db.Integer, db.ForeignKey('project.id'))
+    #user_id
 
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -41,7 +54,15 @@ class Project(db.Model):
     raised_capital = db.Column(db.Integer)
     invested_capital = db.Column(db.Integer)
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
-    #los espacios que falten por Jose
+    deadline= db.Column(db.Date)
+    loans= db.Column(db.Integer, nullable=False)
+    business_plan= db.Column(db.Text, nullable=False)
+    patent= db.Column(db.Boolean(), nullable=False, default=False)
+    terms= db.Column(db.Boolean(), nullable=False, default=False)
+    project_files= db.Column(db.String())
+    project_picture= db.Column(db.String())
+    investment_capacity:(db.Integer)
+    views= db.Column(db.Integer) 
 
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
