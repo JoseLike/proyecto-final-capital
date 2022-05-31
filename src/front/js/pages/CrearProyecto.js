@@ -110,7 +110,6 @@ export const CrearProyecto = () => {
           id="exampleFormControlSelect1"
           className="w-25"
           name="deadline"
-          onChange={handleInputChange}
         ></input>
       </div>
       <br />

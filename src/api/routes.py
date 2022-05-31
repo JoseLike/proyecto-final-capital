@@ -66,8 +66,7 @@ def create_project():
     body_investment_capacity=request.json.get("investment_capacity")
     print(request.json)
     if body_title and body_concept and body_desired_capital and body_invested_capital and body_category and body_loans and body_business_plan and body_investment_capacity:
-        new_project = Project(title = body_title, concept = body_concept, desired_capital = body_desired_capital, invested_capital = body_invested_capital, category_id = body_category, deadline = body_deadline, loans = body_loans, business_plan = body_business_plan, patent = body_patent, terms = body_terms, project_files= body_project_files, project_picture = body_project_picture, investment_capacity = body_investment_capacity)
-        print(new_project.serialize())
+        new_project = Project(title = body_title, concept = body_concept, desired_capital = body_desired_capital, invested_capital = body_invested_capital, category_id = body_category, loans = body_loans, business_plan = body_business_plan, patent = body_patent, terms = body_terms, project_files= body_project_files, project_picture = body_project_picture, investment_capacity = body_investment_capacity)
         db.session.add(new_project)
         db.session.commit()
         return jsonify({"created":True, "project":new_project.serialize()}), 200
