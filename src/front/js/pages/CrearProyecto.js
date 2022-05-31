@@ -5,15 +5,15 @@ export const CrearProyecto = () => {
   const [info, setInfo] = useState({
     title: "",
     concept: "",
-    desired_capital: "",
-    invested_capital: "",
-    category: "",
-    loans: "",
+    desired_capital: 0,
+    invested_capital: 0,
+    category: 0,
+    loans: 0,
     business_plan: "",
     patent: false,
     terms: false,
     investment_capacity: "",
-    deadline: "",
+    deadline: null,
   });
 
   const sendNewProject = async () => {
@@ -24,15 +24,23 @@ export const CrearProyecto = () => {
       info.invested_capital,
       info.category,
       info.loans,
+      info.deadline,
       info.business_plan,
       info.investment_capacity !=
         "") /* CORROBORAR QUE SE PUEDE HACER LA COMPROBACION ASI Y SABER COMO SE HACE EN LOS CHECKBOX */
     ) {
-      const response = await fetch("", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(datos),
-      });
+      parseInt(info.desired_capital);
+      parseInt(info.invested_capital);
+      parseInt(info.category);
+      parseInt(info.loans);
+      const response = await fetch(
+        "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu46.gitpod.io/api/crear-proyecto",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(info),
+        }
+      );
       const data = await response.json();
       console.log(data);
     } else {
@@ -77,8 +85,8 @@ export const CrearProyecto = () => {
           onChange={handleInputChange}
         >
           {/* AQUI TENDRIA QUE HABER UN MAP, DE "CATEGORIAS" */}
-          <option>1</option>
-          <option>2</option>
+          <option value={1}>1</option>
+          <option value={2}>2</option>
         </select>
       </div>
       <br />
@@ -113,14 +121,15 @@ export const CrearProyecto = () => {
           id="exampleFormControlSelect1"
           className="w-25"
           name="desired_capital"
+          type="number"
           onChange={handleInputChange}
         ></input>
       </div>
       <br />
-      <div class="custom-file d-flex container">
+      <div className="custom-file d-flex container">
         <label
           className="input-group-text custom-file-label offset-1 w-25"
-          for="customFileLang"
+          htmlFor="customFileLang"
         >
           Imagen del proyecto:
         </label>
@@ -159,6 +168,7 @@ export const CrearProyecto = () => {
           className="form-control w-25"
           id="exampleFormControlSelect1"
           name="loans"
+          type="number"
           onChange={handleInputChange}
         ></input>
       </div>
@@ -171,6 +181,7 @@ export const CrearProyecto = () => {
           placeholder="Importe"
           className="w-25"
           name="invested_capital"
+          type="number"
           onChange={handleInputChange}
         ></input>
       </div>
@@ -199,7 +210,8 @@ export const CrearProyecto = () => {
           className="custom-control-input"
           id="customCheck1"
           name="patent"
-          onChange={handleInputChange}
+          checked={info.patent}
+          onChange={(e) => setInfo({ ...info, patent: e.target.checked })}
         ></input>
       </div>
       <br />
@@ -211,13 +223,15 @@ export const CrearProyecto = () => {
           type="checkbox"
           className="custom-control-input"
           id="customCheck1"
+          checked={info.terms}
+          onChange={(e) => setInfo({ ...info, terms: e.target.checked })}
         ></input>
       </div>
       <br />
       <div className="custom-file d-flex container" type="file">
         <label
           className="custom-file-label input-group-text offset-1"
-          for="customFileLang"
+          htmlFor="customFileLang"
         >
           Archivos adjuntos al proyecto:
         </label>
@@ -225,7 +239,14 @@ export const CrearProyecto = () => {
       </div>
       <br />
       <div className="d-flex mx-auto align-item-center">
-        <button className="btn btn-secondary">Crear proyecto</button>
+        <button
+          className="btn btn-secondary"
+          onClick={() => {
+            sendNewProject();
+          }}
+        >
+          Crear proyecto
+        </button>
       </div>
     </div>
   );
