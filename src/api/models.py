@@ -49,12 +49,14 @@ class Favorites(db.Model):
 
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    user = db.relationship("User")
     title = db.Column(db.String(80), nullable=False)
     concept = db.Column(db.String(120), nullable=False) 
     desired_capital = db.Column(db.Integer, nullable=False)
     raised_capital = db.Column(db.Integer)
     invested_capital = db.Column(db.Integer)
-    category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=True)
+    category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
     category = db.relationship("Category")
     deadline= db.Column(db.Date)
     loans= db.Column(db.Integer, nullable=False)

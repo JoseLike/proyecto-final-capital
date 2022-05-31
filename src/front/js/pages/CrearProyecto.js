@@ -134,7 +134,7 @@ export const CrearProyecto = () => {
         </label>
         <input
           type="file"
-          className="custom-file-input w-100"
+          className="custom-file-input w-25"
           name="project_img"
           onChange={handleInputChange}
         ></input>
@@ -185,23 +185,23 @@ export const CrearProyecto = () => {
         ></input>
       </div>
       <br />
-      <div className="justify-content-center container">
-        <span className="input-group-text offset-1 w-50">
+      <div className=" container d-flex">
+        <span className="input-group-text offset-1 w-25">
           {/* CENTRAR Y RECORTAR ESTA LINEA */}
           Cuentanos tu plan de negocio para el proyecto
         </span>
-        <input
+        <textarea
           placeholder="Texto extenso"
-          className="offset-1 w-50 h-75 d-inline-block"
+          className=" w-100 d-inline-block"
           name="business_plan"
           onChange={handleInputChange}
-        ></input>
+        ></textarea>
       </div>
       <br />
       <h3 className="text-center">Estado legal del proyecto</h3>
       <br />
       <div className="d-flex container">
-        <span className="input-group-text offset-1 w-50">
+        <span className="input-group-text offset-1 w-25">
           Posee el proyecto actualmente una patente?
         </span>
         <input
@@ -215,7 +215,7 @@ export const CrearProyecto = () => {
       </div>
       <br />
       <div className="d-flex container">
-        <span className="input-group-text offset-1 w-50">
+        <span className="input-group-text offset-1 w-25">
           Estas seguro de compartir tu proyecto?
         </span>
         <input
@@ -229,15 +229,15 @@ export const CrearProyecto = () => {
       <br />
       <div className="custom-file d-flex container" type="file">
         <label
-          className="custom-file-label input-group-text offset-1"
+          className="custom-file-label input-group-text  w-25 offset-1"
           htmlFor="customFileLang"
         >
           Archivos adjuntos al proyecto:
         </label>
-        <input type="file" className="custom-file-input w-100"></input>
+        <input type="file" className="custom-file-input w-25"></input>
       </div>
       <br />
-      <div className="d-flex mx-auto align-item-center">
+      <div className="d-flex justify-content-center">
         <button
           className="btn btn-secondary"
           onClick={() => {
