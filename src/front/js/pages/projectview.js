@@ -11,6 +11,9 @@ export const ProjectView = () => {
   //useEffect(() => {
   //actions.getSingleProject(theid);
   //}, []);
+  //useEffect(() => {
+  //actions.getProjectUserData(theid);
+  //}, []);
 
   return (
     <>
@@ -21,24 +24,19 @@ export const ProjectView = () => {
         <div className="topdata row ">
           <div className="projectdata col-5 mx-auto">
             <div className="projectname border rounded mb-3 shadow text-center">
-              <h1>Nombre del proyecto</h1>
+              <h1>{store.singleproject[0].title}</h1>
             </div>
             <div className="border rounded p-2 shadow p-3">
               <div className="projectdescripttion ">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo inventore veritatis et quasi architecto beatae
-                vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-                voluptas sit aspernatur aut odit aut fugit, sed quia
-                consequuntur
+                {store.singleproject[0].concept}
               </div>
               <div className="projectETA d-flex mt-3">
-                <div className="text me-4">Fecha limite:</div>
-                <div className="text">20/11/2022</div>
+                <div className="text me-4">Fecha limite: </div>
+                <div className="text">{store.singleproject[0].deadline}</div>
               </div>
               <div className="projectcategory d-flex">
                 <div className="text me-4">Categoria:</div>
-                <div className="text">SALUD</div>
+                <div className="text">{store.singleproject[0].category_id}</div>
               </div>
             </div>
           </div>
@@ -53,21 +51,17 @@ export const ProjectView = () => {
         <div className="projectcapital row ">
           <div className="col-10 border rounded shadow p-3 mx-auto d-flex">
             <div className="col-3">Capital Requerido</div>
-            <div className="col-3">20.000€</div>
+            <div className="col-3">
+              {store.singleproject[0].desired_capital}
+            </div>
             <div className="col-3">Capital Obtenido</div>
-            <div className="col-3">5000€</div>
+            <div className="col-3">{store.singleproject[0].raised_capital}</div>
           </div>
         </div>
         <div className="businessplan row mt-4 ">
           <div className="col-10 border rounded shadow p- mx-auto">
             <h1>Plan de Negocio</h1>
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum."
+            {store.singleproject[0].business_plan}
           </div>
         </div>
         <div className="row  attachedocuments mt-4">

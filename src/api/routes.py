@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
-from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
+#from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
 
 
 
@@ -48,8 +48,8 @@ def login_user():
             return jsonify({"logged":False, "msg":"user not found"}), 404
 
 
-@app.route("/crear_proyecto", methods=["POST"])
-@jwt_required()
+@api.route("/crear_proyecto", methods=["POST"])
+#@jwt_required()
 def create_project():
     body_title=request.json.get("title")
     body_concept=request.json.get("concept")
@@ -72,6 +72,23 @@ def create_project():
     else:
         return jsonify({"created":False, "msg":"Lack of Info"}), 400
 
-=======
-            return jsonify({"logged":False, "msg":"user not found"}), 404
 
+@api.route('/edituser/<int:user_id>', methods=["PUT"])
+def edit_user(user_id):
+    body_email = request.json.get("email")
+    body_name = request.json.get("name")
+    body_last_name = request.json.get("last_name")
+    user = User.query.get(user_id)
+    if user:
+        user.email = body_email
+        user.name = body_name
+        user.last_name = body_last_name
+        db.session.commit()
+        return jsonify({"modified":True, "user":user.serialize()}), 200
+    else:
+        return jsonify({"modified":False, "msg":"Lack of Info"}), 400
+
+@api.route('/projectuserid/<int:user_id>', methods=["GET"])
+def get_project_user(user_id):
+    user = User.query.get(user_id)
+    return jsonify({"response":user.serialize()}),200

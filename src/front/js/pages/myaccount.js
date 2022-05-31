@@ -11,10 +11,9 @@ export const MyAccount = () => {
   //}, []);
 
   const [changedata, setChangedata] = useState({
-    name: "",
-    last_name: "",
-    email: "",
-    country: "",
+    name: store.current_user[0].name,
+    last_name: store.current_user[0].last_name,
+    email: store.current_user[0].email,
     password: "",
   });
 
@@ -32,11 +31,12 @@ export const MyAccount = () => {
 
   const changeUserInfo = async () => {
     verify_email();
-    if (changedata.email != null && changedata.password.trim() != "") {
+    if (changedata.email != null) {
       const response = await fetch(
-        "https://3001-joselike-proyectofinalc-m77gee2opis.ws-eu46.gitpod.io/api/changedata",
+        "https://3001-joselike-proyectofinalc-m77gee2opis.ws-eu46.gitpod.io/api/edituser/" +
+          store.current_user[0].id,
         {
-          method: "POST",
+          method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(changedata),
         }
@@ -78,8 +78,9 @@ export const MyAccount = () => {
                     <input
                       type="text"
                       className="form-control"
-                      placeholder={store.current_user.name}
-                      aria-label="Username"
+                      placeholder={store.current_user[0].last_name}
+                      name="name"
+                      aria-label="name"
                       aria-describedby="addon-wrapping"
                       onChange={handleInputChange}
                     />
@@ -91,8 +92,9 @@ export const MyAccount = () => {
                     <input
                       type="text"
                       className="form-control"
-                      placeholder={store.current_user.last_name}
-                      aria-label="Username"
+                      placeholder={store.current_user[0].last_name}
+                      name="last_name"
+                      aria-label="last_name"
                       aria-describedby="addon-wrapping"
                       onChange={handleInputChange}
                     />
@@ -105,8 +107,9 @@ export const MyAccount = () => {
                     <input
                       type="text"
                       className="form-control"
-                      placeholder={store.current_user.email}
-                      aria-label="Username"
+                      placeholder={store.current_user[0].email}
+                      aria-label="email"
+                      name="email"
                       aria-describedby="addon-wrapping"
                       onChange={handleInputChange}
                     />
@@ -118,7 +121,7 @@ export const MyAccount = () => {
                     <input
                       type="text"
                       className="form-control"
-                      placeholder={store.current_user.country}
+                      placeholder={store.current_user[0].country}
                       aria-label="Username"
                       aria-describedby="addon-wrapping"
                       disabled

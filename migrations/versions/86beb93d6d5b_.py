@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: ae4cb07d5f9d
+Revision ID: 86beb93d6d5b
 Revises: 
-Create Date: 2022-05-28 08:25:23.895529
+Create Date: 2022-05-31 17:28:16.010050
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'ae4cb07d5f9d'
+revision = '86beb93d6d5b'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -36,7 +36,7 @@ def upgrade():
     sa.Column('raised_capital', sa.Integer(), nullable=True),
     sa.Column('invested_capital', sa.Integer(), nullable=True),
     sa.Column('category_id', sa.Integer(), nullable=False),
-    sa.Column('deadline', sa.Integer(), nullable=False),
+    sa.Column('deadline', sa.Date(), nullable=True),
     sa.Column('loans', sa.Integer(), nullable=False),
     sa.Column('business_plan', sa.Text(), nullable=False),
     sa.Column('patent', sa.Boolean(), nullable=False),
@@ -58,7 +58,9 @@ def upgrade():
     sa.Column('user_type', sa.Integer(), nullable=False),
     sa.Column('is_company', sa.Boolean(), nullable=True),
     sa.Column('profile_picture', sa.String(length=120), nullable=True),
-    sa.Column('user_longevity', sa.DateTime(), nullable=True),
+    sa.Column('user_longevity', sa.Date(), nullable=True),
+    sa.Column('inversor_type', sa.String(length=120), nullable=True),
+    sa.Column('acepted_conditions', sa.Boolean(), nullable=False),
     sa.ForeignKeyConstraint(['user_type'], ['usertype.id'], ),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')

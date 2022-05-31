@@ -10,9 +10,6 @@ import { MyAccount } from "./pages/myaccount";
 import injectContext from "./store/appContext";
 import { Footer } from "./component/footer";
 import { Sidebar } from "./component/Sidebar";
-import Prueba1 from "./pages/prueba1";
-import Prueba2 from "./pages/prueba2";
-
 //create your first component
 const Layout = () => {
   //the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -48,7 +45,6 @@ const Layout = () => {
           </Route>
           <Route exact path="/account">
             <div className="d-flex">
-              <Sidebar />
               <MyAccount />
             </div>
           </Route>
