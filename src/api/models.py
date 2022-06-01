@@ -49,7 +49,7 @@ class Favorites(db.Model):
 
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=True)
     user = db.relationship("User")
     title = db.Column(db.String(80), nullable=False)
     concept = db.Column(db.String(120), nullable=False) 
@@ -91,4 +91,10 @@ class Project(db.Model):
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
+    
+    def serialize(self):
+        return{
+        "id": self.id,
+        "name": self.name
+        }
 

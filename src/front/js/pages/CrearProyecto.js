@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/home.css";
 
 export const CrearProyecto = () => {
@@ -15,6 +15,8 @@ export const CrearProyecto = () => {
     investment_capacity: "",
     deadline: null,
   });
+
+  const [cate, setCate] = useState([]);
 
   const sendNewProject = async () => {
     if (
@@ -46,6 +48,18 @@ export const CrearProyecto = () => {
     } else {
       return alert("Falta informacion de tu proyecto");
     }
+  };
+  useEffect(() => {
+    getCategory();
+  }, []);
+
+  const getCategory = async () => {
+    const response = await fetch(
+      "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu46.gitpod.io/api/category/"
+    );
+    const data = await response.json();
+    console.log(data.cate);
+    setCate(data.cate);
   };
 
   const handleInputChange = (e) => {
@@ -85,8 +99,13 @@ export const CrearProyecto = () => {
           onChange={handleInputChange}
         >
           {/* AQUI TENDRIA QUE HABER UN MAP, DE "CATEGORIAS" */}
-          <option value={1}>1</option>
-          <option value={2}>2</option>
+          {cate.map((category) => {
+            return (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            );
+          })}
         </select>
       </div>
       <br />
