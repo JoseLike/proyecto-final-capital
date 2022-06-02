@@ -40,6 +40,14 @@ export const MyAccount = () => {
     }
   };
 
+  const sendPassChanges = async () => {
+    if (verify_password(changedata.password) != true) {
+      alert("La contraseña no es valida");
+    } else {
+      actions.changeUserPassword(changedata);
+    }
+  };
+
   const handleInputChange = (event) => {
     setChangedata({
       ...changedata,
@@ -145,7 +153,11 @@ export const MyAccount = () => {
             </div>
           </div>
           <div className="changepassword mt-5 d-flex ">
-            <button type="button" className="btn btn-secondary col-2  m-3">
+            <button
+              type="button"
+              className="btn btn-secondary col-2  m-3"
+              onClick={sendPassChanges}
+            >
               Cambiar Contraseña
             </button>
             <div className="input-group col mt-2">

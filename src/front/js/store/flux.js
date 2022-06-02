@@ -143,6 +143,23 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({ current_user: data.user });
         }
       },
+      changeUserPassword: async (changedata) => {
+        let store = getStore();
+        const response = await fetch(
+          "https://3001-joselike-proyectofinalc-gdcp2wpj598.ws-eu46.gitpod.io/api/editpassword/" +
+            store.current_user.id,
+          {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(changedata),
+          }
+        );
+        const data = await response.json();
+        console.log(data);
+        if (data.modified == true) {
+          setStore({ current_user: data.user });
+        }
+      },
     },
   };
 };

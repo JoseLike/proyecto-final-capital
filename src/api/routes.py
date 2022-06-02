@@ -88,6 +88,17 @@ def edit_user(user_id):
     else:
         return jsonify({"modified":False, "msg":"Lack of Info"}), 400
 
+@api.route('/editpassword/<int:user_id>', methods=["PUT"])
+def edit_pass_user(user_id):
+    body_pass = request.json.get("password")
+    user = User.query.get(user_id)
+    if user:
+        user.password = body_password
+        db.session.commit()
+        return jsonify({"modified":True, "user":user.serialize()}), 200
+    else:
+        return jsonify({"modified":False, "msg":"Lack of Info"}), 400
+
 @api.route('/projectuserid/<int:user_id>', methods=["GET"])
 def get_project_user(user_id):
     user = User.query.get(user_id)
