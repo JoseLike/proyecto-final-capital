@@ -8,7 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           last_name: "asasdas",
           email: "a@a.com",
           country: "Venezuela",
-          user_type: 2,
+          user_type: 3,
           is_premium: false,
         },
       ],

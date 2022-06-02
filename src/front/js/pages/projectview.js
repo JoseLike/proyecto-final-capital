@@ -17,7 +17,7 @@ export const ProjectView = () => {
 
   return (
     <>
-      <Link to="./">
+      <Link to="/personal">
         <i className="fa-solid fa-arrow-left arrow-left-reg1 icono-back col-1 ms-4 fixed"></i>
       </Link>
       <div className="container mt-5  rounded shadow p-3">
@@ -87,9 +87,11 @@ export const ProjectView = () => {
             </ul>
           </div>
         </div>
-        <a href="#" className="btn-flotante">
-          Invertir
-        </a>
+        <Link to="/inversorpay">
+          <a href="#" className="btn-flotante">
+            Invertir
+          </a>
+        </Link>
       </div>
     </>
   );

@@ -7,6 +7,7 @@ import { Register } from "./pages/register";
 import { ProjectView } from "./pages/projectview";
 import { PersonalView } from "./pages/personalview";
 import { MyAccount } from "./pages/myaccount";
+import { InversorPay } from "/workspace/proyecto-final-capital/src/front/js/pages/inversorpay.js";
 import injectContext from "./store/appContext";
 import { Footer } from "./component/footer";
 import { Sidebar } from "./component/Sidebar";
@@ -47,6 +48,9 @@ const Layout = () => {
             <div className="d-flex">
               <MyAccount />
             </div>
+          </Route>
+          <Route exact path="/inversorpay">
+            <InversorPay />
           </Route>
           <Route>
             <h1>Not found!</h1>
