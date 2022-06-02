@@ -11,6 +11,7 @@ import { InversorPay } from "/workspace/proyecto-final-capital/src/front/js/page
 import injectContext from "./store/appContext";
 import { Footer } from "./component/footer";
 import { Sidebar } from "./component/Sidebar";
+import { StadisticsView } from "/workspace/proyecto-final-capital/src/front/js/pages/stadistics.js";
 //create your first component
 const Layout = () => {
   //the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -51,6 +52,9 @@ const Layout = () => {
           </Route>
           <Route exact path="/inversorpay">
             <InversorPay />
+          </Route>
+          <Route exact path="/stadistics">
+            <StadisticsView />
           </Route>
           <Route>
             <h1>Not found!</h1>
