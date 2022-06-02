@@ -11,9 +11,9 @@ export const MyAccount = () => {
   //}, []);
 
   const [changedata, setChangedata] = useState({
-    name: store.current_user[0].name,
-    last_name: store.current_user[0].last_name,
-    email: store.current_user[0].email,
+    name: store.current_user.name,
+    last_name: store.current_user.last_name,
+    email: store.current_user.email,
     password: "",
   });
 
@@ -25,24 +25,16 @@ export const MyAccount = () => {
 
   const verify_password = (password) => {
     let exregex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-
     return exregex.test(password) ? true : false;
   };
 
-  const changeUserInfo = async () => {
-    verify_email();
+  const sendChangeRequest = async () => {
     if (changedata.email != null) {
-      const response = await fetch(
-        "https://3001-joselike-proyectofinalc-m77gee2opis.ws-eu46.gitpod.io/api/edituser/" +
-          store.current_user[0].id,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(changedata),
-        }
-      );
-      const data = await response.json();
-      console.log(data);
+      if (verify_email(changedata.email) != true) {
+        alert("El formato del email no es valido");
+      } else {
+        actions.changeUserInfo(changedata);
+      }
     } else {
       return alert("Falta informacion");
     }
@@ -78,7 +70,7 @@ export const MyAccount = () => {
                     <input
                       type="text"
                       className="form-control"
-                      placeholder={store.current_user[0].last_name}
+                      placeholder={store.current_user.last_name}
                       name="name"
                       aria-label="name"
                       aria-describedby="addon-wrapping"
@@ -92,7 +84,7 @@ export const MyAccount = () => {
                     <input
                       type="text"
                       className="form-control"
-                      placeholder={store.current_user[0].last_name}
+                      placeholder={store.current_user.last_name}
                       name="last_name"
                       aria-label="last_name"
                       aria-describedby="addon-wrapping"
@@ -107,7 +99,7 @@ export const MyAccount = () => {
                     <input
                       type="text"
                       className="form-control"
-                      placeholder={store.current_user[0].email}
+                      placeholder={store.current_user.email}
                       aria-label="email"
                       name="email"
                       aria-describedby="addon-wrapping"
@@ -121,7 +113,7 @@ export const MyAccount = () => {
                     <input
                       type="text"
                       className="form-control"
-                      placeholder={store.current_user[0].country}
+                      placeholder={store.current_user.country}
                       aria-label="Username"
                       aria-describedby="addon-wrapping"
                       disabled
@@ -131,7 +123,7 @@ export const MyAccount = () => {
                     <button
                       type="button"
                       className="btn btn-warning btt-sendchanges"
-                      onClick={changeUserInfo}
+                      onClick={sendChangeRequest}
                     >
                       Guardar Cambios
                     </button>
