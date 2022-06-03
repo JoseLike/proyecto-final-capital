@@ -54,6 +54,10 @@ class Project(db.Model):
 
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=False)
-    category = db.relationship('Project', backref='category')
-
+    name = db.Column(db.String(120), nullable=False)
+    
+    def serialize(self):
+        return{
+        "id": self.id,
+        "name": self.name
+        }
