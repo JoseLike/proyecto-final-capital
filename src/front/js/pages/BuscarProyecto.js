@@ -82,14 +82,25 @@ export const BuscarProyecto = () => {
       <br />
 
       <div className="bg-secondary container">
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+        <div className="card projectcard" onClick={props.enlace}>
+          <img
+            className="card-img-top"
+            src="https://t2.ea.ltmcdn.com/es/posts/8/2/2/tipos_de_pinguinos_21228_600_square.jpg"
+            alt="Card image cap"
+          />
+          <div className="card-body">
+            <h5 className="card-title text-center">
+              Nombre Proyecto{props.name}
+            </h5>
+            <p className="card-text text-start">Fecha limite {props.eta}</p>
+            <p className="card-text text-start">
+              Capital Requerido: {props.capital}
+            </p>
+          </div>
+          <div className="card-footer">
+            <small className="text-muted">Fecha limite {props.category}</small>
+          </div>
+        </div>
       </div>
     </div>
   );
