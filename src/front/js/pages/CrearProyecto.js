@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/home.css";
+
 export const CrearProyecto = () => {
   const [info, setInfo] = useState({
     title: "",
@@ -8,10 +9,6 @@ export const CrearProyecto = () => {
     invested_capital: 0,
     category: 0,
     loans: 0,
-    desired_capital: "",
-    invested_capital: "",
-    category: "",
-    loans: "",
     business_plan: "",
     patent: false,
     terms: false,
@@ -20,9 +17,6 @@ export const CrearProyecto = () => {
   });
 
   const [cate, setCate] = useState([]);
-
-  });
-
 
   const sendNewProject = async () => {
     if (
@@ -49,12 +43,6 @@ export const CrearProyecto = () => {
           body: JSON.stringify(info),
         }
       );
-
-      const response = await fetch("", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(datos),
-      });
       const data = await response.json();
       console.log(data);
     } else {
@@ -118,8 +106,6 @@ export const CrearProyecto = () => {
               </option>
             );
           })}
-          <option>1</option>
-          <option>2</option>
         </select>
       </div>
       <br />
@@ -162,18 +148,12 @@ export const CrearProyecto = () => {
         <label
           className="input-group-text custom-file-label offset-1 w-25"
           htmlFor="customFileLang"
-
-      <div class="custom-file d-flex container">
-        <label
-          className="input-group-text custom-file-label offset-1 w-25"
-          for="customFileLang"
         >
           Imagen del proyecto:
         </label>
         <input
           type="file"
           className="custom-file-input w-25"
-          className="custom-file-input w-100"
           name="project_img"
           onChange={handleInputChange}
         ></input>
@@ -235,24 +215,12 @@ export const CrearProyecto = () => {
           name="business_plan"
           onChange={handleInputChange}
         ></textarea>
-      <div className="justify-content-center container">
-        <span className="input-group-text offset-1 w-50">
-          {/* CENTRAR Y RECORTAR ESTA LINEA */}
-          Cuentanos tu plan de negocio para el proyecto
-        </span>
-        <input
-          placeholder="Texto extenso"
-          className="offset-1 w-50 h-75 d-inline-block"
-          name="business_plan"
-          onChange={handleInputChange}
-        ></input>
       </div>
       <br />
       <h3 className="text-center">Estado legal del proyecto</h3>
       <br />
       <div className="d-flex container">
         <span className="input-group-text offset-1 w-25">
-        <span className="input-group-text offset-1 w-50">
           Posee el proyecto actualmente una patente?
         </span>
         <input
@@ -262,13 +230,11 @@ export const CrearProyecto = () => {
           name="patent"
           checked={info.patent}
           onChange={(e) => setInfo({ ...info, patent: e.target.checked })}
-          onChange={handleInputChange}
         ></input>
       </div>
       <br />
       <div className="d-flex container">
         <span className="input-group-text offset-1 w-25">
-        <span className="input-group-text offset-1 w-50">
           Estas seguro de compartir tu proyecto?
         </span>
         <input
@@ -277,8 +243,6 @@ export const CrearProyecto = () => {
           id="customCheck1"
           checked={info.terms}
           onChange={(e) => setInfo({ ...info, terms: e.target.checked })}
-          className="custom-control-input "
-          id="customCheck1"
         ></input>
       </div>
       <br />
@@ -301,16 +265,6 @@ export const CrearProyecto = () => {
         >
           Crear proyecto
         </button>
-          className="custom-file-label input-group-text offset-1"
-          for="customFileLang"
-        >
-          Archivos adjuntos al proyecto:
-        </label>
-        <input type="file" className="custom-file-input w-100"></input>
-      </div>
-      <br />
-      <div className="d-flex mx-auto align-item-center">
-        <button className="btn btn-secondary">Crear proyecto</button>
       </div>
     </div>
   );
