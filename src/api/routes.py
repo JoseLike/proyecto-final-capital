@@ -74,8 +74,17 @@ def create_project():
         return jsonify({"created":False, "msg":"Lack of Info"}), 400
 
 
+
 @api.route("/category", methods=["GET"])
 def get_all_category():
     cate = Category.query.all()
     cate_serialize = list(map(lambda x: x.serialize(), cate))
     return jsonify({"cate": cate_serialize}), 200
+
+
+@api.route("/bucar-proyecto", methods=["GET"])
+def get_all_projects():
+    projects = Projects.query.all()
+    projects_serialize = list(map(lambda x: x.serialize(), projects))
+    return jsonify({"projects": projects_serialize}), 200
+

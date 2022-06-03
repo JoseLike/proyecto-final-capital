@@ -14,6 +14,9 @@ import Prueba1 from "./pages/prueba1";
 import Prueba2 from "./pages/prueba2";
 import { CrearProyecto } from "/workspace/proyecto-final-capital/src/front/js/pages/CrearProyecto.js";
 
+import { BuscarProyecto } from "./pages/BuscarProyecto";
+
+
 //create your first component
 const Layout = () => {
   //the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -30,6 +33,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/crearproyecto">
               <CrearProyecto />
+            </Route>
+            <Route exact path="/buscarproyecto">
+              <BuscarProyecto />
             </Route>
             <Route>
               <h1>Not found!</h1>
