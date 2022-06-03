@@ -1,14 +1,21 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-
 import { Home } from "./pages/home";
+import { Login } from "./pages/login";
+import { Register } from "./pages/register";
+import { ProjectView } from "./pages/projectview";
+import { PersonalView } from "./pages/personalview";
+import { MyAccount } from "./pages/myaccount";
 import injectContext from "./store/appContext";
-
-import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Sidebar } from "./component/Sidebar";
+import Prueba1 from "./pages/prueba1";
+import Prueba2 from "./pages/prueba2";
 import { CrearProyecto } from "/workspace/proyecto-final-capital/src/front/js/pages/CrearProyecto.js";
+
 import { BuscarProyecto } from "./pages/BuscarProyecto";
+
 
 //create your first component
 const Layout = () => {
@@ -20,7 +27,6 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
-          <Navbar />
           <Switch>
             <Route exact path="/">
               <Home />

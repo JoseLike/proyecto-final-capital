@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/home.css";
-
 export const CrearProyecto = () => {
   const [info, setInfo] = useState({
     title: "",
     concept: "",
+    desired_capital: 0,
+    invested_capital: 0,
+    category: 0,
+    loans: 0,
     desired_capital: "",
     invested_capital: "",
     category: "",
@@ -13,7 +16,13 @@ export const CrearProyecto = () => {
     patent: false,
     terms: false,
     investment_capacity: "",
+    deadline: null,
   });
+
+  const [cate, setCate] = useState([]);
+
+  });
+
 
   const sendNewProject = async () => {
     if (
@@ -23,10 +32,24 @@ export const CrearProyecto = () => {
       info.invested_capital,
       info.category,
       info.loans,
+      info.deadline,
       info.business_plan,
       info.investment_capacity !=
         "") /* CORROBORAR QUE SE PUEDE HACER LA COMPROBACION ASI Y SABER COMO SE HACE EN LOS CHECKBOX */
     ) {
+      parseInt(info.desired_capital);
+      parseInt(info.invested_capital);
+      parseInt(info.category);
+      parseInt(info.loans);
+      const response = await fetch(
+        "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu46.gitpod.io/api/crear-proyecto",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(info),
+        }
+      );
+
       const response = await fetch("", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -37,6 +60,18 @@ export const CrearProyecto = () => {
     } else {
       return alert("Falta informacion de tu proyecto");
     }
+  };
+  useEffect(() => {
+    getCategory();
+  }, []);
+
+  const getCategory = async () => {
+    const response = await fetch(
+      "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu46.gitpod.io/api/category/"
+    );
+    const data = await response.json();
+    console.log(data.cate);
+    setCate(data.cate);
   };
 
   const handleInputChange = (e) => {
@@ -76,6 +111,13 @@ export const CrearProyecto = () => {
           onChange={handleInputChange}
         >
           {/* AQUI TENDRIA QUE HABER UN MAP, DE "CATEGORIAS" */}
+          {cate.map((category) => {
+            return (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            );
+          })}
           <option>1</option>
           <option>2</option>
         </select>
@@ -93,16 +135,34 @@ export const CrearProyecto = () => {
       </div>
       <br />
       <div className="d-flex container">
+        <span className="input-group-text offset-1 w-25">
+          Tiene fecha limite el proyecto??
+        </span>
+        <input
+          type="checkbox"
+          id="exampleFormControlSelect1"
+          className="w-25"
+          name="deadline"
+        ></input>
+      </div>
+      <br />
+      <div className="d-flex container">
         <span className="input-group-text offset-1 w-25">Capital deseado</span>
         <input
           placeholder="Capital Deseado"
           id="exampleFormControlSelect1"
           className="w-25"
           name="desired_capital"
+          type="number"
           onChange={handleInputChange}
         ></input>
       </div>
       <br />
+      <div className="custom-file d-flex container">
+        <label
+          className="input-group-text custom-file-label offset-1 w-25"
+          htmlFor="customFileLang"
+
       <div class="custom-file d-flex container">
         <label
           className="input-group-text custom-file-label offset-1 w-25"
@@ -112,6 +172,7 @@ export const CrearProyecto = () => {
         </label>
         <input
           type="file"
+          className="custom-file-input w-25"
           className="custom-file-input w-100"
           name="project_img"
           onChange={handleInputChange}
@@ -145,6 +206,7 @@ export const CrearProyecto = () => {
           className="form-control w-25"
           id="exampleFormControlSelect1"
           name="loans"
+          type="number"
           onChange={handleInputChange}
         ></input>
       </div>
@@ -157,10 +219,22 @@ export const CrearProyecto = () => {
           placeholder="Importe"
           className="w-25"
           name="invested_capital"
+          type="number"
           onChange={handleInputChange}
         ></input>
       </div>
       <br />
+      <div className=" container d-flex">
+        <span className="input-group-text offset-1 w-25">
+          {/* CENTRAR Y RECORTAR ESTA LINEA */}
+          Cuentanos tu plan de negocio para el proyecto
+        </span>
+        <textarea
+          placeholder="Texto extenso"
+          className=" w-100 d-inline-block"
+          name="business_plan"
+          onChange={handleInputChange}
+        ></textarea>
       <div className="justify-content-center container">
         <span className="input-group-text offset-1 w-50">
           {/* CENTRAR Y RECORTAR ESTA LINEA */}
@@ -177,6 +251,7 @@ export const CrearProyecto = () => {
       <h3 className="text-center">Estado legal del proyecto</h3>
       <br />
       <div className="d-flex container">
+        <span className="input-group-text offset-1 w-25">
         <span className="input-group-text offset-1 w-50">
           Posee el proyecto actualmente una patente?
         </span>
@@ -185,16 +260,23 @@ export const CrearProyecto = () => {
           className="custom-control-input"
           id="customCheck1"
           name="patent"
+          checked={info.patent}
+          onChange={(e) => setInfo({ ...info, patent: e.target.checked })}
           onChange={handleInputChange}
         ></input>
       </div>
       <br />
       <div className="d-flex container">
+        <span className="input-group-text offset-1 w-25">
         <span className="input-group-text offset-1 w-50">
           Estas seguro de compartir tu proyecto?
         </span>
         <input
           type="checkbox"
+          className="custom-control-input"
+          id="customCheck1"
+          checked={info.terms}
+          onChange={(e) => setInfo({ ...info, terms: e.target.checked })}
           className="custom-control-input "
           id="customCheck1"
         ></input>
@@ -202,6 +284,23 @@ export const CrearProyecto = () => {
       <br />
       <div className="custom-file d-flex container" type="file">
         <label
+          className="custom-file-label input-group-text  w-25 offset-1"
+          htmlFor="customFileLang"
+        >
+          Archivos adjuntos al proyecto:
+        </label>
+        <input type="file" className="custom-file-input w-25"></input>
+      </div>
+      <br />
+      <div className="d-flex justify-content-center">
+        <button
+          className="btn btn-secondary"
+          onClick={() => {
+            sendNewProject();
+          }}
+        >
+          Crear proyecto
+        </button>
           className="custom-file-label input-group-text offset-1"
           for="customFileLang"
         >
