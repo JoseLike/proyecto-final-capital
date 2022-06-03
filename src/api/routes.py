@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, User, Project
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
@@ -44,3 +44,9 @@ def login_user():
             return jsonify({"logged":True, "user":user.serialize(), "token":access_token}), 200
         else:
             return jsonify({"logged":False, "msg":"user not found"}), 404
+
+@api.route("/bucar-proyecto", methods=["GET"])
+def get_all_projects():
+    projects = Projects.query.all()
+    projects_serialize = list(map(lambda x: x.serialize(), projects))
+    return jsonify({"projects": projects_serialize}), 200
