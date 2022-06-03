@@ -1,6 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
 
-
 db = SQLAlchemy()
 
 class User(db.Model):
@@ -13,27 +12,13 @@ class User(db.Model):
     last_name = db.Column(db.String(120))
     user_type = db.Column(db.Integer, db.ForeignKey('usertype.id'), nullable=False ) 
     is_company = db.Column(db.Boolean(), default=False) 
-    profile_picture = db.Column(db.String(120))
-    user_longevity = db.Column(db.Date()) 
-    inversor_type = db.Column(db.String(120), default=None) 
-    acepted_conditions = db.Column(db.Boolean(),nullable=False, default=False)
+    #IMAGEN DE USUARIO??
 
     
     def serialize(self):        
-                return {
+        return {
                 "id": self.id,
                 "email": self.email,
-                "is_premium":self.is_premium,
-                "country":self.country,
-                "name":self.name,
-                "last_name":self.last_name,
-                "user_type":self.user_type,
-                "inversor_type":self.inversor_type,
-                "acepted_conditions":self.acepted_conditions,
-                "is_company":self.is_company,
-                "profile_picture":self.profile_picture,
-                "user_longevity":self.user_longevity
-
             }
             
 class Usertype(db.Model):
@@ -43,58 +28,32 @@ class Usertype(db.Model):
 
 class Favorites(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = Column(Integer, ForeignKey('user.id'))
     project_id= db.Column(db.Integer, db.ForeignKey('project.id'))
-    #user_id
+    #llave foranea de title, concept, user_id
 
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=True)
-    user = db.relationship("User")
     title = db.Column(db.String(80), nullable=False)
-    concept = db.Column(db.String(120), nullable=False) 
+    concept = db.Column(db.String(120), nullable=False) #saber cual es el maximo??
     desired_capital = db.Column(db.Integer, nullable=False)
     raised_capital = db.Column(db.Integer)
     invested_capital = db.Column(db.Integer)
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
-    category = db.relationship("Category")
-    deadline= db.Column(db.Date)
+    deadline= db.Column(db.Integer, nullable=False)
     loans= db.Column(db.Integer, nullable=False)
-    business_plan= db.Column(db.Text, nullable=False)
-    patent= db.Column(db.Boolean, nullable=False, default=False)
-    terms= db.Column(db.Boolean, nullable=False, default=False)
-    project_files= db.Column(db.String(120))
-    project_picture= db.Column(db.String(120))
-    investment_capacity=db.Column(db.String(120))
+    #PLAN NEGOCIO TEXTO EXTENSO???
+    patent= db.Column(db.Boolean(), nullable=False, default=False)
+    terms= db.Column(db.Boolean(), nullable=False, default=False)
+    #DOCUMENTOS ADJUNTOS???
+    #IMAGEN DEL PROYECTO???
+    investment_capacity:(db.Integer)
     views= db.Column(db.Integer) 
 
-    def serialize(self): 
-        return{
-            "id": self.id,
-            "title": self.title,
-            "concept": self.concept,
-            "desired_capital": self.desired_capital,
-            "raised_capital": self.raised_capital,
-            "invested_capital":self.invested_capital,
-            "category_id":self.category_id,
-            "deadline":self.deadline,
-            "loans":self.loans,
-            "business_plan":self.business_plan,
-            "patent":self.patent,
-            "terms":self.terms,
-            "project_files":self.project_files,
-            "project_picture":self.project_picture,
-            "investment_capacity":self.investment_capacity,
-            "views":self.views,
-        }
+    #los espacios que falten por Jose
 
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), nullable=False)
-    
-    def serialize(self):
-        return{
-        "id": self.id,
-        "name": self.name
-        }
+    name = db.Column(db.String, nullable=False)
+    category = db.relationship('Project', backref='category')
 
