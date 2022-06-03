@@ -103,3 +103,8 @@ def edit_pass_user(user_id):
 def get_project_user(user_id):
     user = User.query.get(user_id)
     return jsonify({"response":user.serialize()}),200
+
+@api.route('/stadistics/<int:user_id>', methods=["GET"])
+def get_user_stadistics(user_id):
+    user = User.query.get(user_id)
+    return jsonify({"response":user.serialize()}),200

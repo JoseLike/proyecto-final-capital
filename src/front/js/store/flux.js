@@ -72,6 +72,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           views: 0,
         },
       ],
+      user_stadistics: [],
     },
     actions: {
       setLogged: () => {
@@ -153,6 +154,18 @@ const getState = ({ getStore, getActions, setStore }) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(changedata),
           }
+        );
+        const data = await response.json();
+        console.log(data);
+        if (data.modified == true) {
+          setStore({ current_user: data.user });
+        }
+      },
+      getUserStadistics: async () => {
+        let store = getStore();
+        const response = await fetch(
+          "https://3001-joselike-proyectofinalc-gdcp2wpj598.ws-eu46.gitpod.io/api/editpassword/" +
+            store.current_user.id
         );
         const data = await response.json();
         console.log(data);
