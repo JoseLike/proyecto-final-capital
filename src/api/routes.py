@@ -46,13 +46,39 @@ def login_user():
             return jsonify({"logged":False, "msg":"user not found"}), 404
 
 
+@api.route("/crear-proyecto", methods=["POST"])
+#@jwt_required()
+def create_project():
+    body_title=request.json.get("title")
+    body_concept=request.json.get("concept")
+    body_desired_capital=request.json.get("desired_capital")
+    body_invested_capital=request.json.get("invested_capital")
+    body_category=request.json.get("category")
+    body_deadline=request.json.get("deadline")
+    body_loans=request.json.get("loans")
+    body_business_plan=request.json.get("business_plan")
+    body_patent=request.json.get("patent")
+    body_terms=request.json.get("terms")
+    body_project_files=request.json.get("project_files")
+    body_project_picture=request.json.get("project_picture")
+    body_investment_capacity=request.json.get("investment_capacity")
+    print(request.json)
+    if body_title and body_concept and body_desired_capital and body_invested_capital and body_category and body_loans and body_business_plan and body_investment_capacity:
+        new_project = Project(title = body_title, concept = body_concept, desired_capital = body_desired_capital, invested_capital = body_invested_capital, category_id = body_category, loans = body_loans, business_plan = body_business_plan, patent = body_patent, terms = body_terms, project_files= body_project_files, project_picture = body_project_picture, investment_capacity = body_investment_capacity)
+        db.session.add(new_project)
+        db.session.commit()
+        return jsonify({"created":True, "project":new_project.serialize()}), 200
+    else:
+        return jsonify({"created":False, "msg":"Lack of Info"}), 400
+
+
 @api.route("/category", methods=["GET"])
 def get_all_category():
     cate = Category.query.all()
     cate_serialize = list(map(lambda x: x.serialize(), cate))
     return jsonify({"cate": cate_serialize}), 200
 
-@api.route("/bucar-proyecto", methods=["GET"])
+@api.route("/buscar-proyecto", methods=["GET"])
 def get_all_projects():
     projects = Projects.query.all()
     projects_serialize = list(map(lambda x: x.serialize(), projects))
