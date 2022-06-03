@@ -28,6 +28,9 @@ const Layout = () => {
             <Route exact path="/crearproyecto">
               <CrearProyecto />
             </Route>
+            <Route exact path="/buscarproyecto">
+              <BuscarProyecto />
+            </Route>
             <Route>
               <h1>Not found!</h1>
             </Route>

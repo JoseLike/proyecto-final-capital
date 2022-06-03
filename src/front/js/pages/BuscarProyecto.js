@@ -6,6 +6,8 @@ export const BuscarProyecto = () => {
     capital: "",
   });
 
+  const [cate, setCate] = useState([]);
+
   useEffect(() => {
     getCategory();
   }, []);
@@ -31,7 +33,7 @@ export const BuscarProyecto = () => {
       <br />
       <h1 className="text-center">LOGO INVESTUP</h1>
       <br />
-      <div className="bg-secondary container d-flex w-50">
+      <div className="bg-secondary container d-flex w-100">
         <div className="d-flex container">
           <span className="input-group-text offset-1 w-25">
             Rubro del proyecto:{" "}
@@ -56,13 +58,14 @@ export const BuscarProyecto = () => {
         <div className="bg-secondary container justify-content-center">
           <div className="input-group mb-3">
             <div className="input-group-prepend">
-              <label className="input-group-text" for="inputGroupSelect01">
+              <label className="input-group-text" htmlFor="inputGroupSelect01">
                 Capital
               </label>
             </div>
-            <select className="custom-select w-50" id="inputGroupSelect01">
-              <option selected>Choose...</option> {/* MAP DE LAS CAPITAL */}
-            </select>
+            <input
+              className="custom-select w-50"
+              id="inputGroupSelect01"
+            ></input>
           </div>
         </div>
         <button type="button" className="btn btn-primary">
