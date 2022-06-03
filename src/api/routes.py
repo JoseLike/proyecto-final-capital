@@ -83,3 +83,4 @@ def get_all_projects():
     projects = Projects.query.all()
     projects_serialize = list(map(lambda x: x.serialize(), projects))
     return jsonify({"projects": projects_serialize}), 200
+    return jsonify({"cate": cate_serialize}), 200
