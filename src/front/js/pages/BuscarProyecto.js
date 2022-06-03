@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 export const BuscarProyecto = () => {
-  const [find, setfind] = useState({
+  const [find, setFind] = useState({
     category: "",
     capital: "",
   });
@@ -22,8 +22,8 @@ export const BuscarProyecto = () => {
   };
 
   const handleInputChange = (e) => {
-    setInfo({
-      ...info,
+    setFind({
+      ...find,
       [e.target.name]: e.target.value,
     });
   };
@@ -35,7 +35,11 @@ export const BuscarProyecto = () => {
       <br />
       <div className="bg-secondary container d-flex w-100">
         <div className="d-flex container">
-          <span className="input-group-text offset-1 w-25">
+          <span
+            className="input-group-text offset-1 w-25"
+            name="category"
+            onChange={handleInputChange}
+          >
             Rubro del proyecto:{" "}
           </span>
           <select
@@ -65,6 +69,8 @@ export const BuscarProyecto = () => {
             <input
               className="custom-select w-50"
               id="inputGroupSelect01"
+              name="capital"
+              onChange={handleInputChange}
             ></input>
           </div>
         </div>
