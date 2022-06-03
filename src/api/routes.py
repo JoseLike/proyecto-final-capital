@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Project
+from api.models import db, User, Project, Category
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
@@ -80,7 +80,6 @@ def get_all_category():
 
 @api.route("/buscar-proyecto", methods=["GET"])
 def get_all_projects():
-    projects = Projects.query.all()
+    projects = Projects.query.filter_by(category = body_category).filter_by(desired_capital = body_desired_capital)
     projects_serialize = list(map(lambda x: x.serialize(), projects))
     return jsonify({"projects": projects_serialize}), 200
-    return jsonify({"cate": cate_serialize}), 200
