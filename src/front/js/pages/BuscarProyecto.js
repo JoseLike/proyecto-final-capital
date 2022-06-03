@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 export const BuscarProyecto = () => {
+  const [find, setfind] = useState({
+    category: "",
+    capital: 0,
+  });
+
   return (
     <div>
       <br />
