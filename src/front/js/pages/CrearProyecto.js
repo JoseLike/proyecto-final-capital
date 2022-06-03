@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/home.css";
 
 export const CrearProyecto = () => {
@@ -13,6 +13,7 @@ export const CrearProyecto = () => {
     patent: false,
     terms: false,
     investment_capacity: "",
+    deadline: null,
   });
 
   const [cate, setCate] = useState([]);
@@ -25,6 +26,7 @@ export const CrearProyecto = () => {
       info.invested_capital,
       info.category,
       info.loans,
+      info.deadline,
       info.business_plan,
       info.investment_capacity !=
         "") /* CORROBORAR QUE SE PUEDE HACER LA COMPROBACION ASI Y SABER COMO SE HACE EN LOS CHECKBOX */
@@ -46,6 +48,18 @@ export const CrearProyecto = () => {
     } else {
       return alert("Falta informacion de tu proyecto");
     }
+  };
+  useEffect(() => {
+    getCategory();
+  }, []);
+
+  const getCategory = async () => {
+    const response = await fetch(
+      "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu46.gitpod.io/api/category/"
+    );
+    const data = await response.json();
+    console.log(data.cate);
+    setCate(data.cate);
   };
 
   const handleInputChange = (e) => {
@@ -107,12 +121,25 @@ export const CrearProyecto = () => {
       </div>
       <br />
       <div className="d-flex container">
+        <span className="input-group-text offset-1 w-25">
+          Tiene fecha limite el proyecto??
+        </span>
+        <input
+          type="checkbox"
+          id="exampleFormControlSelect1"
+          className="w-25"
+          name="deadline"
+        ></input>
+      </div>
+      <br />
+      <div className="d-flex container">
         <span className="input-group-text offset-1 w-25">Capital deseado</span>
         <input
           placeholder="Capital Deseado"
           id="exampleFormControlSelect1"
           className="w-25"
           name="desired_capital"
+          type="number"
           onChange={handleInputChange}
         ></input>
       </div>
@@ -159,6 +186,7 @@ export const CrearProyecto = () => {
           className="form-control w-25"
           id="exampleFormControlSelect1"
           name="loans"
+          type="number"
           onChange={handleInputChange}
         ></input>
       </div>
@@ -171,6 +199,7 @@ export const CrearProyecto = () => {
           placeholder="Importe"
           className="w-25"
           name="invested_capital"
+          type="number"
           onChange={handleInputChange}
         ></input>
       </div>
