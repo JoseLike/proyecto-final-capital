@@ -14,7 +14,6 @@ export const PersonalView = () => {
   //useEffect(() => {
   //actions.getUserProjects();
   //}, []);
-  const user = store.current_user.user_type;
   {
     if (store.current_user.user_type != 2) {
       return <InvestorLanding />;

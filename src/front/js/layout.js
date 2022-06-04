@@ -7,11 +7,10 @@ import { Register } from "./pages/register";
 import { ProjectView } from "./pages/projectview";
 import { PersonalView } from "./pages/personalview";
 import { MyAccount } from "./pages/myaccount";
+import { InversorPay } from "/workspace/proyecto-final-capital/src/front/js/pages/inversorpay.js";
 import injectContext from "./store/appContext";
 import { Footer } from "./component/footer";
 import { Sidebar } from "./component/Sidebar";
-import Prueba1 from "./pages/prueba1";
-import Prueba2 from "./pages/prueba2";
 import { CrearProyecto } from "/workspace/proyecto-final-capital/src/front/js/pages/CrearProyecto.js";
 
 //create your first component
@@ -21,24 +20,50 @@ const Layout = () => {
   const basename = process.env.BASENAME || "";
 
   return (
-    <div>
-      <BrowserRouter basename={basename}>
-        <ScrollToTop>
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/crearproyecto">
+    <BrowserRouter basename={basename}>
+      <ScrollToTop>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/login" className="d-flex">
+            <div className="d-flex">
+              <Login />
+            </div>
+          </Route>
+          <Route exact path="/register">
+            <Register />
+          </Route>
+          <Route exact path="/project/:theid">
+            <div className="d-flex">
+              <Sidebar />
+              <ProjectView />
+            </div>
+          </Route>
+          <Route exact path="/personal">
+            <div className="d-flex">
+              <Sidebar />
+              <PersonalView />
+            </div>
+          </Route>
+          <Route exact path="/account">
+            <div className="d-flex">
+              <MyAccount />
+            </div>
+          </Route>
+          <Route exact path="/inversorpay">
+            <InversorPay />
+          </Route>
+          <Route exact path="/crearproyecto">
               <CrearProyecto />
             </Route>
-            <Route>
-              <h1>Not found!</h1>
-            </Route>
-          </Switch>
-          <Footer />
-        </ScrollToTop>
-      </BrowserRouter>
-    </div>
+          <Route>
+            <h1>Not found!</h1>
+          </Route>
+        </Switch>
+        <Footer />
+      </ScrollToTop>
+    </BrowserRouter>
   );
 };
 
