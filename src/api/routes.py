@@ -73,13 +73,18 @@ def create_project():
 
 
 @api.route("/category", methods=["GET"])
+#@jwt_required()
 def get_all_category():
     cate = Category.query.all()
     cate_serialize = list(map(lambda x: x.serialize(), cate))
     return jsonify({"cate": cate_serialize}), 200
 
-@api.route("/buscar-proyecto", methods=["GET"])
+@api.route("/buscar-proyecto", methods=["POST"])
+#@jwt_required()
 def get_all_projects():
-    projects = Projects.query.filter_by(category = body_category).filter_by(desired_capital = body_desired_capital)
+    print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+    body_category = request.json.get("category_id")
+    body_desired_capital = request.json.get("desired_capital")
+    projects = Project.query.filter(Project.category_id == body_category).filter(Project.desired_capital <= body_desired_capital)
     projects_serialize = list(map(lambda x: x.serialize(), projects))
     return jsonify({"projects": projects_serialize}), 200

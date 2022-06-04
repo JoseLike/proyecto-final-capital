@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 
 export const BuscarProyecto = () => {
   const [find, setFind] = useState({
-    category: "",
-    capital: "",
+    category_id: "",
+    desired_capital: "",
   });
 
   const [cate, setCate] = useState([]);
@@ -14,7 +14,7 @@ export const BuscarProyecto = () => {
 
   const getCategory = async () => {
     const response = await fetch(
-      "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu46.gitpod.io/api/category/"
+      "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu46.gitpod.io/api/projects/"
     );
     const data = await response.json();
     console.log(data.cate);
@@ -81,7 +81,7 @@ export const BuscarProyecto = () => {
       <br />
       <br />
 
-      <div className="bg-secondary container">
+      {/*       <div className="bg-secondary container">
         <div className="card projectcard" onClick={props.enlace}>
           <img
             className="card-img-top"
@@ -101,7 +101,7 @@ export const BuscarProyecto = () => {
             <small className="text-muted">Fecha limite {props.category}</small>
           </div>
         </div>
-      </div>
+      </div>  */}
     </div>
   );
 };

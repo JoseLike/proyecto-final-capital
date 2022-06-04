@@ -42,7 +42,6 @@ class Project(db.Model):
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
     deadline= db.Column(db.Integer, nullable=False)
     loans= db.Column(db.Integer, nullable=False)
-    #PLAN NEGOCIO TEXTO EXTENSO???
     patent= db.Column(db.Boolean(), nullable=False, default=False)
     terms= db.Column(db.Boolean(), nullable=False, default=False)
     #DOCUMENTOS ADJUNTOS???
@@ -51,6 +50,10 @@ class Project(db.Model):
     views= db.Column(db.Integer) 
 
     #los espacios que falten por Jose
+    def serialize(self):
+        return{
+            "title": self.title
+        }
 
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
