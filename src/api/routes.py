@@ -79,3 +79,6 @@ def get_all_category():
     cate = Category.query.all()
     cate_serialize = list(map(lambda x: x.serialize(), cate))
     return jsonify({"cate": cate_serialize}), 200
+
+
+#holaaaaa

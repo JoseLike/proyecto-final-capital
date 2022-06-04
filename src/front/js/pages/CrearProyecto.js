@@ -171,7 +171,6 @@ export const CrearProyecto = () => {
           name="investment_capacity"
           onChange={handleInputChange}
         >
-          {/* AQUI TENDRIA QUE HABER UN MAP, DE "CATEGORIAS" */}
           <option>de donde ---- hasta donde</option>
           <option>de donde ---- hasta donde</option>
         </select>
