@@ -34,25 +34,42 @@ class Favorites(db.Model):
 
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     title = db.Column(db.String(80), nullable=False)
-    concept = db.Column(db.String(120), nullable=False) #saber cual es el maximo??
+    concept = db.Column(db.String(120), nullable=False) 
     desired_capital = db.Column(db.Integer, nullable=False)
     raised_capital = db.Column(db.Integer)
     invested_capital = db.Column(db.Integer)
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
-    deadline= db.Column(db.Integer, nullable=False)
+    category = db.relationship("Category")
+    deadline= db.Column(db.Date)
     loans= db.Column(db.Integer, nullable=False)
-    patent= db.Column(db.Boolean(), nullable=False, default=False)
-    terms= db.Column(db.Boolean(), nullable=False, default=False)
-    #DOCUMENTOS ADJUNTOS???
-    #IMAGEN DEL PROYECTO???
-    investment_capacity:(db.Integer)
+    business_plan= db.Column(db.Text, nullable=False)
+    patent= db.Column(db.Boolean, nullable=False, default=False)
+    terms= db.Column(db.Boolean, nullable=False, default=False)
+    project_files= db.Column(db.String(120))
+    project_picture= db.Column(db.String(120))
+    investment_capacity=db.Column(db.String(120))
     views= db.Column(db.Integer) 
 
-    #los espacios que falten por Jose
-    def serialize(self):
+    def serialize(self): 
         return{
-            "title": self.title
+            "id": self.id,
+            "title": self.title,
+            "concept": self.concept,
+            "desired_capital": self.desired_capital,
+            "raised_capital": self.raised_capital,
+            "invested_capital":self.invested_capital,
+            "category_id":self.category_id,
+            "deadline":self.deadline,
+            "loans":self.loans,
+            "business_plan":self.business_plan,
+            "patent":self.patent,
+            "terms":self.terms,
+            "project_files":self.project_files,
+            "project_picture":self.project_picture,
+            "investment_capacity":self.investment_capacity,
+            "views":self.views,
         }
 
 class Category(db.Model):
