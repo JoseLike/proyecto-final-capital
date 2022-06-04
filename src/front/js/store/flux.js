@@ -1,17 +1,16 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
-      current_user: [
-        {
-          id: 99,
-          name: "usuario de prueba",
-          last_name: "pruebas",
-          email: "a@a.com",
-          country: "Venezuela",
-          user_type: 3,
-          is_premium: false,
-        },
-      ],
+      current_user: {
+        id: 5,
+        name: "usuario de prueba",
+        last_name: "pruebas",
+        email: "a@a.com",
+        country: "Venezuela",
+        user_type: 3,
+        is_premium: false,
+      },
+
       logged: false,
       project_user_data: [],
       singleproject: [
@@ -72,7 +71,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           views: 0,
         },
       ],
-      user_stadistics: [],
+      user_stadistics: {},
     },
     actions: {
       setLogged: () => {
@@ -164,14 +163,14 @@ const getState = ({ getStore, getActions, setStore }) => {
       getUserStadistics: async () => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-gdcp2wpj598.ws-eu46.gitpod.io/api/editpassword/" +
+          "https://3001-joselike-proyectofinalc-gdcp2wpj598.ws-eu46.gitpod.io/api/stadistics/" +
             store.current_user.id
         );
         const data = await response.json();
         console.log(data);
-        if (data.modified == true) {
-          setStore({ current_user: data.user });
-        }
+        setStore({
+          user_stadistics: { total_projects: data.response.projects.length },
+        });
       },
     },
   };

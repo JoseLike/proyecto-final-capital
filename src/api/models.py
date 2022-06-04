@@ -17,6 +17,7 @@ class User(db.Model):
     user_longevity = db.Column(db.Date()) 
     inversor_type = db.Column(db.String(120), default=None) 
     acepted_conditions = db.Column(db.Boolean(),nullable=False, default=False)
+    projects = db.relationship('Project', backref='user')
 
     
     def serialize(self):        
@@ -32,7 +33,8 @@ class User(db.Model):
                 "acepted_conditions":self.acepted_conditions,
                 "is_company":self.is_company,
                 "profile_picture":self.profile_picture,
-                "user_longevity":self.user_longevity
+                "user_longevity":self.user_longevity,
+                "projects": list(map(lambda project : project.serialize(), self.projects ))
 
             }
             
@@ -48,6 +50,7 @@ class Favorites(db.Model):
 
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     title = db.Column(db.String(80), nullable=False)
     concept = db.Column(db.String(120), nullable=False) #saber cual es el maximo??
     desired_capital = db.Column(db.Integer, nullable=False)
@@ -62,7 +65,12 @@ class Project(db.Model):
     project_files= db.Column(db.String())
     project_picture= db.Column(db.String())
     investment_capacity:(db.Integer)
-    views= db.Column(db.Integer) 
+    views= db.Column(db.Integer)
+
+    def serialize(self):
+        return{
+            "title": self.title
+        } 
 
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)

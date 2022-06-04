@@ -7,9 +7,10 @@ export const StadisticsView = () => {
   const { store, actions } = useContext(Context);
   const { theid } = useParams();
 
-  //useEffect(() => {
-  //actions.getUserProjects();
-  //}, []);
+  useEffect(() => {
+    actions.getUserStadistics();
+  }, []);
+
   return (
     <div>
       <div className="">
@@ -24,7 +25,9 @@ export const StadisticsView = () => {
         <div className="row mt-4 ">
           <div className="col-6 mx-auto">
             <ul class="list-group">
-              <li class="list-group-item">Proyectos publicados: </li>
+              <li class="list-group-item">
+                Proyectos publicados: {store.user_stadistics.total_projects}
+              </li>
               <li class="list-group-item">Proyectos con exito: </li>
               <li class="list-group-item">Total capital obtenido: </li>
               <li class="list-group-item">Vistas totales: </li>

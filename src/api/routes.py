@@ -106,5 +106,9 @@ def get_project_user(user_id):
 
 @api.route('/stadistics/<int:user_id>', methods=["GET"])
 def get_user_stadistics(user_id):
+    #current_user = get_jwt_identity()
     user = User.query.get(user_id)
+    print(user)
+    data=[]
+    
     return jsonify({"response":user.serialize()}),200
