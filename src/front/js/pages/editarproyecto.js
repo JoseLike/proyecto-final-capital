@@ -1,27 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../../styles/home.css";
-import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
+import { Link, useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { StaticRouter } from "react-router-dom";
 
-export const CrearProyecto = () => {
+export const EditarProyecto = () => {
+  //useEffect(() => {
+  //actions.getSingleProject(theid);
+  //}, []);
+
+  const { theid } = useParams();
+  const { store, actions } = useContext(Context);
   let navigate = useHistory();
+
   const [info, setInfo] = useState({
-    title: "",
-    concept: "",
-    desired_capital: 0,
-    invested_capital: 0,
-    category: 0,
-    loans: 0,
-    business_plan: "",
-    patent: false,
-    terms: false,
-    investment_capacity: "",
-    deadline: null,
+    title: store.singleproject.title,
+    concept: store.singleproject.concept,
+    desired_capital: store.singleproject.desired_capital,
+    invested_capital: store.singleproject.invested_capital,
+    category: store.singleproject.category,
+    loans: store.singleproject.loans,
+    business_plan: store.singleproject.business_plan,
+    patent: store.singleproject.patent,
+    terms: store.singleproject.terms,
+    investment_capacity: store.singleproject.investment_capacity,
+    deadline: store.singleproject.deadline,
   });
 
   const [cate, setCate] = useState([]);
 
-  const sendNewProject = async () => {
+  const sendEditProject = async () => {
     if (
       (info.title,
       info.concept,
@@ -39,7 +48,7 @@ export const CrearProyecto = () => {
       parseInt(info.category);
       parseInt(info.loans);
       const response = await fetch(
-        "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/crear-proyecto",
+        "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu46.gitpod.io/api/crear-proyecto",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -59,7 +68,7 @@ export const CrearProyecto = () => {
 
   const getCategory = async () => {
     const response = await fetch(
-      "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/category/"
+      "https://3000-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/category/"
     );
     const data = await response.json();
     console.log(data.cate);
@@ -88,7 +97,7 @@ export const CrearProyecto = () => {
         </div>
         <h2>
           <input
-            placeholder="Titulo de proyecto"
+            placeholder={store.singleproject.title}
             className="w-100 text-center"
             name="title"
             onChange={handleInputChange}
@@ -98,7 +107,7 @@ export const CrearProyecto = () => {
         <br />
         <div className="d-flex container">
           <span className="input-group-text offset-1 w-25">
-            Rubro del proyecto:{" "}
+            Rubro del proyecto:
           </span>
           <select
             className="form-control w-25"
@@ -106,7 +115,6 @@ export const CrearProyecto = () => {
             name="category"
             onChange={handleInputChange}
           >
-            {/* AQUI TENDRIA QUE HABER UN MAP, DE "CATEGORIAS" */}
             {cate.map((category) => {
               return (
                 <option key={category.id} value={category.id}>
@@ -120,7 +128,7 @@ export const CrearProyecto = () => {
         <div className="d-flex container">
           <span className="input-group-text offset-1 w-25">Idea general</span>
           <input
-            placeholder="Objetivo del proyecto"
+            placeholder={store.singleproject.concept}
             id="exampleFormControlSelect1"
             className="w-25"
             name="concept"
@@ -133,6 +141,7 @@ export const CrearProyecto = () => {
             Tiene fecha limite el proyecto??
           </span>
           <input
+            checked={info.deadline}
             type="checkbox"
             id="exampleFormControlSelect1"
             className="w-25"
@@ -145,7 +154,7 @@ export const CrearProyecto = () => {
             Capital deseado
           </span>
           <input
-            placeholder="Capital Deseado"
+            placeholder={store.singleproject.desired_capital}
             id="exampleFormControlSelect1"
             className="w-25"
             name="desired_capital"
@@ -191,7 +200,7 @@ export const CrearProyecto = () => {
             Deudas del proyecto
           </span>
           <input
-            placeholder="Importe"
+            placeholder={store.singleproject.loans}
             className="form-control w-25"
             id="exampleFormControlSelect1"
             name="loans"
@@ -205,7 +214,7 @@ export const CrearProyecto = () => {
             Capital Invertido a la fecha
           </span>
           <input
-            placeholder="Importe"
+            placeholder={store.singleproject.invested_capital}
             className="w-25"
             name="invested_capital"
             type="number"
@@ -219,7 +228,7 @@ export const CrearProyecto = () => {
             Cuentanos tu plan de negocio para el proyecto
           </span>
           <textarea
-            placeholder="Texto extenso"
+            placeholder={store.singleproject.business_plan}
             className=" w-100 d-inline-block"
             name="business_plan"
             onChange={handleInputChange}
@@ -269,10 +278,10 @@ export const CrearProyecto = () => {
           <button
             className="btn btn-secondary"
             onClick={() => {
-              sendNewProject();
+              sendEditProject();
             }}
           >
-            Crear proyecto
+            Editar Proyecto
           </button>
         </div>
       </div>
