@@ -30,7 +30,7 @@ export const EmprendedorLanding = (props) => {
 
             </div>
         </div>
-        <Link to="/newproject">
+        <Link to="/crearproyecto">
             <div href="#" className="btn-flotante text-center align-items-center">
                 Crear Proyecto
                 <i className="fa-duotone fa-plus fa-2xl"></i>

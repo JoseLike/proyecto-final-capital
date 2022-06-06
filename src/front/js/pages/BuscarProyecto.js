@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { InvestorCard } from "/workspace/proyecto-final-capital/src/front/js/component/investorcard.jsx";
 
 export const BuscarProyecto = () => {
   const [find, setFind] = useState({
@@ -105,9 +106,20 @@ export const BuscarProyecto = () => {
       <div className="bg-secondary d-flex justify-content center container">
         <br />
         <br />
-        <div>
-          {projects.map((proj) => {
-            return <h1>{proj.title}</h1>;
+        <div className="d-flex container justify-content-center">
+          {projects.map((projects) => {
+            return (
+              <div className="p-2">
+                <InvestorCard
+                  key={projects.id}
+                  id={projects.id}
+                  category={projects.category_id}
+                  name={projects.title}
+                  eta={projects.deadline}
+                  capital={projects.desired_capital}
+                />
+              </div>
+            );
           })}
         </div>
       </div>
