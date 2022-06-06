@@ -6,7 +6,7 @@ export const BuscarProyecto = () => {
     desired_capital: "",
   });
 
-  var project = [];
+  const [projects, setProjects] = useState([]);
 
   const searchProject = async () => {
     const response = await fetch(
@@ -18,8 +18,7 @@ export const BuscarProyecto = () => {
       }
     );
     const data = await response.json();
-    project = data;
-    console.log(project);
+    setProjects(data.projects);
   };
 
   const [cate, setCate] = useState([]);
@@ -94,7 +93,7 @@ export const BuscarProyecto = () => {
           type="button"
           className="btn btn-primary"
           onClick={() => {
-            searchProject;
+            searchProject();
           }}
         >
           Buscar
@@ -106,6 +105,11 @@ export const BuscarProyecto = () => {
       <div className="bg-secondary d-flex justify-content center container">
         <br />
         <br />
+        <div>
+          {projects.map((proj) => {
+            return <h1>{proj.title}</h1>;
+          })}
+        </div>
       </div>
     </div>
   );

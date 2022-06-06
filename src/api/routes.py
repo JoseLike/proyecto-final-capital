@@ -84,6 +84,11 @@ def get_all_category():
 def get_all_projects():
     body_category = request.json.get("category_id")
     body_desired_capital = request.json.get("desired_capital")
-    projects = Project.query.filter(Project.category_id == body_category).filter(Project.desired_capital <= body_desired_capital)
+    query = []
+    if body_category is not None and body_category != "" :
+        query.append(Project.category_id == int(body_category))
+    if body_desired_capital is not None and body_desired_capital != "" :
+        query.append(Project.desired_capital <= int(body_desired_capital))
+    projects = Project.query.filter(*query)
     projects_serialize = list(map(lambda x: x.serialize(), projects))
     return jsonify({"projects": projects_serialize}), 200
