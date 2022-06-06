@@ -34,9 +34,23 @@ img {
   transform: translateY(-7px);
 }
 
+.edit-btt {
+  display: none;
+  color: white;
+}
+
 .projectcard:hover {
   box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
   transform: translateY(-7px);
+  cursor: pointer;
+}
+
+.projectcard:hover .edit-btt {
+  display: block;
+}
+
+.projectcard:hover .img-projectcard {
+  opacity: 0.6;
 }
 .card-img-top {
   height: 180px;
