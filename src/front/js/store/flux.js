@@ -1,15 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
-      current_user: {
-        id: 99,
-        name: "usuario de prueba",
-        last_name: "pruebas",
-        email: "a@a.com",
-        country: "Venezuela",
-        user_type: 2,
-        is_premium: false,
-      },
+      current_user: {},
 
       logged: false,
       project_user_data: [],
@@ -32,44 +24,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         views: 0,
       },
 
-      user_projects: [
-        {
-          id: 99,
-          title: "Proyecto de Prueba en objeto",
-          concept: "Proyecto de Prueba",
-          desired_capital: 250000,
-          raised_capital: 150000,
-          invested_capital: 5000,
-          category_id: "Medicina",
-          deadline: "25 / 12 / 2023",
-          loans: 0,
-          business_plan: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-          patent: false,
-          terms: true,
-          project_files: "",
-          project_picture: "",
-          investment_capacity: 250000,
-          views: 0,
-        },
-        {
-          id: 100,
-          title: "Proyecto de Prueba en objeto",
-          concept: "Proyecto de Prueba",
-          desired_capital: 250000,
-          raised_capital: 150000,
-          invested_capital: 5000,
-          category_id: "Medicina",
-          deadline: "25 / 12 / 2023",
-          loans: 0,
-          business_plan: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-          patent: false,
-          terms: true,
-          project_files: "",
-          project_picture: "",
-          investment_capacity: 250000,
-          views: 0,
-        },
-      ],
+      user_projects: [],
       user_stadistics: {},
     },
     actions: {
@@ -93,10 +48,11 @@ const getState = ({ getStore, getActions, setStore }) => {
             }
           );
           const data = await response.json();
-          //localStorage.setItem("token", data.token);
+          localStorage.setItem("token", data.token);
           if (data.logged == true) {
             actions.setLogged();
             setStore({ current_user: data.user });
+            setStore({ user_projects: data.user.projects });
           }
           console.log(data);
         } else {
@@ -105,26 +61,31 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       getSingleProject: async (key) => {
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-m77gee2opis.ws-eu46.gitpod.io/api/project/" +
+          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/project/" +
             key
         );
         const gettedproject = await response.json();
+        console.log(gettedproject);
         //setStore({ singleproject: gettedproject.result.properties });
       },
+
       getUserProjects: async () => {
+        let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-m77gee2opis.ws-eu46.gitpod.io/api/projects"
+          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/userprojects",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+          }
         );
         const gettedprojects = await response.json();
-        //setStore({ user_projects: gettedprojects.result.properties });
+        console.log(gettedprojects);
+        setStore({ user_projects: gettedprojects.response });
       },
-      getUserProjects: async (user_id) => {
-        const response = await fetch(
-          "https://3001-joselike-proyectofinalc-m77gee2opis.ws-eu46.gitpod.io/api/projects"
-        );
-        const gettedprojects = await response.json();
-        //setStore({ user_projects: gettedprojects.result.properties });
-      },
+
       changeUserInfo: async (changedata) => {
         let store = getStore();
         const response = await fetch(
@@ -142,10 +103,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({ current_user: data.user });
         }
       },
+
       changeUserPassword: async (changedata) => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-gdcp2wpj598.ws-eu46.gitpod.io/api/editpassword/" +
+          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/editpassword/" +
             store.current_user.id,
           {
             method: "PUT",
@@ -162,7 +124,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       getUserStadistics: async () => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-gdcp2wpj598.ws-eu46.gitpod.io/api/stadistics/" +
+          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/stadistics/" +
             store.current_user.id
         );
         const data = await response.json();

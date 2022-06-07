@@ -8,9 +8,9 @@ export const ProjectView = () => {
   const { store, actions } = useContext(Context);
   const { theid } = useParams();
 
-  //useEffect(() => {
-  //actions.getSingleProject(theid);
-  //}, []);
+  useEffect(() => {
+    actions.getSingleProject(theid);
+  }, []);
   //useEffect(() => {
   //actions.getProjectUserData(theid);
   //}, []);
@@ -24,19 +24,19 @@ export const ProjectView = () => {
         <div className="topdata row ">
           <div className="projectdata col-5 mx-auto">
             <div className="projectname border rounded mb-3 shadow text-center">
-              <h1>{store.singleproject[0].title}</h1>
+              <h1>{store.singleproject.title}</h1>
             </div>
             <div className="border rounded p-2 shadow p-3">
               <div className="projectdescripttion ">
-                {store.singleproject[0].concept}
+                {store.singleproject.concept}
               </div>
               <div className="projectETA d-flex mt-3">
                 <div className="text me-4">Fecha limite: </div>
-                <div className="text">{store.singleproject[0].deadline}</div>
+                <div className="text">{store.singleproject.deadline}</div>
               </div>
               <div className="projectcategory d-flex">
                 <div className="text me-4">Categoria:</div>
-                <div className="text">{store.singleproject[0].category_id}</div>
+                <div className="text">{store.singleproject.category_id}</div>
               </div>
             </div>
           </div>
@@ -51,17 +51,15 @@ export const ProjectView = () => {
         <div className="projectcapital row ">
           <div className="col-10 border rounded shadow p-3 mx-auto d-flex">
             <div className="col-3">Capital Requerido</div>
-            <div className="col-3">
-              {store.singleproject[0].desired_capital}
-            </div>
+            <div className="col-3">{store.singleproject.desired_capital}</div>
             <div className="col-3">Capital Obtenido</div>
-            <div className="col-3">{store.singleproject[0].raised_capital}</div>
+            <div className="col-3">{store.singleproject.raised_capital}</div>
           </div>
         </div>
         <div className="businessplan row mt-4 ">
           <div className="col-10 border rounded shadow p- mx-auto">
             <h1>Plan de Negocio</h1>
-            {store.singleproject[0].business_plan}
+            {store.singleproject.business_plan}
           </div>
         </div>
         <div className="row  attachedocuments mt-4">

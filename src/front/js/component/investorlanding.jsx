@@ -12,12 +12,12 @@ export const InvestorLanding = (props) => {
     return (<div className="container mt-5">
         <div className="personal-title-row row">
             <div className="personal-title text-center">
-                Bienvenido a tu vista personal
+                Bienvenido a tu vista personal como INVERSOR
             </div>
         </div>
         <div className="personal-title-row row">
             <div className="personal-title text-center mt-4">Tus Favoritos</div>
-            <div className="">
+            <div className="d-flex">
                 {store.user_projects.map((projects) => {
                     return (<InvestorCard
                         key={projects.id}
@@ -30,7 +30,7 @@ export const InvestorLanding = (props) => {
                 })}
             </div>
         </div>
-        <Link to="/newproject">
+        <Link to="/buscarproyecto">
             <div href="#" className="btn-flotante text-center align-items-center">
                 Buscar Proyectos
                 <i className="fa-solid fa-magnifying-glass-plus pt-1 fa-2xl"></i>

@@ -7,17 +7,23 @@ import { Projectcard } from "/workspace/proyecto-final-capital/src/front/js/comp
 import PropTypes from 'prop-types';
 
 export const EmprendedorLanding = (props) => {
+
     const { store, actions } = useContext(Context);
+
+
+    useEffect(() => {
+        actions.getUserProjects();
+    }, []);
 
     return (<div className="container mt-5">
         <div className="personal-title-row row">
             <div className="personal-title text-center">
-                Bienvenido a tu vista personal
+                Bienvenido a tu vista personal como Emprendedor
             </div>
         </div>
         <div className="personal-title-row row">
             <div className="personal-title text-center mt-4">Tus Proyectos</div>
-            <div className="">
+            <div className="d-flex">
                 {store.user_projects.map((projects) => {
                     return (<Projectcard
                         key={projects.id}

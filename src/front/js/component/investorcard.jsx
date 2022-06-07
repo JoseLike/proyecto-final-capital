@@ -12,7 +12,7 @@ export const InvestorCard = (props) => {
 
   return (
     <Link to={"/project/" + props.id}>
-      <div className="card investor-card">
+      <div className="card investor-card m-2">
         <img
           className="card-img-top"
           src="https://t2.ea.ltmcdn.com/es/posts/8/2/2/tipos_de_pinguinos_21228_600_square.jpg"

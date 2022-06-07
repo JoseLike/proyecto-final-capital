@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../../styles/home.css";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const CrearProyecto = () => {
+  const { store, actions } = useContext(Context);
   let navigate = useHistory();
   const [info, setInfo] = useState({
     title: "",
+    user_id: store.current_user.id,
     concept: "",
     desired_capital: 0,
     invested_capital: 0,

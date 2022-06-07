@@ -8,7 +8,7 @@ export const Projectcard = (props) => {
     const { store, actions } = useContext(Context);
 
     return (
-        <div className="card projectcard" onClick={props.enlace}>
+        <div className="card projectcard m-2" onClick={props.enlace}>
             <img className="card-img-top img-projectcard" src="https://t2.ea.ltmcdn.com/es/posts/8/2/2/tipos_de_pinguinos_21228_600_square.jpg" alt="Card image cap" />
             <div className="card-body">
                 <h5 className="card-title text-center">{props.name}</h5>

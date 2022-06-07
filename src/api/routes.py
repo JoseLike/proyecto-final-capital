@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Project, Category
 from api.utils import generate_sitemap, APIException
-#from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
+from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
 
 
 
@@ -41,8 +41,8 @@ def login_user():
     if body_email and body_password:
         user = User.query.filter_by(email=body_email).filter_by(password=body_password).first()
         if user:
-            #access_token = create_access_token(identity=user.id)
-            return jsonify({"logged":True, "user":user.serialize()}), 200
+            access_token = create_access_token(identity=user.id)
+            return jsonify({"logged":True, "user":user.serialize(), "token":access_token}), 200
         else:
 
             return jsonify({"logged":False, "msg":"user not found"}), 404
@@ -50,9 +50,10 @@ def login_user():
 
 
 @api.route("/crear-proyecto", methods=["POST"])
-#@jwt_required()
+@jwt_required()
 def create_project():
     body_title=request.json.get("title")
+    body_userid=request.json.get("user_id")
     body_concept=request.json.get("concept")
     body_desired_capital=request.json.get("desired_capital")
     body_invested_capital=request.json.get("invested_capital")
@@ -67,7 +68,7 @@ def create_project():
     body_investment_capacity=request.json.get("investment_capacity")
     print(request.json)
     if body_title and body_concept and body_desired_capital and body_invested_capital and body_category and body_loans and body_business_plan and body_investment_capacity:
-        new_project = Project(title = body_title, concept = body_concept, desired_capital = body_desired_capital, invested_capital = body_invested_capital, category_id = body_category, loans = body_loans, business_plan = body_business_plan, patent = body_patent, terms = body_terms, project_files= body_project_files, project_picture = body_project_picture, investment_capacity = body_investment_capacity)
+        new_project = Project(user_id=body_userid,title = body_title, concept = body_concept, desired_capital = body_desired_capital, invested_capital = body_invested_capital, category_id = body_category, loans = body_loans, business_plan = body_business_plan, patent = body_patent, terms = body_terms, project_files= body_project_files, project_picture = body_project_picture, investment_capacity = body_investment_capacity)
         db.session.add(new_project)
         db.session.commit()
         return jsonify({"created":True, "project":new_project.serialize()}), 200
@@ -109,11 +110,17 @@ def edit_pass_user(user_id):
     else:
         return jsonify({"modified":False, "msg":"Lack of Info"}), 400
 
-@api.route('/projectuserid/<int:user_id>', methods=["GET"])
-def get_project_user(user_id):
-    user = User.query.get(user_id)
-    return jsonify({"response":user.serialize()}),200
+@api.route('/userprojects', methods=["GET"])
+@jwt_required()
+def get_user_projects():
+    current_user = get_jwt_identity()
+    projects = User.query.get(current_user).projects
+    return jsonify({"response":list(map(lambda project : project.serialize(), projects))}),200
 
+@api.route('/project/<int:key>', methods=["GET"])
+def get_single_project(key):
+    projects = Project.query.get(key)
+    return jsonify({"response":projects.serialize()}),200
 
 @api.route('/stadistics/<int:user_id>', methods=["GET"])
 def get_user_stadistics(user_id):

@@ -6,10 +6,6 @@ import "../../styles/inversorpay.css";
 export const InversorPay = () => {
   const { store, actions } = useContext(Context);
 
-  //useEffect(() => {
-  //actions.getSingleProject(theid);
-  //}, []);
-
   const [changedata, setChangedata] = useState({
     amount: 0,
   });
@@ -24,7 +20,7 @@ export const InversorPay = () => {
   return (
     <div className="container mt-4 rounded shadow p-3">
       <div className="">
-        <Link to={"/project/" + store.singleproject[0].id}>
+        <Link to={"/project/" + store.singleproject.id}>
           <i className="fa-solid btn-flotante-atras fa-arrow-left arrow-left-reg1 icono-back col-1 ms-4 fixed"></i>
         </Link>
       </div>
@@ -35,17 +31,17 @@ export const InversorPay = () => {
         <div className="project-info row border-0 rounded mt-4">
           <div className="project-data col-8">
             <h1 className="nombre-proyecto text-center">
-              {store.singleproject[0].title}
+              {store.singleproject.title}
             </h1>
             <div className="ms-3">
               <div className="deadline mt-3 border-bottom">
-                Fecha limite: {store.singleproject[0].deadline}
+                Fecha limite: {store.singleproject.deadline}
               </div>
               <div className="required-capital mt-3 border-bottom">
-                Capital requerido: {store.singleproject[0].desired_capital}
+                Capital requerido: {store.singleproject.desired_capital}
               </div>
               <div className="raised-capital mt-3 mb-3 border-bottom">
-                Capital obtenido: {store.singleproject[0].raised_capital}
+                Capital obtenido: {store.singleproject.raised_capital}
               </div>
             </div>
           </div>
