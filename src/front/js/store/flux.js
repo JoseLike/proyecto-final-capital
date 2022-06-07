@@ -13,26 +13,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       logged: false,
       project_user_data: [],
-      singleproject: [
-        {
-          id: 99,
-          title: "Proyecto de Prueba en objeto",
-          concept: "aaaaa",
-          desired_capital: 250000,
-          raised_capital: 150000,
-          invested_capital: 5000,
-          category_id: "Sanidad",
-          deadline: "25 / 12 / 2023",
-          loans: 0,
-          business_plan: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-          patent: false,
-          terms: true,
-          project_files: "",
-          project_picture: "",
-          investment_capacity: 250000,
-          views: 0,
-        },
-      ],
+      singleproject: {
+        id: 99,
+        title: "Proyecto de Prueba en objeto",
+        concept: "aaaaa",
+        desired_capital: 250000,
+        raised_capital: 150000,
+        invested_capital: 5000,
+        category: "Sanidad",
+        deadline: true,
+        loans: 0,
+        business_plan: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        patent: false,
+        terms: true,
+        project_files: "",
+        project_picture: "",
+        investment_capacity: 250000,
+        views: 0,
+      },
+
       user_projects: [
         {
           id: 99,
@@ -85,7 +84,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         let actions = getActions();
         if (datos.email != null && datos.password.trim() != "") {
           const response = await fetch(
-            "https://3001-joselike-proyectofinalc-gdcp2wpj598.ws-eu46.gitpod.io/api/login",
+            "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/login",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },

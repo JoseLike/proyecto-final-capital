@@ -12,7 +12,9 @@ import injectContext from "./store/appContext";
 import { Footer } from "./component/footer";
 import { Sidebar } from "./component/Sidebar";
 import { CrearProyecto } from "/workspace/proyecto-final-capital/src/front/js/pages/CrearProyecto.js";
+import { EditarProyecto } from "./pages/editarproyecto";
 import { BuscarProyecto } from "./pages/BuscarProyecto";
+
 
 //create your first component
 const Layout = () => {
@@ -58,6 +60,9 @@ const Layout = () => {
           <Route exact path="/crearproyecto">
             <CrearProyecto />
           </Route>
+          <Route exact path="/editarproyecto/:theid">
+            <EditarProyecto />
+           </Route>
           <Route exact path="/buscarproyecto">
             <BuscarProyecto />
           </Route>
