@@ -17,7 +17,7 @@ class User(db.Model):
     user_longevity = db.Column(db.Date()) 
     inversor_type = db.Column(db.String(120), default=None) 
     acepted_conditions = db.Column(db.Boolean(),nullable=False, default=False)
-    projects = db.relationship("Project", backref="user")
+    projects = db.relationship('Project', backref='user')
 
 
     def serialize(self):        

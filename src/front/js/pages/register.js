@@ -60,7 +60,7 @@ export const Register = () => {
     //verify();
     if (datos.email != null && datos.password.trim() != "") {
       const response = await fetch(
-        "https://3001-joselike-proyectofinalc-gdcp2wpj598.ws-eu46.gitpod.io/api/register",
+        "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

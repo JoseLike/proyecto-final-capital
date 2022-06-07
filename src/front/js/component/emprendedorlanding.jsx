@@ -21,6 +21,7 @@ export const EmprendedorLanding = (props) => {
                 {store.user_projects.map((projects) => {
                     return (<Projectcard
                         key={projects.id}
+                        id={projects.id}
                         category={projects.category_id}
                         name={projects.title}
                         eta={projects.deadline}

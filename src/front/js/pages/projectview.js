@@ -18,7 +18,7 @@ export const ProjectView = () => {
   return (
     <>
       <Link to="/personal">
-        <i className="fa-solid fa-arrow-left arrow-left-reg1 icono-back col-1 ms-4 fixed"></i>
+        <i className="fa-solid btn-flotante-atras fa-arrow-left arrow-left-reg1 icono-back col-1 ms-4 fixed"></i>
       </Link>
       <div className="container mt-5  rounded shadow p-3">
         <div className="topdata row ">
