@@ -49,7 +49,7 @@ def login_user():
 
 
 
-@api.route("/crear_proyecto", methods=["POST"])
+@api.route("/crear-proyecto", methods=["POST"])
 #@jwt_required()
 def create_project():
     body_title=request.json.get("title")
@@ -113,3 +113,17 @@ def edit_pass_user(user_id):
 def get_project_user(user_id):
     user = User.query.get(user_id)
     return jsonify({"response":user.serialize()}),200
+
+@api.route("/buscar-proyecto", methods=["POST"])
+#@jwt_required()
+def get_all_projects():
+    body_category = request.json.get("category_id")
+    body_desired_capital = request.json.get("desired_capital")
+    query = []
+    if body_category is not None and body_category != "" :
+        query.append(Project.category_id == int(body_category))
+    if body_desired_capital is not None and body_desired_capital != "" :
+        query.append(Project.desired_capital <= int(body_desired_capital))
+    projects = Project.query.filter(*query)
+    projects_serialize = list(map(lambda x: x.serialize(), projects))
+    return jsonify({"projects": projects_serialize}), 200
