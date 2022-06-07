@@ -17,72 +17,102 @@ export const Premium = () => {
       </Link>
       <div className="container mt-4 rounded shadow p-3 ">
         <div className="row d-flex ">
-          <div className="divizq col-5 border m-2">
-            <h1 className="text-center m-2">Free User</h1>
-            <h4 className="text-center m-2">Emprendedor</h4>
-            <ul class="list-group list-group-flush mb-3 ">
-              <li class="list-group-item">Máximo proyectos publicados</li>
-              <li class="list-group-item">
+          <div className="divizq col-5 border-none rounded m-2 pb-4 shadow">
+            <h1 className="text-center m-2 border rounded p-2 free-title">
+              Free User
+            </h1>
+            <h4 className="text-center m-4">Emprendedor</h4>
+            <div className="d-flex lst">
+              <div class="li-izq">Máximo proyectos publicados</div>
+              <div class="text-end li-dcha pe-5">5</div>
+            </div>
+            <div className="d-flex lst">
+              <div class="li-izq">
                 Maximo de visitas diarias a tus proyectos
-              </li>
-              <li class="list-group-item">Capital Maximo del proyecto</li>
-              <li class="list-group-item">Destacar tus proyectos</li>
-              <li class="list-group-item">And a fifth one</li>
-            </ul>
-            <h4 className="mt-3 text-center">Inversor</h4>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                Visualizar proyectos con 5 dias de antiguedad
-              </li>
-              <li class="list-group-item">Maximo de proyectos vistos </li>
-              <li class="list-group-item">Maximo de proyectos Contactados</li>
-              <li class="list-group-item">
-                Ver los proyectos mas interesantes
-              </li>
-              <li class="list-group-item">And a fifth one</li>
-            </ul>
-          </div>
-          <div className="divdcha col-6 border m-2">
-            <h1 className="text-center m-2">Premium User</h1>
-            <h4 className="text-center m-2">Emprendedor</h4>
-            <ul class="list-group list-group-flush mb-3 ">
-              <li class="list-group-item">Máximo proyectos publicados</li>
-              <li class="list-group-item">
-                Maximo de visitas diarias a tus proyectos
-              </li>
-              <li class="list-group-item">Capital Maximo del proyecto</li>
-              <li class="list-group-item">Destacar tus proyectos</li>
-              <li class="list-group-item">And a fifth one</li>
-            </ul>
-            <h4 className="mt-3 text-center ">Inversor</h4>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                Visualizar proyectos con 5 dias de antiguedad
-              </li>
-              <li class="list-group-item">Maximo de proyectos vistos </li>
-              <li class="list-group-item">Maximo de proyectos Contactados</li>
-              <li class="list-group-item">
-                Ver los proyectos mas interesantes
-              </li>
-              <li class="list-group-item">And a fifth one</li>
-            </ul>
-          </div>
+              </div>
+              <div class="text-end li-dcha pe-5">50</div>
+            </div>
+            <div className="d-flex lst">
+              <div class="li-izq">Capital Maximo del proyecto</div>
+              <div class="text-end li-dcha pe-5">3000€</div>
+            </div>
+            <div className="d-flex lst">
+              <div class="li-izq">Destacar tus proyectos</div>
+              <div class="text-end li-dcha pe-5">NO</div>
+            </div>
 
-          <div className="d-flex justify-content-evenly">
-            <a
-              type="button"
-              className="col-2 btn btn-pay mt-5 btn-success shadow"
+            <h4 className="mt-4 text-center">Inversor</h4>
+            <div className="d-flex lst">
+              <div class="li-izq">Visualizar proyectos recien publicados</div>
+              <div class="text-end li-dcha pe-5">NO</div>
+            </div>
+            <div className="d-flex lst">
+              <div class="li-izq">Maximo de proyectos vistos</div>
+              <div class="text-end li-dcha pe-5">10</div>
+            </div>
+            <div className="d-flex lst">
+              <div class="li-izq">Ver proyectos destacados</div>
+              <div class="text-end li-dcha pe-5">NO</div>
+            </div>
+            <div
+              className="col-5 mx-auto rounded btn-free mt-5 btn-light shadow text-center p-2"
               aria-disabled="false"
             >
-              20€/Mes
-            </a>
-            <a
-              type="button"
-              className="col-2 btn btn-pay mt-5 btn-success shadow"
-              aria-disabled="false"
-            >
-              Hacerme Premium
-            </a>
+              0€/Mes
+            </div>
+          </div>
+          <div className="divdcha col-6 border-none rounded m-2 pb-4 shadow">
+            <h1 className="text-center premium-title border rounded p-2 m-2">
+              Premium User
+            </h1>
+            <h4 className="text-center m-4">Emprendedor</h4>
+            <div className="d-flex lst">
+              <div class="li-izq">Máximo proyectos publicados</div>
+              <div class="text-end li-dcha pe-5">Ilimitados</div>
+            </div>
+            <div className="d-flex lst">
+              <div class="li-izq">
+                Maximo de visitas diarias a tus proyectos
+              </div>
+              <div class="text-end li-dcha pe-5">Sin Limites</div>
+            </div>
+            <div className="d-flex lst">
+              <div class="li-izq">Capital Maximo del proyecto</div>
+              <div class="text-end li-dcha pe-5">Sin Limites</div>
+            </div>
+            <div className="d-flex lst">
+              <div class="li-izq">Destacar tus proyectos</div>
+              <div class="text-end li-dcha pe-5">SI</div>
+            </div>
+
+            <h4 className="mt-5 text-center">Inversor</h4>
+            <div className="d-flex lst">
+              <div class="li-izq">Visualizar proyectos recien publicados</div>
+              <div class="text-end li-dcha pe-5">SI</div>
+            </div>
+            <div className="d-flex lst">
+              <div class="li-izq">Maximo de proyectos vistos</div>
+              <div class="text-end li-dcha pe-5">Ilimitados</div>
+            </div>
+            <div className="d-flex lst">
+              <div class="li-izq">Ver proyectos destacados</div>
+              <div class="text-end li-dcha pe-5">SI</div>
+            </div>
+            <div className="d-flex justify-content-around">
+              <div
+                className="  btn-premium rounded mt-5 btn-success shadow p-3"
+                aria-disabled="false"
+              >
+                20€/Mes
+              </div>
+              <a
+                type="button"
+                className=" btn btn-pay mt-5 btn-success shadow p-3"
+                aria-disabled="false"
+              >
+                Hacerme Premium
+              </a>
+            </div>
           </div>
         </div>
       </div>

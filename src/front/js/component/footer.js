@@ -5,7 +5,7 @@ import logosimple from "/workspace/proyecto-final-capital/src/front/img/logosimp
 
 export const Footer = () => {
   return (
-    <div className="container footer-contain">
+    <div className="container footer-contain fixed-bottom">
       <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top footer-design">
         <ul className="nav col-md-4 d-flex">
           <li className="ms-3">
