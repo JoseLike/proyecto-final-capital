@@ -32,7 +32,7 @@ export const SidebarData = [
     id: 4,
     title: "Estadisticas",
     icon: <i className="fas fa-map-signs"></i>,
-    link: "/estadisticas",
+    link: "/stadistics",
     subtitle: [],
   },
 ];

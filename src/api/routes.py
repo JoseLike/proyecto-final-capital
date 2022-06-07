@@ -114,6 +114,16 @@ def get_project_user(user_id):
     user = User.query.get(user_id)
     return jsonify({"response":user.serialize()}),200
 
+
+@api.route('/stadistics/<int:user_id>', methods=["GET"])
+def get_user_stadistics(user_id):
+    #current_user = get_jwt_identity()
+    user = User.query.get(user_id)
+    print(user)
+    data=[]
+    
+    return jsonify({"response":user.serialize()}),200
+
 @api.route("/buscar-proyecto", methods=["POST"])
 #@jwt_required()
 def get_all_projects():
@@ -127,3 +137,4 @@ def get_all_projects():
     projects = Project.query.filter(*query)
     projects_serialize = list(map(lambda x: x.serialize(), projects))
     return jsonify({"projects": projects_serialize}), 200
+
