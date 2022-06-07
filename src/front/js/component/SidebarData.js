@@ -15,7 +15,7 @@ export const SidebarData = [
     link: "/mis-proyectos",
     subtitle: [
       { id: 1, name: "Mis Proyectos", path: "/mis-proyectos" },
-      { id: 2, name: "Crear Proyecto", path: "/crear-proyecto" },
+      { id: 2, name: "Crear Proyecto", path: "/crearproyecto" },
     ],
   },
   {

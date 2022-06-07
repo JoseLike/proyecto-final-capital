@@ -21,6 +21,7 @@ export const EmprendedorLanding = (props) => {
                 {store.user_projects.map((projects) => {
                     return (<Projectcard
                         key={projects.id}
+                        id={projects.id}
                         category={projects.category_id}
                         name={projects.title}
                         eta={projects.deadline}
@@ -30,7 +31,7 @@ export const EmprendedorLanding = (props) => {
 
             </div>
         </div>
-        <Link to="/newproject">
+        <Link to="/crearproyecto">
             <div href="#" className="btn-flotante text-center align-items-center">
                 Crear Proyecto
                 <i className="fa-duotone fa-plus fa-2xl"></i>

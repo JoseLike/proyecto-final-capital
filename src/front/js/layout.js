@@ -12,6 +12,11 @@ import injectContext from "./store/appContext";
 import { Footer } from "./component/footer";
 import { Sidebar } from "./component/Sidebar";
 import { StadisticsView } from "/workspace/proyecto-final-capital/src/front/js/pages/stadistics.js";
+import { CrearProyecto } from "/workspace/proyecto-final-capital/src/front/js/pages/CrearProyecto.js";
+import { EditarProyecto } from "./pages/editarproyecto";
+import { BuscarProyecto } from "./pages/BuscarProyecto";
+
+
 //create your first component
 const Layout = () => {
   //the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -55,6 +60,15 @@ const Layout = () => {
           </Route>
           <Route exact path="/stadistics">
             <StadisticsView />
+           </Route>
+          <Route exact path="/crearproyecto">
+            <CrearProyecto />
+          </Route>
+          <Route exact path="/editarproyecto/:theid">
+            <EditarProyecto />
+           </Route>
+          <Route exact path="/buscarproyecto">
+            <BuscarProyecto />
           </Route>
           <Route>
             <h1>Not found!</h1>
