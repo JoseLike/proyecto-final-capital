@@ -77,7 +77,7 @@ export const InversorPay = () => {
           </div>
           <div className="col-8 border-0 rounded mt-5">
             <h3 className="text-center mt-2">Datos de pago</h3>
-            <div>Elija forma de pago:</div>
+            inversorpay
           </div>
         </div>
         <div className="row justify-content-center mt-2">
