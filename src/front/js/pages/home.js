@@ -9,7 +9,7 @@ import crear from "/workspace/proyecto-final-capital/src/front/img/crear.png";
 import recibirmensaje from "/workspace/proyecto-final-capital/src/front/img/recibirmensaje.png";
 import growup from "/workspace/proyecto-final-capital/src/front/img/growingup.png";
 import inversorcolor from "/workspace/proyecto-final-capital/src/front/img/inversorcolor.png";
-import "../../styles/home.css";
+import "../../styles/landing.css";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);

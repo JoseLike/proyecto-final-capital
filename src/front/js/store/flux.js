@@ -5,6 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       logged: false,
       project_user_data: [],
+      favourites: [],
       singleproject: {
         id: 99,
         title: "Proyecto de Prueba en objeto",
@@ -32,10 +33,32 @@ const getState = ({ getStore, getActions, setStore }) => {
         const store = getStore();
         setStore({ logged: true });
       },
-      setLogOut: () => {
-        const store = getStore();
+
+      logOut: () => {
         setStore({ logged: false });
+        localStorage.removeItem("token");
       },
+
+      addToFavs: (name) => {
+        const store = getStore();
+        if (!store.favourites.includes(name)) {
+          setStore({ favourites: [...store.favourites, name] });
+          const response = await fetch(
+            "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/favoritos",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(datos),
+            }
+          );
+          const data = await response.json();
+        } else {
+          setStore({
+            favourites: store.favourites.filter((item) => item != name),
+          });
+        }
+      },
+
       sendUserInfo: async (datos) => {
         let actions = getActions();
         if (datos.email != null && datos.password.trim() != "") {

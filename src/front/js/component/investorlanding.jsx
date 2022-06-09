@@ -26,6 +26,9 @@ export const InvestorLanding = (props) => {
                         name={projects.title}
                         eta={projects.deadline}
                         capital={projects.desired_capital}
+                        fav={() => {
+                            actions.addToFavs(projects)
+                        }}
                     />)
                 })}
             </div>

@@ -145,3 +145,15 @@ def get_all_projects():
     projects_serialize = list(map(lambda x: x.serialize(), projects))
     return jsonify({"projects": projects_serialize}), 200
 
+@api.route("/favoritos", methods=["POST"])
+#@jwt_required()
+def add_favs():
+    body_userid=request.json.get("user_id")
+    body_projectid=request.json.get("project_id")
+    if body_userid and body_projectid:
+        new_favs = Favorites(user_id=body_userid,project_id = body_projectid)
+        db.session.add(new_favs)
+        db.session.commit()
+        return jsonify({"added":True, "user":new_favs.serialize()}), 200
+    else:
+        return jsonify({"added":False, "msg":"Lack of Info"}), 400
