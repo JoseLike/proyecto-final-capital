@@ -145,3 +145,13 @@ def get_all_projects():
     projects_serialize = list(map(lambda x: x.serialize(), projects))
     return jsonify({"projects": projects_serialize}), 200
 
+
+@api.route('upload', methods=["POST"])
+def handle_upload():
+    
+    response_body = {
+        "message": "hello world"
+    }
+    print(request.files)
+
+    return jsonify(response_body),200

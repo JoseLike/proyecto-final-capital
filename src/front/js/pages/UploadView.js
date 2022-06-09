@@ -9,7 +9,7 @@ export const UploadView = () => {
     project_picture: null,
     otros: "",
   });
-  const handleInputChange = (e) => {
+  const handleImageChange = (e) => {
     setInfo({
       ...info,
       [e.target.name]: e.target.files,
@@ -25,7 +25,10 @@ export const UploadView = () => {
       method: "POST",
       body: body,
     };
-    fetch("path/to/api/endpoint", options)
+    fetch(
+      "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/upload",
+      options
+    )
       .then((resp) => resp.json())
       .then((data) => console.log("Exito"), data)
       .catch((error) => console.error("ERROOOOOOR"), error);
@@ -40,7 +43,7 @@ export const UploadView = () => {
           type="file"
           className="custom-file-input"
           name="project_picture"
-          onChange={handleInputChange}
+          onChange={handleImageChange}
         ></input>
         <button className="btn btn-secondary" onClick={uploadImage}>
           Crear proyecto
