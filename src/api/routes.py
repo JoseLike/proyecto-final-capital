@@ -5,6 +5,9 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Project, Category
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
+import cloudinary
+import cloudinary.uploader
+
 
 
 
@@ -152,6 +155,9 @@ def handle_upload():
     response_body = {
         "message": "hello world"
     }
-    print(request.files)
+    print(request.files['project_picture'])
+    result = cloudinary.uploader.upload(request.files['project_picture'])
+    print(result['secure_url'])
+
 
     return jsonify(response_body),200
