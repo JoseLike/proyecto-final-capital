@@ -56,7 +56,10 @@ const Layout = () => {
             <InversorPay />
           </Route>
           <Route exact path="/stadistics">
-            <StadisticsView />
+            <div className="d-flex">
+              <Sidebar />
+              <StadisticsView />
+            </div>
           </Route>
           <Route exact path="/crearproyecto">
             <CrearProyecto />
@@ -65,7 +68,10 @@ const Layout = () => {
             <EditarProyecto />
           </Route>
           <Route exact path="/buscarproyecto">
-            <BuscarProyecto />
+            <div className="d-flex">
+              <Sidebar />
+              <BuscarProyecto />
+            </div>
           </Route>
           <Route exact path="/premium">
             <Premium />

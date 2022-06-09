@@ -4,27 +4,16 @@
 .login-title {
   color: white;
 }
+
 div .main-box-login {
-  background-color: rgba(255, 255, 255, 0.329);
-  height: 430px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.55);
+  background-color: rgba(0, 0, 0, 0.322);
+  width: 50vmax;
+  margin-top: 100px;
 }
-.rw-logo-login {
-  background-color: rgb(51, 144, 194);
-}
+
 .logo-login {
   width: 180px;
   height: 80px;
-}
-
-.rw-main-box-login {
-  margin-top: 105px;
-  background-color: rgb(51, 144, 194);
-}
-
-.cont-email-login {
-  padding-bottom: 35px;
-  padding-top: 35px;
 }
 
 .icono-back {

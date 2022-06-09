@@ -94,7 +94,7 @@ export const Register = () => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid base-register pb-5">
       <div className="row rw-logo mt-6 align-items-center text-center mx-auto">
         <div className="col-2 m-auto mt-2">
           <Link to="./">
@@ -103,7 +103,7 @@ export const Register = () => {
         </div>
       </div>
       {datos.user_type == null ? (
-        <div className="container account-type-box rounded justify-content-center">
+        <div className="container account-type-box rounded justify-content-center ">
           <div className="row d-flex ">
             <div className="arrow-left-reg1">
               <Link to="./">

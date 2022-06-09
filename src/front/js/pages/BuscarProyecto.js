@@ -50,16 +50,6 @@ export const BuscarProyecto = () => {
 
   return (
     <div className="container-fluid">
-      <Link to={"/personal"}>
-        <i className="fa-solid btn-flotante-atras fa-arrow-left arrow-left-reg1 icono-back col-1 ms-4 fixed"></i>
-      </Link>
-      <div className="row row-logo flui">
-        <span className="div-logo col-4 mx-auto">
-          <Link to="./">
-            <img className="logo-login m-auto" src={logo2} alt="logo"></img>
-          </Link>
-        </span>
-      </div>
       <div className="contenedor-busqueda rounded d-flex row justify-content-center border m-4 p-3">
         <div className="d-flex div-categorias col-4">
           <div
