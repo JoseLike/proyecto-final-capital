@@ -19,10 +19,17 @@ export const UploadView = () => {
   const uploadImage = (evt) => {
     evt.preventDefault();
     console.log("aqui esta el archivo@@@@@@@@@@@", info);
+    let body = new FormData();
+    body.append("project_picture", info.project_picture[0]);
+    const options = {
+      method: "POST",
+      body: body,
+    };
+    fetch("path/to/api/endpoint", options)
+      .then((resp) => resp.json())
+      .then((data) => console.log("Exito"), data)
+      .catch((error) => console.error("ERROOOOOOR"), error);
   };
-
-  let body = new FormData();
-  body.append("project_picture");
 
   return (
     <div>
