@@ -50,7 +50,7 @@ def login_user():
 
 
 @api.route("/crear-proyecto", methods=["POST"])
-@jwt_required()
+#@jwt_required()
 def create_project():
     body_title=request.json.get("title")
     body_userid=request.json.get("user_id")

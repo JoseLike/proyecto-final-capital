@@ -15,7 +15,7 @@ import { StadisticsView } from "/workspace/proyecto-final-capital/src/front/js/p
 import { CrearProyecto } from "/workspace/proyecto-final-capital/src/front/js/pages/CrearProyecto.js";
 import { EditarProyecto } from "./pages/editarproyecto";
 import { BuscarProyecto } from "./pages/BuscarProyecto";
-
+import { UploadView } from "./pages/UploadView";
 
 //create your first component
 const Layout = () => {
@@ -60,15 +60,18 @@ const Layout = () => {
           </Route>
           <Route exact path="/stadistics">
             <StadisticsView />
-           </Route>
+          </Route>
           <Route exact path="/crearproyecto">
             <CrearProyecto />
           </Route>
           <Route exact path="/editarproyecto/:theid">
             <EditarProyecto />
-           </Route>
+          </Route>
           <Route exact path="/buscarproyecto">
             <BuscarProyecto />
+          </Route>
+          <Route exact path="/upload">
+            <UploadView />
           </Route>
           <Route>
             <h1>Not found!</h1>
