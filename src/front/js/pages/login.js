@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-import logo2 from "/workspace/proyecto-final-capital/src/front/img/logo2.png";
+import logo2 from "/workspace/proyecto-final-capital/src/front/img/logosimple.png";
 import "../../styles/login-styles.css";
 import { useHistory } from "react-router-dom";
 
@@ -44,16 +44,20 @@ export const Login = () => {
   };
 
   return (
-    <div className="container">
-      <div className="row rw-logo mt-6 align-items-center text-center mx-auto">
+    <div className="container-fluid generaldiv">
+      <div className="row rw-logo-login mt-6 align-items-center text-center mx-auto">
         <div className="col-2 m-auto">
           <Link to="./">
-            <img className="logo-login m-auto" src={logo2} alt="logo"></img>
+            <img
+              className="logo-login m-auto pt-2"
+              src={logo2}
+              alt="logo"
+            ></img>
           </Link>
         </div>
       </div>
-      <div className="row rw-main-box ">
-        <div className="col-6 main-box m-auto rounded justify-content-center p-5">
+      <div className="row rw-main-box-login p-5 ">
+        <div className="col-8 main-box-login m-auto rounded justify-content-center p-5">
           <Link to="./">
             <i className="fa-solid fa-arrow-left icono-back"></i>
           </Link>
@@ -89,7 +93,7 @@ export const Login = () => {
           <div className="row justify-content-center pt-4">
             <button
               type="button "
-              className="col-3 btn btn-outline-success"
+              className="col-3 btn btn-outline-light"
               onClick={() => verify()}
             >
               Acceder

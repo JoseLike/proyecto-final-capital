@@ -1,33 +1,29 @@
-/*
-    home.css: This website contains selectors only used in home.css
+@import "~bootstrap/dist/css/bootstrap.css";
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
-
-.account-type-box {
-  margin-top: 105px;
+div .account-type-box {
+  margin-top: 70px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  background-color: rgba(154, 211, 243, 0.15);
-  width: 780px;
-  height: 430px;
+  background-color: rgba(51, 144, 194, 0.486);
 }
 
-.main-box {
-  background-color: rgba(154, 211, 243, 0.15);
-  height: 620px;
+.main-box-register {
+  background-color: rgb(51, 144, 194);
+
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+.titulo-selector-cuenta {
+  color: white;
+}
 .arrow-left-reg1 {
   width: 50px;
 }
 
-.rw-logo {
-  background-color: rgb(82, 113, 255);
+div .rw-logo {
+  background-color: rgb(51, 144, 194);
 }
-.logo-login {
+
+.logo-register {
   width: 180px;
   height: 80px;
 }
@@ -36,7 +32,8 @@
   padding-top: 5px;
 }
 
-.rw-main-box {
+.rw-main-box-register {
+  background-color: rgb(51, 144, 194);
   margin-top: 105px;
   text-align: justify;
 }
@@ -79,4 +76,8 @@
   justify-content: center;
   background-color: rgb(189, 226, 247);
   border: none;
+}
+
+.icono-atras {
+  color: rgb(51, 144, 194);
 }

@@ -6,7 +6,7 @@ import "../../styles/footer.css";
 
 export const Footer = () => {
   return (
-    <div className="container footer-contain">
+    <div className="container-fluid footer-contain">
       <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top footer-design">
         <ul className="nav col-4 d-flex justify-content-center">
           <li className="ms-3">
@@ -34,8 +34,8 @@ export const Footer = () => {
         <img src={logosimple} className="col-md-4 mb-0 logo-footer" />
         <ul className="nav col-md-4 align-items-center justify-content-center">
           <li className="nav-item">
-            <span className="footer-info">
-              <a href="#" className="nav-link px-2 text-muted">
+            <span className="footer-info texto-footer">
+              <a href="#" className="nav-link px-2 text-muted ">
                 Home
               </a>
             </span>

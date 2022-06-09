@@ -1,8 +1,10 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
 footer {
   background-color: rgba(51, 144, 194, 0.836);
 }
 .logo-footer {
-  width: 15%;
+  width: 10%;
   padding-left: 20px;
 }
 li {
@@ -10,4 +12,8 @@ li {
 }
 .footer-info {
   background: white;
+}
+
+.texto-footer {
+  color: white;
 }

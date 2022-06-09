@@ -50,9 +50,7 @@ const Layout = () => {
             </div>
           </Route>
           <Route exact path="/account">
-            <div className="d-flex">
-              <MyAccount />
-            </div>
+            <MyAccount />
           </Route>
           <Route exact path="/inversorpay">
             <InversorPay />

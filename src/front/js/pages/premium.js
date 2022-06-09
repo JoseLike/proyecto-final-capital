@@ -2,16 +2,13 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import "../../styles/premium.css";
+import { Sidebar } from "../component/Sidebar";
 
 export const Premium = () => {
   const { store, actions } = useContext(Context);
 
-  //useEffect(() => {
-  //actions.getSingleProject(theid);
-  //}, []);
-
   return (
-    <>
+    <div className="d-flex">
       <Link to={"/personal"}>
         <i className="fa-solid btn-flotante-atras fa-arrow-left arrow-left-reg1 icono-back col-1 ms-4 fixed"></i>
       </Link>
@@ -116,6 +113,6 @@ export const Premium = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };

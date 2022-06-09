@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import { RegisterType } from "/workspace/proyecto-final-capital/src/front/js/component/regUserSelection.jsx";
-import logo2 from "/workspace/proyecto-final-capital/src/front/img/logo2.png";
+import logo2 from "/workspace/proyecto-final-capital/src/front/img/logosimple.png";
 import profit from "/workspace/proyecto-final-capital/src/front/img/profit.png";
 import solution from "/workspace/proyecto-final-capital/src/front/img/solution.png";
 import "../../styles/register-styles.css";
@@ -94,11 +94,11 @@ export const Register = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="row rw-logo mt-6 align-items-center text-center mx-auto">
-        <div className="col-2 m-auto">
+        <div className="col-2 m-auto mt-2">
           <Link to="./">
-            <img className="logo-login m-auto" src={logo2} alt="logo"></img>
+            <img className="logo-register m-auto" src={logo2} alt="logo"></img>
           </Link>
         </div>
       </div>
@@ -110,7 +110,9 @@ export const Register = () => {
                 <i className="fa-solid fa-arrow-left arrow-left-reg1 icono-back col-1"></i>
               </Link>
             </div>
-            <h1 className="col-6 mx-auto">Seleccione tipo de cuenta</h1>
+            <h1 className="col-6 mx-auto titulo-selector-cuenta">
+              Seleccione tipo de cuenta
+            </h1>
           </div>
           <div className="d-flex justify-content-center mx-auto">
             <div
@@ -156,10 +158,10 @@ export const Register = () => {
           </div>
         </div>
       ) : (
-        <div className="row rw-main-box  justify-content-center">
-          <div className="col-8 main-box m-auto rounded ">
+        <div className="row rw-main-box-register  justify-content-center pt-5 pb-5">
+          <div className="col-8 main-box-register m-auto rounded p-3 ">
             <Link to="./">
-              <i className="fa-solid fa-arrow-left icono-back"></i>
+              <i className="icono-atras fa-solid fa-arrow-left icono-back"></i>
             </Link>
             <div className="m-auto">
               <h1 className="register-title text-center">

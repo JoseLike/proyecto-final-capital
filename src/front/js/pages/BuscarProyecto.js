@@ -49,7 +49,10 @@ export const BuscarProyecto = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container-fluid">
+      <Link to={"/personal"}>
+        <i className="fa-solid btn-flotante-atras fa-arrow-left arrow-left-reg1 icono-back col-1 ms-4 fixed"></i>
+      </Link>
       <div className="row row-logo flui">
         <span className="div-logo col-4 mx-auto">
           <Link to="./">
