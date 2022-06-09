@@ -9,68 +9,32 @@ import crear from "/workspace/proyecto-final-capital/src/front/img/crear.png";
 import recibirmensaje from "/workspace/proyecto-final-capital/src/front/img/recibirmensaje.png";
 import growup from "/workspace/proyecto-final-capital/src/front/img/growingup.png";
 import inversorcolor from "/workspace/proyecto-final-capital/src/front/img/inversorcolor.png";
-import "../../styles/home.css";
+import "../../styles/landing.css";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
-  const [boton, setBoton] = useState("btn bhome");
-  const [btnReg, setBtnReg] = useState("btn bhome");
 
   return (
     <div>
       <nav className="navbar shadow d-flex justify-content-between">
-        <ul className="nav col-2 d-flex justify-content-center">
-          <li className="ms-3">
-            <a className="text-muted" href="#">
-              <i className="fa-brands fa-2xl fa-twitter-square"></i>
-            </a>
-          </li>
-          <li className="ms-3">
-            <a className="text-muted" href="#">
-              <i className="fa-brands fa-2xl fa-linkedin"></i>
-            </a>
-          </li>
-          <li className="ms-3">
-            <a className="text-muted" href="#">
-              <i className="fa-brands fa-2xl fa-facebook-square"></i>
-            </a>
-          </li>
-        </ul>
-        <a
-          className="navbar-brand col-7 d-flex justify-content-center"
-          href="#"
-        >
-          <img src={logosimple} width="120" height="80" alt="" />
+        <a className="navbar-brand  d-flex justify-content-center" href="#">
+          <img src={logosimple} className="logoprincipal" alt="" />
         </a>
-        <div className="me-5">
-          <Link to={"/register"}>
-            <div
-              type="button"
-              className={btnReg}
-              onMouseOver={() => {
-                setBtnReg("btn bover");
-              }}
-              onMouseOut={() => {
-                setBtnReg("btn bhome");
-              }}
-            >
-              Registrarse
-            </div>
-          </Link>
-          <Link to={"/login"}>
-            <button
-              type="button"
-              className={boton}
-              onMouseOver={() => {
-                setBoton("btn bover");
-              }}
-              onMouseOut={() => {
-                setBoton("btn bhome");
-              }}
-            >
-              Login
-            </button>
-          </Link>
+        <div className="d-flex me-5 justify-content-between">
+          <div className="me-2 shadow reg-div">
+            <Link to={"/register"}>
+              <button type="button " class="btn btn-light">
+                Registrarse
+              </button>
+            </Link>
+          </div>
+          <div className="me-2 shadow reg-div">
+            <Link to={"/login"}>
+              <button type="button" class="btn btn-light">
+                Login
+              </button>
+            </Link>
+          </div>
         </div>
       </nav>
       <div className="container">
