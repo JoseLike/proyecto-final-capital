@@ -120,7 +120,11 @@ export const BuscarProyecto = () => {
                   eta={projects.deadline}
                   capital={projects.desired_capital}
                   fav={() => {
-                    actions.addToFavs(projects);
+                    let send = {
+                      project_id: projects.id,
+                      user_id: store.current_user.id,
+                    };
+                    actions.addToFavs(send);
                   }}
                 />
               </div>

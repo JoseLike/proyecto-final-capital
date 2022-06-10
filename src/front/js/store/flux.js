@@ -39,16 +39,16 @@ const getState = ({ getStore, getActions, setStore }) => {
         localStorage.removeItem("token");
       },
 
-      addToFavs: (name) => {
+      addToFavs: async (name) => {
         const store = getStore();
-        if (!store.favourites.includes(name)) {
+        if (!store.favourites.includes(name.id)) {
           setStore({ favourites: [...store.favourites, name] });
           const response = await fetch(
-            "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/favoritos",
+            "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/favoritos",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(datos),
+              body: JSON.stringify(name),
             }
           );
           const data = await response.json();
@@ -63,7 +63,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         let actions = getActions();
         if (datos.email != null && datos.password.trim() != "") {
           const response = await fetch(
-            "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/login",
+            "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/login",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -84,7 +84,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       getSingleProject: async (key) => {
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/project/" +
+          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/project/" +
             key
         );
         const gettedproject = await response.json();
@@ -95,7 +95,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       getUserProjects: async () => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/userprojects",
+          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/userprojects",
           {
             method: "GET",
             headers: {
@@ -112,7 +112,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       changeUserInfo: async (changedata) => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-gdcp2wpj598.ws-eu46.gitpod.io/api/edituser/" +
+          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/edituser/" +
             store.current_user.id,
           {
             method: "PUT",
@@ -130,7 +130,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       changeUserPassword: async (changedata) => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/editpassword/" +
+          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/editpassword/" +
             store.current_user.id,
           {
             method: "PUT",
@@ -147,7 +147,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       getUserStadistics: async () => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/stadistics/" +
+          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/stadistics/" +
             store.current_user.id
         );
         const data = await response.json();

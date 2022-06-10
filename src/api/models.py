@@ -49,7 +49,13 @@ class Favorites(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     project_id= db.Column(db.Integer, db.ForeignKey('project.id'))
-    #user_id
+    
+    def serialize(self):        
+                return {
+                "id": self.id,
+                "user": self.user_id,
+                "project_id": self.project_id
+            }
 
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
