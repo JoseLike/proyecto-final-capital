@@ -1,21 +1,38 @@
 .generaldiv {
-  background-color: rgb(51, 144, 194);
+  height: 88vh;
+  display: flex;
+  align-items: center;
+  background-color: white;
 }
 .login-title {
   color: white;
 }
 
 div .main-box-login {
-  background-color: rgba(0, 0, 0, 0.322);
+  background-color: rgba(51, 144, 194, 0.452);
   width: 50vmax;
+  height: 20vmax;
   margin-top: 100px;
+  display: flex;
+  align-items: center;
+}
+.info-log {
+  align-items: center;
 }
 
 .logo-login {
   width: 180px;
   height: 80px;
 }
+.fa-lock {
+  color: white;
+  margin: 5px;
+}
 
+.fa-envelope {
+  color: white;
+  margin: 5px;
+}
 .icono-back {
   padding-top: 25px;
   padding-left: 25px;
@@ -24,4 +41,18 @@ div .main-box-login {
 
 .fa-arrow-left {
   color: white;
+}
+
+.btn-flotante-atras:hover {
+  background-color: rgb(39, 170, 240); /* Color de fondo al pasar el cursor */
+  color: white;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-7px);
+}
+@media only screen and (max-width: 600px) {
+  .btn-flotante-atras {
+    font-size: 14px;
+    padding: 12px 20px;
+    right: 20px;
+  }
 }

@@ -7,9 +7,14 @@ div .account-type-box {
 }
 
 .base-register {
-  background-color: rgb(51, 144, 194);
+  background-color: rgba(51, 144, 194, 0.445);
+  height: 88vh;
+  display: flex;
+  align-items: center;
 }
-
+.contenido {
+  width: 100%;
+}
 .main-box-register {
   background-color: rgb(51, 144, 194);
 
@@ -21,10 +26,6 @@ div .account-type-box {
 }
 .arrow-left-reg1 {
   width: 50px;
-}
-
-div .rw-logo {
-  background-color: rgb(51, 144, 194);
 }
 
 .logo-register {
@@ -53,20 +54,12 @@ div .rw-logo {
   width: 280px;
 }
 
-.img-account-type {
-  width: 200px;
-}
-
 .btt-account-type {
-  width: 300px;
-  height: 260px;
   color: black;
 }
 
 .btt-account-type-over {
   background-color: rgba(154, 211, 243, 0.65);
-  width: 300px;
-  height: 260px;
 }
 
 .dropdown-toggle {

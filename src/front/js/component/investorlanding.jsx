@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "/workspace/proyecto-final-capital/src/front/styles/personalview.css";
-import { SidebarData } from "./SidebarData";
 import { Link } from "react-router-dom";
 import { InvestorCard } from "/workspace/proyecto-final-capital/src/front/js/component/investorcard.jsx";
 import PropTypes from 'prop-types';

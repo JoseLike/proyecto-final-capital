@@ -1,7 +1,9 @@
 .inp-capital-span {
   width: 150px;
 }
-
+.premium-page {
+  height: 88vh;
+}
 .btn-pay {
   color: white;
 }

@@ -1,71 +1,19 @@
-.fsize {
-  width: 50px;
-}
-.navbar {
+.left-col-landing {
   background-color: rgb(51, 144, 194);
-}
-.button-log {
-  width: 4000px;
-}
-
-.img-ilutrator {
-  width: 200px;
-  height: 200px;
-}
-.reg-div {
-  box-shadow: white;
-}
-p {
-  font-family: "Racing Sans One";
-  font-size: 24px;
-}
-
-.cabecera2 {
-  color: rgb(0, 0, 0);
-}
-
-.cabecera3 {
-  color: rgb(0, 0, 0);
-}
-
-.btn {
-  color: rgb(42, 59, 83);
-  font-size: 18px;
-}
-
-.btn-outline-light {
-  color: white;
-}
-
-.principal {
-  font-family: "Courgette", cursive;
-  font-size: 34px;
-}
-
-.bhome {
-  color: white;
-  font-size: 24px;
-}
-
-.bover {
-  color: white;
-  font-size: 32px;
-  border: none;
-}
-
-.row {
+  border-radius: 20px;
+  height: 78vh;
   display: flex;
-  padding: 0px;
-  margin: 0px;
-  text-decoration: none;
-  color: black;
+  align-items: center;
 }
 
-.title {
-  text-decoration: none;
-  color: black;
+.logo-login-page {
+  width: 24rem;
 }
 
-.i-rrss {
-  color: rgba(255, 255, 255, 0.815);
+.btns-landing {
+  width: 82%;
+}
+
+.log-options {
+  width: 100%;
 }

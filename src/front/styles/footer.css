@@ -2,6 +2,8 @@
 
 footer {
   background-color: rgba(51, 144, 194, 0.836);
+  height: 12vh;
+  width: 100%;
 }
 .logo-footer {
   width: 10%;
@@ -16,4 +18,15 @@ li {
 
 .texto-footer {
   color: white;
+}
+
+div .footer-contain {
+  height: 12vh;
+  width: 100%;
+  margin: none;
+}
+
+.container-fluid {
+  width: 100%;
+  margin: none;
 }

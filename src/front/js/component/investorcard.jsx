@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "/workspace/proyecto-final-capital/src/front/styles/personalview.css";
-import { SidebarData } from "./SidebarData";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";

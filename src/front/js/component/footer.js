@@ -7,7 +7,7 @@ import "../../styles/footer.css";
 export const Footer = () => {
   return (
     <div className="container-fluid footer-contain">
-      <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top footer-design">
+      <footer className="d-flex flex-wrap justify-content-between align-items-center  ">
         <ul className="nav col-4 d-flex justify-content-center">
           <li className="ms-3">
             <a className="text-muted i-rrss" href="#">

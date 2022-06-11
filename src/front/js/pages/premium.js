@@ -8,7 +8,7 @@ export const Premium = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="d-flex">
+    <div className="d-flex premium-page pb-4">
       <Link to={"/personal"}>
         <i className="fa-solid btn-flotante-atras fa-arrow-left arrow-left-reg1 icono-back col-1 ms-4 fixed"></i>
       </Link>

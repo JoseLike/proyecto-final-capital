@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "/workspace/proyecto-final-capital/src/front/styles/home.css";
-import { SidebarData } from "./SidebarData";
 import { Link } from "react-router-dom";
 import "../../styles/sidebar2.css";
 
@@ -12,7 +11,7 @@ export const Sidebar = () => {
       return (
         <>
           <div
-            className="d-flex flex-column flex-shrink-0 bg-light vh-100"
+            className="d-flex flex-column flex-shrink-0 bg-light sidebar-ops "
             style={{ width: "120px" }}
           >
             <ul className="nav nav-pills nav-flush flex-column mb-auto text-center">
@@ -35,7 +34,7 @@ export const Sidebar = () => {
                   aria-labelledby="dropdownUser3"
                 >
                   <li>
-                    <Link to="/favoritos">
+                    <Link to="/personal">
                       <div className="dropdown-item">Proyectos Favoritos</div>
                     </Link>
                   </li>
@@ -130,7 +129,7 @@ export const Sidebar = () => {
       return (
         <>
           <div
-            className="d-flex flex-column flex-shrink-0 bg-light vh-100"
+            className="d-flex flex-column flex-shrink-0 bg-light sidebar-ops"
             style={{ width: "120px" }}
           >
             <ul className="nav nav-pills nav-flush flex-column mb-auto text-center">

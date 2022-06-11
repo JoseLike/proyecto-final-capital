@@ -49,48 +49,50 @@ export const Login = () => {
         <i className="fa-solid btn-flotante-atras fa-arrow-left arrow-left-reg1 icono-back col-1 ms-4 fixed"></i>
       </Link>
 
-      <div className="container main-box-login m-auto p-2 rounded justify-content-center">
-        <div className="row m-auto col-10">
-          <h1 className="login-title text-center">Login</h1>
-        </div>
-        <div className="row d-flex  cont-email-login m-2">
-          <div className="d-flex col-md-6 m-auto justify-content-center">
-            <i className=" fas fa-envelope fa-lg text-center fa-fw"></i>
-            <div className=" form-outline flex-fill ">
-              <input
-                type="email"
-                id="form3Example3c"
-                className="form-control"
-                placeholder="email@email.com"
-                onChange={handleInputChange}
-                name="email"
-              />
+      <div className=" main-box-login m-auto p-2 rounded justify-content-center">
+        <div className="info-log justify-content-center">
+          <div className="row m-auto col-10">
+            <h1 className="login-title text-center">Login</h1>
+          </div>
+          <div className="row d-flex  cont-email-login m-2">
+            <div className="d-flex col-md-6 m-auto justify-content-center text-center">
+              <i className=" fas fa-envelope fa-lg text-center fa-fw"></i>
+              <div className=" form-outline flex-fill ">
+                <input
+                  type="email"
+                  id="form3Example3c"
+                  className="form-control"
+                  placeholder="email@email.com"
+                  onChange={handleInputChange}
+                  name="email"
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="row m-auto  d-flex cont-email-password">
-          <div className="d-flex col-md-6 m-auto">
-            <i className="  fas fa-lock fa-lg  fa-fw"></i>
-            <div className=" form-outline flex-fill ">
-              <input
-                type="password"
-                id="form3Example4c"
-                className="form-control"
-                placeholder="xxxxxxxxx"
-                onChange={handleInputChange}
-                name="password"
-              />
+          <div className="row m-auto d-flex cont-email-password">
+            <div className="d-flex col-md-6 m-auto justify-content-center">
+              <i className="  fas fa-lock fa-lg  fa-fw"></i>
+              <div className=" form-outline flex-fill ">
+                <input
+                  type="password"
+                  id="form3Example4c"
+                  className="form-control"
+                  placeholder="xxxxxxxxx"
+                  onChange={handleInputChange}
+                  name="password"
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="row justify-content-center pt-4">
-          <button
-            type="button "
-            className="col-md-3 btn btn-outline-light"
-            onClick={() => verify()}
-          >
-            Acceder
-          </button>
+          <div className="row justify-content-center pt-4">
+            <button
+              type="button "
+              className="col-md-3 btn btn-outline-light"
+              onClick={() => verify()}
+            >
+              Acceder
+            </button>
+          </div>
         </div>
       </div>
     </div>
