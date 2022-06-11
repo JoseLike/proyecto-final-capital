@@ -21,6 +21,7 @@ export const CrearProyecto = () => {
     investment_capacity: "",
     deadline: null,
     project_picture: null,
+    project_files: null,
   });
 
   const [cate, setCate] = useState([]);
@@ -42,12 +43,15 @@ export const CrearProyecto = () => {
       parseInt(info.invested_capital);
       parseInt(info.category);
       parseInt(info.loans);
+      let body = new FormData();
+      for (let key in info) {
+        body.append(key, info[key]);
+      }
       const response = await fetch(
-        "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/crear-proyecto",
+        "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/crear-proyecto",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(info),
+          body: body,
         }
       );
       const data = await response.json();
@@ -63,7 +67,7 @@ export const CrearProyecto = () => {
 
   const getCategory = async () => {
     const response = await fetch(
-      "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io//api/category/"
+      "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/category/"
     );
     const data = await response.json();
     console.log(data.cate);
@@ -74,6 +78,12 @@ export const CrearProyecto = () => {
     setInfo({
       ...info,
       [e.target.name]: e.target.value,
+    });
+  };
+  const handleImageChange = (e) => {
+    setInfo({
+      ...info,
+      [e.target.name]: e.target.files[0],
     });
   };
 
@@ -170,7 +180,7 @@ export const CrearProyecto = () => {
               type="file"
               className="custom-file-input w-25"
               name="project_picture"
-              onChange={(e) => setInfo(e.target.files)}
+              onChange={handleImageChange}
             ></input>
           </div>
           <br />
@@ -186,8 +196,9 @@ export const CrearProyecto = () => {
               name="investment_capacity"
               onChange={handleInputChange}
             >
-              <option>de donde ---- hasta donde</option>
-              <option>de donde ---- hasta donde</option>
+              <option> 10 ---- 250 </option>
+              <option> 260 ---- 1000 </option>
+              <option> Puedo manejar una inversion elevada </option>
             </select>
           </div>
           <br />
@@ -267,7 +278,12 @@ export const CrearProyecto = () => {
             >
               Archivos adjuntos al proyecto:
             </label>
-            <input type="file" className="custom-file-input w-25"></input>
+            <input
+              type="file"
+              className="custom-file-input w-25"
+              onChange={handleImageChange}
+              name="project_files"
+            ></input>
           </div>
           <br />
         </form>
