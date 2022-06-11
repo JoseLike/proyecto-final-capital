@@ -52,6 +52,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             }
           );
           const data = await response.json();
+          console.log(data);
         } else {
           setStore({
             favourites: store.favourites.filter((item) => item != name),
