@@ -154,6 +154,14 @@ def add_favs():
         new_favs = Favorites(user_id=body_userid,project_id = body_projectid)
         db.session.add(new_favs)
         db.session.commit()
-        return jsonify({"added":True, "user":new_favs.serialize()}), 200
+        return jsonify({"added":True, "favorite":new_favs.serialize()}), 200
     else:
         return jsonify({"added":False, "msg":"Lack of Info"}), 400
+
+@api.route('/delete/favs/<int:projectid>', methods=['DELETE'])
+#@jwt_required()
+def del_fav(projectid):
+    del_fav= Favorites.query.get(projectid)
+    db.session.delete(del_fav)
+    db.session.commit()
+    return jsonify({"deleted":True}),200

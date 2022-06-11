@@ -38,25 +38,56 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ logged: false });
         localStorage.removeItem("token");
       },
-
-      addToFavs: async (name) => {
+      deleteFav: async (project) => {
         const store = getStore();
-        if (!store.favourites.includes(name.id)) {
-          setStore({ favourites: [...store.favourites, name] });
-          const response = await fetch(
-            "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/favoritos",
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(name),
-            }
-          );
-          const data = await response.json();
-          console.log(data);
-        } else {
+        const response = await fetch(
+          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/delete/favs/" +
+            project.id,
+          {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+        const data = await response.json();
+        if (data.deleted == true) {
           setStore({
-            favourites: store.favourites.filter((item) => item != name),
+            favourites: store.favourites.filter(
+              (item) => item.project_id != project.project_id
+            ),
           });
+          console.log(data);
+        }
+      },
+
+      sendFav: async (name) => {
+        const store = getStore();
+        const response = await fetch(
+          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/favoritos",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(name),
+          }
+        );
+        const data = await response.json();
+        setStore({ favourites: [...store.favourites, data.favorite] });
+        console.log(data);
+      },
+      addToFavs: (name) => {
+        const store = getStore();
+        const actions = getActions();
+        if (store.favourites.length != 0) {
+          store.favourites.map((projects) => {
+            if (projects.project_id != name.project_id) {
+              console.log(projects);
+              actions.sendFav(name);
+            } else {
+              console.log(projects);
+              actions.deleteFav(projects);
+            }
+          });
+        } else {
+          actions.sendFav(name);
         }
       },
 
@@ -77,6 +108,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             actions.setLogged();
             setStore({ current_user: data.user });
             setStore({ user_projects: data.user.projects });
+            setStore({ favourites: data.user.favorites });
           }
           console.log(data);
         } else {
