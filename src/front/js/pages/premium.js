@@ -13,8 +13,8 @@ export const Premium = () => {
         <i className="fa-solid btn-flotante-atras fa-arrow-left arrow-left-reg1 icono-back col-1 ms-4 fixed"></i>
       </Link>
       <div className="container mt-4 rounded shadow p-3 ">
-        <div className="row d-flex ">
-          <div className="divizq col-5 border-none rounded m-2 pb-4 shadow">
+        <div className="row d-flex flex-md-wrap ">
+          <div className="divizq col-md-5 border-none rounded m-2 pb-4 shadow">
             <h1 className="text-center m-2 border rounded p-2 free-title">
               Free User
             </h1>
@@ -58,7 +58,7 @@ export const Premium = () => {
               0€/Mes
             </div>
           </div>
-          <div className="divdcha col-6 border-none rounded m-2 pb-4 shadow">
+          <div className="divdcha col-md-6 border-none rounded m-2 pb-4 shadow">
             <h1 className="text-center premium-title border rounded p-2 m-2">
               Premium User
             </h1>

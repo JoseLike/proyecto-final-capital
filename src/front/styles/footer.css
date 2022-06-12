@@ -30,3 +30,24 @@ div .footer-contain {
   width: 100%;
   margin: none;
 }
+
+.fa-twitter-square {
+  color: white;
+}
+.fa-twitter-square:hover {
+  color: rgb(28, 117, 28);
+}
+.fa-linkedin {
+  color: white;
+}
+.fa-linkedin:hover {
+  color: rgb(28, 117, 28);
+}
+
+.fa-facebook-square {
+  color: white;
+}
+
+.fa-facebook-square:hover {
+  color: rgb(28, 117, 28);
+}

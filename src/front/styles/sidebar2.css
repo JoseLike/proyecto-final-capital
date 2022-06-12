@@ -25,3 +25,15 @@ body {
 .sidebar-ops {
   height: 88vh;
 }
+
+.icono-mensajes-sidebar {
+  color: rgb(51, 144, 194);
+}
+
+.icono-estadisticas-sidebar {
+  color: rgb(51, 144, 194);
+}
+
+.icono-premium-sidebar {
+  color: rgb(51, 144, 194);
+}

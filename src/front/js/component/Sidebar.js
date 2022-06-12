@@ -3,9 +3,15 @@ import { Context } from "../store/appContext";
 import "/workspace/proyecto-final-capital/src/front/styles/home.css";
 import { Link } from "react-router-dom";
 import "../../styles/sidebar2.css";
+import { useHistory } from "react-router-dom";
 
 export const Sidebar = () => {
+  let navigate = useHistory();
   const { store, actions } = useContext(Context);
+  const clicklogout = () => {
+    actions.setLogOut();
+    //navigate.push("./");
+  };
   {
     if (store.current_user.user_type != 2) {
       return (
@@ -26,7 +32,7 @@ export const Sidebar = () => {
                   className="nav-link py-3 border-bottom"
                   data-bs-toggle="dropdown"
                 >
-                  <i className="far fa-credit-card-front"></i>
+                  <i class="far fa-credit-card-front"></i>
                   <small>Proyectos</small>
                 </a>
                 <ul
@@ -51,7 +57,7 @@ export const Sidebar = () => {
                   className="nav-link py-3 border-bottom"
                   data-bs-toggle="dropdown"
                 >
-                  <i className="fas fa-envelope"></i>
+                  <i className="fas fa-envelope icono-mensajes-sidebar fa-xl"></i>
                   <small>Mensajes</small>
                 </a>
                 <ul
@@ -73,14 +79,16 @@ export const Sidebar = () => {
               <li>
                 <Link to="/stadistics">
                   <div href="#" className="nav-link py-3 border-bottom">
-                    <i className="fa fa-cog"></i> <small>Estadisticas</small>
+                    <i className="fa fa-cog icono-estadisticas-sidebar fa-xl"></i>{" "}
+                    <small>Estadisticas</small>
                   </div>
                 </Link>
               </li>
               <li>
                 <Link to="/premium">
                   <div href="#" className="nav-link py-3 border-bottom">
-                    <i className="fa fa-bookmark"></i> <small>Premium</small>
+                    <i className="fa fa-bookmark icono-premium-sidebar fa-xl"></i>{" "}
+                    <small>Premium</small>
                   </div>
                 </Link>
               </li>
@@ -116,7 +124,7 @@ export const Sidebar = () => {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#" onclick={clicklogout()}>
                     Sign out
                   </a>
                 </li>
@@ -144,7 +152,7 @@ export const Sidebar = () => {
                   className="nav-link py-3 border-bottom"
                   data-bs-toggle="dropdown"
                 >
-                  <i className="far fa-credit-card-front"></i>
+                  <i className="fas fa-credit-card-front"></i>
                   <small>Proyectos</small>
                 </a>
                 <ul
@@ -234,7 +242,7 @@ export const Sidebar = () => {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#" onclick={clicklogout()}>
                     Sign out
                   </a>
                 </li>

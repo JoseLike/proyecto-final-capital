@@ -35,9 +35,7 @@ export const Footer = () => {
         <ul className="nav col-md-4 align-items-center justify-content-center">
           <li className="nav-item">
             <span className="footer-info texto-footer">
-              <a href="#" className="nav-link px-2 text-muted ">
-                Home
-              </a>
+              <div className="nav-link px-2 text-muted ">Home</div>
             </span>
           </li>
           <li className="nav-item">

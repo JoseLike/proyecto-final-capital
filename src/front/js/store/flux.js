@@ -133,6 +133,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           user_stadistics: { total_projects: data.response.projects.length },
         });
       },
+      setLogOut: () => {
+        localStorage.removeItem("token");
+      },
     },
   };
 };
