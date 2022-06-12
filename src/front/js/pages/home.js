@@ -37,11 +37,31 @@ export const Home = () => {
             </div>
           </div>
         </div>
-        <div className="col-md-6 right-col-landing ">
-          <div className="d-flex">
-            <InvestorCard />
-            <InvestorCard />
-            <InvestorCard />
+        <div className="col-md-6 right-col-landing  ">
+          <div className="d-flex p-3 landing-text-right text-center align-items-center rounded">
+            Encuentra los mejores proyectos en los que invertir tu capital o si
+            eres un emprendedor...date a conocer y encuentra el capital para tu
+            idea
+          </div>
+          <div className="d-flex flex-nowrap justify-content-start overflow-auto">
+            <InvestorCard
+              category="Maquinaria"
+              name="Sistema dinámico de extrusion 3D"
+              eta="22/12/2029"
+              capital="3000€"
+            />
+            <InvestorCard
+              category="Salud"
+              name="Investigacion con celulas madre"
+              eta="05/08/2023"
+              capital="250000€"
+            />
+            <InvestorCard
+              category="Negocio"
+              name="Ecommerce de muebles de madera"
+              eta="01/01/2023"
+              capital="10000€"
+            />
           </div>
         </div>
       </div>

@@ -45,7 +45,7 @@ export const Login = () => {
 
   return (
     <div className="container-fluid generaldiv p-4">
-      <Link to={"/personal"}>
+      <Link to={"./"}>
         <i className="fa-solid btn-flotante-atras fa-arrow-left arrow-left-reg1 icono-back col-1 ms-4 fixed"></i>
       </Link>
 
