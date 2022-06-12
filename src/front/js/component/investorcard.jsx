@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 
 export const InvestorCard = (props) => {
   const { store, actions } = useContext(Context);
+  const [icono, seticono] = useState("fa-regular fa-star");
   let navigate = useHistory();
 
   return (
@@ -43,5 +44,5 @@ InvestorCard.propTypes = {
   capital: PropTypes.number,
   eta: PropTypes.string,
   enlace: PropTypes.func,
-  fav: PropTypes.func
+  fav: PropTypes.string
 };
