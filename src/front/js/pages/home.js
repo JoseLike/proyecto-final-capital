@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-import { InvestorCard } from "/workspace/proyecto-final-capital/src/front/js/component/investorcard.jsx";
+import { LandingCard } from "/workspace/proyecto-final-capital/src/front/js/component/landingcard.jsx";
 import logosimple from "/workspace/proyecto-final-capital/src/front/img/logosimple.png";
 
 import "../../styles/landing.css";
@@ -10,7 +10,7 @@ export const Home = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="container-fluid p-4">
+    <div className="container-fluid p-4 m-1">
       <div className="row d-flex">
         <div className="col-md-5 left-col-landing shadow">
           <div className="log-options">
@@ -43,20 +43,20 @@ export const Home = () => {
             eres un emprendedor...date a conocer y encuentra el capital para tu
             idea
           </div>
-          <div className="d-flex flex-nowrap justify-content-start overflow-auto">
-            <InvestorCard
+          <div className="d-flex flex-wrap">
+            <LandingCard
               category="Maquinaria"
               name="Sistema dinámico de extrusion 3D"
               eta="22/12/2029"
               capital="3000€"
             />
-            <InvestorCard
+            <LandingCard
               category="Salud"
               name="Investigacion con celulas madre"
               eta="05/08/2023"
               capital="250000€"
             />
-            <InvestorCard
+            <LandingCard
               category="Negocio"
               name="Ecommerce de muebles de madera"
               eta="01/01/2023"

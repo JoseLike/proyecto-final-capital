@@ -96,20 +96,20 @@ export const Register = () => {
   return (
     <div className="container-fluid base-register">
       <div className="contenido">
-        <div className="col-2 m-auto mt-2">
+        <div className="row m-auto mt-2">
           <Link to="./">
             <img className="logo-register m-auto" src={logo2} alt="logo"></img>
           </Link>
         </div>
         {datos.user_type == null ? (
-          <div className="d-flex container account-type-box rounded justify-content-center ">
-            <div className="row d-flex ">
+          <div className="account-type-box rounded justify-content-center m-5 p-4 ">
+            <div className="d-flex text-center ">
               <div className="arrow-left-reg1">
                 <Link to="./">
                   <i className="fa-solid fa-arrow-left arrow-left-reg1 icono-back col-1"></i>
                 </Link>
               </div>
-              <h1 className="col-6 mx-auto titulo-selector-cuenta">
+              <h1 className=" mx-auto titulo-selector-cuenta">
                 Seleccione tipo de cuenta
               </h1>
             </div>
@@ -161,7 +161,7 @@ export const Register = () => {
             </div>
           </div>
         ) : (
-          <div className="row rw-main-box-register  justify-content-center pt-5 pb-5">
+          <div className="row rw-main-box-register  justify-content-center pt-4 pb-5">
             <div className="col-8 main-box-register m-auto rounded p-3 ">
               <Link to="./">
                 <i className="icono-atras fa-solid fa-arrow-left icono-back"></i>

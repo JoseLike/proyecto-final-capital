@@ -45,11 +45,12 @@ export const Login = () => {
 
   return (
     <div className="container-fluid generaldiv p-4">
-      <Link to={"./"}>
-        <i className="fa-solid btn-flotante-atras fa-arrow-left arrow-left-reg1 icono-back col-1 ms-4 fixed"></i>
-      </Link>
-
       <div className=" main-box-login m-auto p-2 rounded justify-content-center">
+        <div className="p-3  div-arrow-login">
+          <Link to={"./"}>
+            <i class="fa-solid fa-caret-left fa-2xl arrow-login"></i>
+          </Link>
+        </div>
         <div className="info-log justify-content-center">
           <div className="row m-auto col-10">
             <h1 className="login-title text-center">Login</h1>

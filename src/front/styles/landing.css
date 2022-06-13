@@ -1,9 +1,13 @@
 .left-col-landing {
   background-color: rgb(51, 144, 194);
   border-radius: 20px;
+  width: 40%;
   height: 82vh;
   display: flex;
   align-items: center;
+}
+.right-col-landing {
+  width: 60%;
 }
 
 .logo-login-page {
@@ -22,4 +26,7 @@
   height: 50%;
   font-size: 26px;
   background-color: white;
+}
+
+.landing-card {
 }
