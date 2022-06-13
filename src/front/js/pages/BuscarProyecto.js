@@ -1,11 +1,14 @@
+
 import React, { useState, useEffect } from "react";
 import logo2 from "/workspace/proyecto-final-capital/src/front/img/logosimple.png";
 import { Link } from "react-router-dom";
 import "../../styles/buscarproyecto.css";
 
+
 import { InvestorCard } from "/workspace/proyecto-final-capital/src/front/js/component/investorcard.jsx";
 
 export const BuscarProyecto = () => {
+  const { store, actions } = useContext(Context);
   const [find, setFind] = useState({
     category_id: "",
     desired_capital: "",
@@ -15,7 +18,7 @@ export const BuscarProyecto = () => {
 
   const searchProject = async () => {
     const response = await fetch(
-      "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/buscar-proyecto/",
+      "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/buscar-proyecto/",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -34,7 +37,7 @@ export const BuscarProyecto = () => {
 
   const getCategory = async () => {
     const response = await fetch(
-      "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/category/"
+      "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/category/"
     );
     const data = await response.json();
     console.log(data.cate);
@@ -113,6 +116,13 @@ export const BuscarProyecto = () => {
                   name={projects.title}
                   eta={projects.deadline}
                   capital={projects.desired_capital}
+                  fav={() => {
+                    let send = {
+                      project_id: projects.id,
+                      user_id: store.current_user.id,
+                    };
+                    actions.addToFavs(send);
+                  }}
                 />
               </div>
             );

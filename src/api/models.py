@@ -18,6 +18,7 @@ class User(db.Model):
     inversor_type = db.Column(db.String(120), default=None) 
     acepted_conditions = db.Column(db.Boolean(),nullable=False, default=False)
     projects = db.relationship('Project', backref='user')
+    favorites = db.relationship('Favorites', backref='user')
 
 
     def serialize(self):        
@@ -34,7 +35,8 @@ class User(db.Model):
                 "is_company":self.is_company,
                 "profile_picture":self.profile_picture,
                 "user_longevity":self.user_longevity,
-                "projects":list(map(lambda project: project.serialize(),self.projects))
+                "projects":list(map(lambda project: project.serialize(),self.projects)),
+                "favorites":list(map(lambda favorite: favorite.serialize(),self.favorites))
 
             }
             
@@ -47,7 +49,13 @@ class Favorites(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     project_id= db.Column(db.Integer, db.ForeignKey('project.id'))
-    #user_id
+    
+    def serialize(self):        
+                return {
+                "id": self.id,
+                "user_id": self.user_id,
+                "project_id": self.project_id,
+            }
 
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -92,7 +100,6 @@ class Project(db.Model):
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
-    
     def serialize(self):
         return{
         "id": self.id,

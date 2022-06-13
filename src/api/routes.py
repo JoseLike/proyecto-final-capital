@@ -2,9 +2,11 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Project, Category
+from api.models import db, User, Project, Category, Favorites
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
+import stripe
+from os import getenv
 
 
 
@@ -144,4 +146,45 @@ def get_all_projects():
     projects = Project.query.filter(*query)
     projects_serialize = list(map(lambda x: x.serialize(), projects))
     return jsonify({"projects": projects_serialize}), 200
+
+
+@api.route("/favoritos", methods=["POST"])
+#@jwt_required()
+def add_favs():
+    body_userid=request.json.get("user_id")
+    body_projectid=request.json.get("project_id")
+    if body_userid and body_projectid:
+        new_favs = Favorites(user_id=body_userid,project_id = body_projectid)
+        db.session.add(new_favs)
+        db.session.commit()
+        return jsonify({"added":True, "favorite":new_favs.serialize()}), 200
+    else:
+        return jsonify({"added":False, "msg":"Lack of Info"}), 400
+
+@api.route('/delete/favs/<int:projectid>', methods=['DELETE'])
+#@jwt_required()
+def del_fav(projectid):
+    del_fav= Favorites.query.get(projectid)
+    db.session.delete(del_fav)
+    db.session.commit()
+    return jsonify({"deleted":True}),200
+
+@api.route("/investment", methods=["POST"])
+#@jwt_required()
+def payment():
+    try:
+        data = request.json
+        amount = int(float(data['amount'])*100)
+        stripe.api_key = 'sk_test_51L87AmKEz3UKYat7fd2xcMZ86ttOFOjOO5qEikG7qBuaLjQNWAGdXoyW4ukMijSCiMH3uwAIDQr1MfopowYG4mWV00JnzZercq'
+        charge = stripe.Charge.create(
+        amount = amount,
+        currency = "eur",
+        source = "tok_amex", # obtained with Stripe.js
+        description = data['description'],
+        )
+        print(charge)
+        return "Su pago ha sido aceptado"
+    except stripe.error.StripeError as e:
+        print(e)
+        return "error"
 
