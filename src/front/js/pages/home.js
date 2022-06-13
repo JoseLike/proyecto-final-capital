@@ -23,13 +23,16 @@ export const Home = () => {
               <div className="me-2 reg-div align-items-center">
                 <div className="mb-2 reg-div">
                   <Link to={"/login"}>
-                    <button type="button" class="btn btn-light btns-landing">
+                    <button
+                      type="button"
+                      className="btn btn-light btns-landing"
+                    >
                       Login
                     </button>
                   </Link>
                 </div>
                 <Link to={"/register"}>
-                  <button type="button " class="btn btn-light btns-landing">
+                  <button type="button " className="btn btn-light btns-landing">
                     Registrarse
                   </button>
                 </Link>

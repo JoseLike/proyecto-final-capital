@@ -32,7 +32,7 @@ export const Sidebar = () => {
                   className="nav-link py-3 border-bottom"
                   data-bs-toggle="dropdown"
                 >
-                  <i class="far fa-credit-card-front"></i>
+                  <i className="far fa-credit-card-front"></i>
                   <small>Proyectos</small>
                 </a>
                 <ul
@@ -124,7 +124,7 @@ export const Sidebar = () => {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#" onclick={clicklogout()}>
+                  <a className="dropdown-item" href="#" onClick={clicklogout()}>
                     Sign out
                   </a>
                 </li>

@@ -18,14 +18,14 @@ export const StadisticsView = () => {
       </div>
       <div className="row mt-4 ">
         <div className="col-6 mx-auto">
-          <ul class="list-group">
-            <li class="list-group-item">
+          <ul className="list-group">
+            <li className="list-group-item">
               Proyectos publicados: {store.user_stadistics.total_projects}
             </li>
-            <li class="list-group-item">Proyectos con exito: </li>
-            <li class="list-group-item">Total capital obtenido: </li>
-            <li class="list-group-item">Vistas totales: </li>
-            <li class="list-group-item">Ranking de Emprendedores: </li>
+            <li className="list-group-item">Proyectos con exito: </li>
+            <li className="list-group-item">Total capital obtenido: </li>
+            <li className="list-group-item">Vistas totales: </li>
+            <li className="list-group-item">Ranking de Emprendedores: </li>
           </ul>
         </div>
       </div>

@@ -1,9 +1,8 @@
-
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Context } from "../store/appContext";
 import logo2 from "/workspace/proyecto-final-capital/src/front/img/logosimple.png";
 import { Link } from "react-router-dom";
 import "../../styles/buscarproyecto.css";
-
 
 import { InvestorCard } from "/workspace/proyecto-final-capital/src/front/js/component/investorcard.jsx";
 

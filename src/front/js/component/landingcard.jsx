@@ -25,7 +25,7 @@ export const LandingCard = (props) => {
       <div className="card-footer d-flex justify-content-between">
         <small className="text-muted">Categoria: {props.category_id}</small>
 
-        <i class="fa-regular fa-star  float-end"></i>
+        <i className="fa-regular fa-star  float-end"></i>
 
       </div>
     </div>
@@ -36,7 +36,7 @@ LandingCard.propTypes = {
   category: PropTypes.string,
   id: PropTypes.number,
   name: PropTypes.string,
-  capital: PropTypes.number,
+  capital: PropTypes.string,
   eta: PropTypes.string,
   enlace: PropTypes.func,
 };

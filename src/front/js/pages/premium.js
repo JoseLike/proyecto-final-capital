@@ -20,36 +20,38 @@ export const Premium = () => {
             </h1>
             <h4 className="text-center m-4">Emprendedor</h4>
             <div className="d-flex lst">
-              <div class="li-izq">Máximo proyectos publicados</div>
-              <div class="text-end li-dcha pe-5">5</div>
+              <div className="li-izq">Máximo proyectos publicados</div>
+              <div className="text-end li-dcha pe-5">5</div>
             </div>
             <div className="d-flex lst">
-              <div class="li-izq">
+              <div className="li-izq">
                 Maximo de visitas diarias a tus proyectos
               </div>
-              <div class="text-end li-dcha pe-5">50</div>
+              <div className="text-end li-dcha pe-5">50</div>
             </div>
             <div className="d-flex lst">
-              <div class="li-izq">Capital Maximo del proyecto</div>
-              <div class="text-end li-dcha pe-5">3000€</div>
+              <div className="li-izq">Capital Maximo del proyecto</div>
+              <div className="text-end li-dcha pe-5">3000€</div>
             </div>
             <div className="d-flex lst">
-              <div class="li-izq">Destacar tus proyectos</div>
-              <div class="text-end li-dcha pe-5">NO</div>
+              <div className="li-izq">Destacar tus proyectos</div>
+              <div className="text-end li-dcha pe-5">NO</div>
             </div>
 
             <h4 className="mt-4 text-center">Inversor</h4>
             <div className="d-flex lst">
-              <div class="li-izq">Visualizar proyectos recien publicados</div>
-              <div class="text-end li-dcha pe-5">NO</div>
+              <div className="li-izq">
+                Visualizar proyectos recien publicados
+              </div>
+              <div className="text-end li-dcha pe-5">NO</div>
             </div>
             <div className="d-flex lst">
-              <div class="li-izq">Maximo de proyectos vistos</div>
-              <div class="text-end li-dcha pe-5">10</div>
+              <div className="li-izq">Maximo de proyectos vistos</div>
+              <div className="text-end li-dcha pe-5">10</div>
             </div>
             <div className="d-flex lst">
-              <div class="li-izq">Ver proyectos destacados</div>
-              <div class="text-end li-dcha pe-5">NO</div>
+              <div className="li-izq">Ver proyectos destacados</div>
+              <div className="text-end li-dcha pe-5">NO</div>
             </div>
             <div
               className="col-5 mx-auto rounded btn-free mt-5 btn-light shadow text-center p-2"
@@ -64,36 +66,38 @@ export const Premium = () => {
             </h1>
             <h4 className="text-center m-4">Emprendedor</h4>
             <div className="d-flex lst">
-              <div class="li-izq">Máximo proyectos publicados</div>
-              <div class="text-end li-dcha pe-5">Ilimitados</div>
+              <div className="li-izq">Máximo proyectos publicados</div>
+              <div className="text-end li-dcha pe-5">Ilimitados</div>
             </div>
             <div className="d-flex lst">
-              <div class="li-izq">
+              <div className="li-izq">
                 Maximo de visitas diarias a tus proyectos
               </div>
-              <div class="text-end li-dcha pe-5">Sin Limites</div>
+              <div className="text-end li-dcha pe-5">Sin Limites</div>
             </div>
             <div className="d-flex lst">
-              <div class="li-izq">Capital Maximo del proyecto</div>
-              <div class="text-end li-dcha pe-5">Sin Limites</div>
+              <div className="li-izq">Capital Maximo del proyecto</div>
+              <div className="text-end li-dcha pe-5">Sin Limites</div>
             </div>
             <div className="d-flex lst">
-              <div class="li-izq">Destacar tus proyectos</div>
-              <div class="text-end li-dcha pe-5">SI</div>
+              <div className="li-izq">Destacar tus proyectos</div>
+              <div className="text-end li-dcha pe-5">SI</div>
             </div>
 
             <h4 className="mt-5 text-center">Inversor</h4>
             <div className="d-flex lst">
-              <div class="li-izq">Visualizar proyectos recien publicados</div>
-              <div class="text-end li-dcha pe-5">SI</div>
+              <div className="li-izq">
+                Visualizar proyectos recien publicados
+              </div>
+              <div className="text-end li-dcha pe-5">SI</div>
             </div>
             <div className="d-flex lst">
-              <div class="li-izq">Maximo de proyectos vistos</div>
-              <div class="text-end li-dcha pe-5">Ilimitados</div>
+              <div className="li-izq">Maximo de proyectos vistos</div>
+              <div className="text-end li-dcha pe-5">Ilimitados</div>
             </div>
             <div className="d-flex lst">
-              <div class="li-izq">Ver proyectos destacados</div>
-              <div class="text-end li-dcha pe-5">SI</div>
+              <div className="li-izq">Ver proyectos destacados</div>
+              <div className="text-end li-dcha pe-5">SI</div>
             </div>
             <div className="d-flex justify-content-around">
               <div
