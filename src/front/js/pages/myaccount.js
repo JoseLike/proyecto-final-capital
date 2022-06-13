@@ -57,7 +57,7 @@ export const MyAccount = () => {
 
   return (
     <div>
-      <div className="container mt-1 ms-4  rounded shadow p-3">
+      <div className="container-fluid mt-1  rounded shadow p-3">
         <div className="">
           <Link to="/personal">
             <i className="fa-solid btn-flotante-atras fa-arrow-left arrow-left-reg1 icono-back col-1 ms-4 fixed"></i>
