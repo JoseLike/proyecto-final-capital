@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import "../../styles/premium.css";
+<<<<<<< HEAD
 import { loadStripe } from "@stripe/stripe-js";
 import {
   CardElement,
@@ -14,6 +15,9 @@ import axios from "axios";
 const stripePromise = loadStripe(
   "pk_test_51L87AmKEz3UKYat7WBXzyxuvCGgjJFfcqxARPjYwWkrRxiOSsrZ6f3unPxYZpQyrTlI96NRF8DMe32MDMcwAglGV00WMMLBMNZ"
 );
+=======
+import { Sidebar } from "../component/Sidebar";
+>>>>>>> 138437c5f5b091648ace10560e9a80d2ab096d90
 
 export const Premium = () => {
   return (
@@ -26,6 +30,7 @@ export const Premium = () => {
 export const PremiumComponent = () => {
   const { store, actions } = useContext(Context);
 
+<<<<<<< HEAD
   //useEffect(() => {
   //actions.getSingleProject(theid);
   //}, []);
@@ -61,14 +66,16 @@ export const PremiumComponent = () => {
     }
   };
 
+=======
+>>>>>>> 138437c5f5b091648ace10560e9a80d2ab096d90
   return (
-    <>
+    <div className="d-flex premium-page pb-4">
       <Link to={"/personal"}>
         <i className="fa-solid btn-flotante-atras fa-arrow-left arrow-left-reg1 icono-back col-1 ms-4 fixed"></i>
       </Link>
       <div className="container mt-4 rounded shadow p-3 ">
-        <div className="row d-flex ">
-          <div className="divizq col-5 border-none rounded m-2 pb-4 shadow">
+        <div className="row d-flex flex-md-wrap ">
+          <div className="divizq col-md-5 border-none rounded m-2 pb-4 shadow">
             <h1 className="text-center m-2 border rounded p-2 free-title">
               Free User
             </h1>
@@ -114,7 +121,7 @@ export const PremiumComponent = () => {
               0€/Mes
             </div>
           </div>
-          <div className="divdcha col-6 border-none rounded m-2 pb-4 shadow">
+          <div className="divdcha col-md-6 border-none rounded m-2 pb-4 shadow">
             <h1 className="text-center premium-title border rounded p-2 m-2">
               Premium User
             </h1>
@@ -152,6 +159,7 @@ export const PremiumComponent = () => {
             <div className="d-flex lst">
               <div className="li-izq">Ver proyectos destacados</div>
               <div className="text-end li-dcha pe-5">SI</div>
+<<<<<<< HEAD
             </div>
             <br />
             <div className="margin-card">
@@ -171,6 +179,8 @@ export const PremiumComponent = () => {
                   },
                 }}
               />
+=======
+>>>>>>> 138437c5f5b091648ace10560e9a80d2ab096d90
             </div>
             <div className="d-flex justify-content-around">
               <div
@@ -191,6 +201,6 @@ export const PremiumComponent = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };

@@ -1,0 +1,9 @@
+.row-logo {
+  background-color: rgb(51, 144, 194);
+}
+
+.contenedor-busqueda {
+  background-color: white;
+  border-color: rgb(51, 144, 194);
+  border-width: 3px;
+}

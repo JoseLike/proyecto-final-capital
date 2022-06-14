@@ -1,7 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Context } from "../store/appContext";
+import logo2 from "/workspace/proyecto-final-capital/src/front/img/logosimple.png";
+import { Link } from "react-router-dom";
+import "../../styles/buscarproyecto.css";
+
 import { InvestorCard } from "/workspace/proyecto-final-capital/src/front/js/component/investorcard.jsx";
 
 export const BuscarProyecto = () => {
+  const { store, actions } = useContext(Context);
   const [find, setFind] = useState({
     category_id: "",
     desired_capital: "",
@@ -11,7 +17,7 @@ export const BuscarProyecto = () => {
 
   const searchProject = async () => {
     const response = await fetch(
-      "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/buscar-proyecto/",
+      "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/buscar-proyecto/",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -30,7 +36,7 @@ export const BuscarProyecto = () => {
 
   const getCategory = async () => {
     const response = await fetch(
-      "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/category/"
+      "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/category/"
     );
     const data = await response.json();
     console.log(data.cate);
@@ -45,19 +51,16 @@ export const BuscarProyecto = () => {
   };
 
   return (
-    <div>
-      <br />
-      <h1 className="text-center">LOGO INVESTUP</h1>
-      <br />
-      <div className="bg-secondary container d-flex w-75">
-        <div className="d-flex container">
-          <span
+    <div className="container-fluid">
+      <div className="contenedor-busqueda rounded d-flex row justify-content-center border m-4 p-3">
+        <div className="d-flex div-categorias col-4">
+          <div
             className="input-group-text offset-1 w-50"
             name="category_id"
             onChange={handleInputChange}
           >
-            Rubro del proyecto:{" "}
-          </span>
+            Rubro del proyecto:
+          </div>
           <select
             className="form-control w-50"
             id="exampleFormControlSelect1"
@@ -74,16 +77,15 @@ export const BuscarProyecto = () => {
             })}
           </select>
         </div>
-
-        <div className="bg-secondary container justify-content-center">
-          <div className="input-group">
+        <div className="d-flex div-capital col-4">
+          <div className="input-group d-flex">
             <div className="input-group-prepend">
               <label className="input-group-text" htmlFor="inputGroupSelect01">
                 Capital
               </label>
             </div>
             <input
-              className="custom-select w-50"
+              className="custom-select w-50 text-center"
               id="inputGroupSelect01"
               name="desired_capital"
               onChange={handleInputChange}
@@ -92,7 +94,7 @@ export const BuscarProyecto = () => {
         </div>
         <button
           type="button"
-          className="btn btn-primary"
+          className="btn btn-primary col-2"
           onClick={() => {
             searchProject();
           }}
@@ -100,12 +102,8 @@ export const BuscarProyecto = () => {
           Buscar
         </button>
       </div>
-      <br />
-      <br />
 
       <div className="bg-secondary d-flex justify-content center container">
-        <br />
-        <br />
         <div className="d-flex container justify-content-center">
           {projects.map((projects) => {
             return (
@@ -117,6 +115,13 @@ export const BuscarProyecto = () => {
                   name={projects.title}
                   eta={projects.deadline}
                   capital={projects.desired_capital}
+                  fav={() => {
+                    let send = {
+                      project_id: projects.id,
+                      user_id: store.current_user.id,
+                    };
+                    actions.addToFavs(send);
+                  }}
                 />
               </div>
             );
