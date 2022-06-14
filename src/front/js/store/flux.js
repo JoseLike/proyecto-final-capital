@@ -7,7 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       project_user_data: [],
       favourites: [],
       singleproject: {
-        id: 99,
+        /*         id: 99,
         title: "Proyecto de Prueba en objeto",
         concept: "aaaaa",
         desired_capital: 250000,
@@ -22,7 +22,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         project_files: "",
         project_picture: "",
         investment_capacity: 250000,
-        views: 0,
+        views: 0, */
       },
 
       user_projects: [],
@@ -95,7 +95,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         let actions = getActions();
         if (datos.email != null && datos.password.trim() != "") {
           const response = await fetch(
-            "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/login",
+            "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/login",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -117,12 +117,12 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       getSingleProject: async (key) => {
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/project/" +
+          "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/project/" +
             key
         );
         const gettedproject = await response.json();
         console.log(gettedproject);
-        //setStore({ singleproject: gettedproject.result.properties });
+        setStore({ singleproject: gettedproject.response });
       },
 
       getUserProjects: async () => {

@@ -211,3 +211,15 @@ def payment():
         print(e)
         return "error"
 
+@api.route('investor/<int:project_id>', methods=["PUT"])
+def update_raised_capital(project_id):
+    body_raised = request.json.get("raised_capital")
+    project = Project.query.get(project_id)
+    if project:
+        project.raised_capital= float(project.raised_capital) + float(body_raised)
+        db.session.commit()
+        print(project.raised_capital)
+        return jsonify({"modified":True, "project":project.serialize()}), 200
+    else:
+        return jsonify({"modified":False, "msg":"Lack of Info"}), 400
+

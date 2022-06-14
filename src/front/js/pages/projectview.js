@@ -11,9 +11,9 @@ export const ProjectView = () => {
   useEffect(() => {
     actions.getSingleProject(theid);
   }, []);
-  //useEffect(() => {
-  //actions.getProjectUserData(theid);
-  //}, []);
+  /*   useEffect(() => {
+    actions.getProjectUserData(theid);
+  }, []); */
 
   return (
     <>

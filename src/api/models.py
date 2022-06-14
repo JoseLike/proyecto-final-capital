@@ -63,7 +63,7 @@ class Project(db.Model):
     title = db.Column(db.String(80), nullable=False)
     concept = db.Column(db.String(120), nullable=False) 
     desired_capital = db.Column(db.Integer, nullable=False)
-    raised_capital = db.Column(db.Integer)
+    raised_capital = db.Column(db.Integer, default=0)
     invested_capital = db.Column(db.Integer)
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
     category = db.relationship("Category")
