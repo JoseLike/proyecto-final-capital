@@ -18,6 +18,7 @@ class User(db.Model):
     inversor_type = db.Column(db.String(120), default=None) 
     acepted_conditions = db.Column(db.Boolean(),nullable=False, default=False)
     projects = db.relationship('Project', backref='user')
+    favorites = db.relationship('Favorites', backref='user')
 
 
     def serialize(self):        
@@ -34,7 +35,8 @@ class User(db.Model):
                 "is_company":self.is_company,
                 "profile_picture":self.profile_picture,
                 "user_longevity":self.user_longevity,
-                "projects":list(map(lambda project: project.serialize(),self.projects))
+                "projects":list(map(lambda project: project.serialize(),self.projects)),
+                "favorites":list(map(lambda favorite: favorite.serialize(),self.favorites))
 
             }
             
@@ -47,7 +49,13 @@ class Favorites(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     project_id= db.Column(db.Integer, db.ForeignKey('project.id'))
-    #user_id
+    
+    def serialize(self):        
+                return {
+                "id": self.id,
+                "user_id": self.user_id,
+                "project_id": self.project_id,
+            }
 
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -69,6 +77,7 @@ class Project(db.Model):
     investment_capacity=db.Column(db.String(120))
     views= db.Column(db.Integer) 
 
+
     def serialize(self): 
         return{
             "id": self.id,
@@ -76,6 +85,7 @@ class Project(db.Model):
             "concept": self.concept,
             "desired_capital": self.desired_capital,
             "raised_capital": self.raised_capital,
+            "missing_capital":self.desired_capital-self.invested_capital,
             "invested_capital":self.invested_capital,
             "category_id":self.category_id,
             "deadline":self.deadline,
@@ -92,12 +102,23 @@ class Project(db.Model):
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
-    
     def serialize(self):
         return{
         "id": self.id,
         "name": self.name
         }
 
-#holaaaaa
+class Mensajes(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    sender_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    receiver_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    text = db.Column(db.Text, nullable=False)
+    def serialize(self):
+        return{
+        "id": self.id,
+        "sender_id": self.sender_id,
+        "receiver_id": self.sender_id,
+        "text":self.text
+        }
+
 

@@ -12,28 +12,21 @@ export const StadisticsView = () => {
   }, []);
 
   return (
-    <div>
-      <div className="">
-        <Link to="/personal">
-          <i className="fa-solid btn-flotante-atras fa-arrow-left arrow-left-reg1 icono-back col-1 ms-4 fixed"></i>
-        </Link>
+    <div className="container mt-5  rounded shadow p-3">
+      <div className="row">
+        <div className="col-6 text-center mx-auto">Mis Estadisticas</div>
       </div>
-      <div className="container mt-5  rounded shadow p-3">
-        <div className="row">
-          <div className="col-6 text-center mx-auto">Mis Estadisticas</div>
-        </div>
-        <div className="row mt-4 ">
-          <div className="col-6 mx-auto">
-            <ul class="list-group">
-              <li class="list-group-item">
-                Proyectos publicados: {store.user_stadistics.total_projects}
-              </li>
-              <li class="list-group-item">Proyectos con exito: </li>
-              <li class="list-group-item">Total capital obtenido: </li>
-              <li class="list-group-item">Vistas totales: </li>
-              <li class="list-group-item">Ranking de Emprendedores: </li>
-            </ul>
-          </div>
+      <div className="row mt-4 ">
+        <div className="col-6 mx-auto">
+          <ul className="list-group">
+            <li className="list-group-item">
+              Proyectos publicados: {store.user_stadistics.total_projects}
+            </li>
+            <li className="list-group-item">Proyectos con exito: </li>
+            <li className="list-group-item">Total capital obtenido: </li>
+            <li className="list-group-item">Vistas totales: </li>
+            <li className="list-group-item">Ranking de Emprendedores: </li>
+          </ul>
         </div>
       </div>
     </div>
