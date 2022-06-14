@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import "../../styles/premium.css";
-<<<<<<< HEAD
 import { loadStripe } from "@stripe/stripe-js";
 import {
   CardElement,
@@ -15,9 +14,6 @@ import axios from "axios";
 const stripePromise = loadStripe(
   "pk_test_51L87AmKEz3UKYat7WBXzyxuvCGgjJFfcqxARPjYwWkrRxiOSsrZ6f3unPxYZpQyrTlI96NRF8DMe32MDMcwAglGV00WMMLBMNZ"
 );
-=======
-import { Sidebar } from "../component/Sidebar";
->>>>>>> 138437c5f5b091648ace10560e9a80d2ab096d90
 
 export const Premium = () => {
   return (
@@ -30,7 +26,6 @@ export const Premium = () => {
 export const PremiumComponent = () => {
   const { store, actions } = useContext(Context);
 
-<<<<<<< HEAD
   //useEffect(() => {
   //actions.getSingleProject(theid);
   //}, []);
@@ -66,8 +61,6 @@ export const PremiumComponent = () => {
     }
   };
 
-=======
->>>>>>> 138437c5f5b091648ace10560e9a80d2ab096d90
   return (
     <div className="d-flex premium-page pb-4">
       <Link to={"/personal"}>
@@ -159,7 +152,6 @@ export const PremiumComponent = () => {
             <div className="d-flex lst">
               <div className="li-izq">Ver proyectos destacados</div>
               <div className="text-end li-dcha pe-5">SI</div>
-<<<<<<< HEAD
             </div>
             <br />
             <div className="margin-card">
@@ -179,8 +171,6 @@ export const PremiumComponent = () => {
                   },
                 }}
               />
-=======
->>>>>>> 138437c5f5b091648ace10560e9a80d2ab096d90
             </div>
             <div className="d-flex justify-content-around">
               <div

@@ -77,6 +77,7 @@ class Project(db.Model):
     investment_capacity=db.Column(db.String(120))
     views= db.Column(db.Integer) 
 
+
     def serialize(self): 
         return{
             "id": self.id,
@@ -84,6 +85,7 @@ class Project(db.Model):
             "concept": self.concept,
             "desired_capital": self.desired_capital,
             "raised_capital": self.raised_capital,
+            "missing_capital":self.desired_capital-self.invested_capital,
             "invested_capital":self.invested_capital,
             "category_id":self.category_id,
             "deadline":self.deadline,
@@ -106,5 +108,17 @@ class Category(db.Model):
         "name": self.name
         }
 
-#holaaaaa
+class Mensajes(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    sender_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    receiver_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    text = db.Column(db.Text, nullable=False)
+    def serialize(self):
+        return{
+        "id": self.id,
+        "sender_id": self.sender_id,
+        "receiver_id": self.sender_id,
+        "text":self.text
+        }
+
 
