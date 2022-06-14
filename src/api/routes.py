@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Project, Category, Favorites
+from api.models import db, User, Project, Category, Favorites, Mensajes
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
 import stripe
@@ -101,10 +101,11 @@ def edit_user(user_id):
     else:
         return jsonify({"modified":False, "msg":"Lack of Info"}), 400
 
-@api.route('/editpassword/<int:user_id>', methods=["PUT"])
-def edit_pass_user(user_id):
+@api.route('/editpassword', methods=["PUT"])
+@jwt_required()
+def edit_pass_user():
     body_pass = request.json.get("password")
-    user = User.query.get(user_id)
+    user = get_jwt_identity()
     if user:
         user.password = body_password
         db.session.commit()
@@ -188,3 +189,29 @@ def payment():
         print(e)
         return "error"
 
+@api.route("/send-message", methods=["POST"])
+@jwt_required()
+def create_message():
+    body_sender_user=request.json.get("sender_user")
+    body_receiver_user=request.json.get("receiver_user")
+    body_text=request.json.get("text")
+    body_readed=request.json.get("readed")
+    
+    if body_sender_user and body_receiver_user and body_text and body_readed:
+        new_message = Mensaje(sender_user=body_sender_user,receiver_user = body_receiver_user, text = body_text, readed = body_readed)
+        db.session.add(new_message)
+        db.session.commit()
+        return jsonify({"created":True, "message":new_message.serialize()}), 200
+    else:
+        return jsonify({"created":False, "msg":"Lack of Info"}), 400
+
+@api.route('/message-readed/<int:messageid>', methods=["PUT"])
+@jwt_required()
+def set_message_readed(messageid):
+    message = Mensajes.query.get(messageid)
+    if message:
+        message.readed = True
+        db.session.commit()
+        return jsonify({"modified":True, "message":message.serialize()}), 200
+    else:
+        return jsonify({"modified":False, "msg":"Lack of Info"}), 400

@@ -19,6 +19,7 @@ class User(db.Model):
     acepted_conditions = db.Column(db.Boolean(),nullable=False, default=False)
     projects = db.relationship('Project', backref='user')
     favorites = db.relationship('Favorites', backref='user')
+    messages = db.relationship('Mensajes', backref='user')
 
 
     def serialize(self):        
@@ -36,8 +37,8 @@ class User(db.Model):
                 "profile_picture":self.profile_picture,
                 "user_longevity":self.user_longevity,
                 "projects":list(map(lambda project: project.serialize(),self.projects)),
-                "favorites":list(map(lambda favorite: favorite.serialize(),self.favorites))
-
+                "favorites":list(map(lambda favorite: favorite.serialize(),self.favorites)),
+                "messages":list(map(lambda message: message.serialize(),self.messages))
             }
             
 class Usertype(db.Model):
@@ -106,5 +107,19 @@ class Category(db.Model):
         "name": self.name
         }
 
-#holaaaaa
-
+class Mensajes(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    project_id=project_id= db.Column(db.Integer, db.ForeignKey('project.id'))
+    sender_user = db.Column(db.Integer, db.ForeignKey("user.id"))
+    receiver_user = db.Column(db.Integer, db.ForeignKey("user.id"))
+    text= db.Column(db.Text, nullable=False)
+    readed=db.Column(db.Boolean(), nullable=False, default=False)
+    def serialize(self):
+        return{
+        "id": self.id,
+        "project_id":self.project_id,
+        "emisor": self.sender_user,
+        "receptor": self.receiver_user,
+        "text":self.text,
+        "readed":self.readed
+        }

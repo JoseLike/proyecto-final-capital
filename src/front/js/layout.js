@@ -16,6 +16,7 @@ import { CrearProyecto } from "/workspace/proyecto-final-capital/src/front/js/pa
 import { EditarProyecto } from "./pages/editarproyecto";
 import { BuscarProyecto } from "./pages/BuscarProyecto";
 import { Premium } from "/workspace/proyecto-final-capital/src/front/js/pages/premium.js";
+import { MessagesView } from "/workspace/proyecto-final-capital/src/front/js/pages/messages.js";
 //create your first component
 const Layout = () => {
   //the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -71,6 +72,12 @@ const Layout = () => {
             <div className="d-flex">
               <Sidebar />
               <BuscarProyecto />
+            </div>
+          </Route>
+          <Route exact path="/messages">
+            <div className="d-flex">
+              <Sidebar />
+              <MessagesView />
             </div>
           </Route>
           <Route exact path="/premium">
