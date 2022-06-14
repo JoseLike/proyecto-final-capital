@@ -15,7 +15,7 @@ import { StadisticsView } from "/workspace/proyecto-final-capital/src/front/js/p
 import { CrearProyecto } from "/workspace/proyecto-final-capital/src/front/js/pages/CrearProyecto.js";
 import { EditarProyecto } from "./pages/editarproyecto";
 import { BuscarProyecto } from "./pages/BuscarProyecto";
-import { Premium } from "./pages/premium";
+import { Premium } from "/workspace/proyecto-final-capital/src/front/js/pages/premium.js";
 //create your first component
 const Layout = () => {
   //the basename is used when your project is published in a subdirectory and not in the root of the domain
