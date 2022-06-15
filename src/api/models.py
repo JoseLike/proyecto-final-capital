@@ -76,7 +76,8 @@ class Project(db.Model):
     project_files= db.Column(db.String(120))
     project_picture= db.Column(db.String(120))
     investment_capacity=db.Column(db.String(120))
-    views= db.Column(db.Integer) 
+    views= db.Column(db.Integer)
+    user = db.relationship('User', backref='Project') 
 
     def serialize(self): 
         return{
@@ -96,6 +97,7 @@ class Project(db.Model):
             "project_picture":self.project_picture,
             "investment_capacity":self.investment_capacity,
             "views":self.views,
+            "user":self.user,
         }
 
 class Category(db.Model):
@@ -113,12 +115,14 @@ class Mensajes(db.Model):
     sender_user = db.Column(db.Integer, db.ForeignKey("user.id"))
     receiver_user = db.Column(db.Integer, db.ForeignKey("user.id"))
     text= db.Column(db.Text, nullable=False)
+    subject = db.Column(db.String(120), nullable=False)
     readed=db.Column(db.Boolean(), nullable=False, default=False)
     def serialize(self):
         return{
         "id": self.id,
         "project_id":self.project_id,
         "emisor": self.sender_user,
+        "subject":self.subject,
         "receptor": self.receiver_user,
         "text":self.text,
         "readed":self.readed

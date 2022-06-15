@@ -8,12 +8,49 @@ export const ProjectView = () => {
   const { store, actions } = useContext(Context);
   const { theid } = useParams();
 
+  const [mensaje, setMensaje] = useState({
+    project_id: theid,
+    receiver_user: "",
+    subject: "",
+    text: store.current_user.id,
+    readed: false,
+  });
+
+  const handleInputChange = (e) => {
+    setMensaje({
+      ...mensaje,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   useEffect(() => {
     actions.getSingleProject(theid);
   }, []);
   //useEffect(() => {
   //actions.getProjectUserData(theid);
   //}, []);
+
+  const sendNewMessage = async () => {
+    if (
+      (mensaje.subject,
+      mensaje.receiver_user,
+      mensaje.text !=
+        "") /* CORROBORAR QUE SE PUEDE HACER LA COMPROBACION ASI Y SABER COMO SE HACE EN LOS CHECKBOX */
+    ) {
+      const response = await fetch(
+        "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/send-message",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(mensaje),
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+    } else {
+      return alert("Fallo en el mensaje");
+    }
+  };
 
   return (
     <div className="container-fluid m-3  rounded shadow p-3">
@@ -71,6 +108,8 @@ export const ProjectView = () => {
           <div
             type="button"
             className="btn-contactar shadow text-center d-flex align-items-md-center justify-content-center"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
           >
             Contactar
           </div>
@@ -94,10 +133,70 @@ export const ProjectView = () => {
         </div>
       </div>
       <Link to="/inversorpay">
-        <div href="#" className="btn-flotante ">
+        <div href="#" className="btn-flotante  ">
           Invertir
         </div>
       </Link>
+
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">
+                Enviar Mensaje
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div>Destinatario:</div>
+              <div>De: {store.current_user.name}</div>
+              <input
+                placeholder="Asunto"
+                id="exampleFormControlSelect1"
+                className="w-50 mt-3"
+                name="asunto"
+                onChange={handleInputChange}
+              ></input>
+              <input
+                placeholder="Escribe aqui"
+                id="exampleFormControlSelect1"
+                className="w-100 mt-3"
+                name="cuerpo"
+                onChange={handleInputChange}
+              ></input>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onClick={() => sendNewMessage()}
+              >
+                Enviar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
