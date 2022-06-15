@@ -10,6 +10,8 @@ import {
   Elements,
 } from "@stripe/react-stripe-js";
 import axios from "axios";
+import getState from "/workspace/proyecto-final-capital/src/front/js/store/flux.js";
+import { object } from "prop-types";
 
 const stripePromise = loadStripe(
   "pk_test_51L87AmKEz3UKYat7WBXzyxuvCGgjJFfcqxARPjYwWkrRxiOSsrZ6f3unPxYZpQyrTlI96NRF8DMe32MDMcwAglGV00WMMLBMNZ"
@@ -58,6 +60,14 @@ export const PremiumComponent = () => {
           amount: changedata.amount,
         },
       });
+      console.log(object);
+      await axios.put(
+        "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/paypremium/" +
+          "4",
+        {
+          is_premium: true,
+        }
+      );
     }
   };
 

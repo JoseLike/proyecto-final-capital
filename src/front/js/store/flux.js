@@ -2,7 +2,6 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       current_user: {},
-
       logged: false,
       project_user_data: [],
       favourites: [],

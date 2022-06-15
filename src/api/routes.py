@@ -223,3 +223,14 @@ def update_raised_capital(project_id):
     else:
         return jsonify({"modified":False, "msg":"Lack of Info"}), 400
 
+
+@api.route('/paypremium/<int:user_id>', methods=["PUT"])
+def pay_premium(user_id):
+    user = User.query.get(user_id)
+    if user:
+        user.is_premium = True
+        db.session.commit()
+        return jsonify({"modified":True, "user":user.serialize()}), 200
+    else:
+        return jsonify({"modified":False, "msg":"Lack of Info"}), 400
+
