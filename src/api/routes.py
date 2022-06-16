@@ -224,9 +224,12 @@ def update_raised_capital(project_id):
         return jsonify({"modified":False, "msg":"Lack of Info"}), 400
 
 
-@api.route('/paypremium/<int:user_id>', methods=["PUT"])
-def pay_premium(user_id):
-    user = User.query.get(user_id)
+@api.route('/paypremium', methods=["PUT"])
+@jwt_required()
+def pay_premium():
+    current_user = get_jwt_identity()
+    print(current_user)
+    user = User.query.get(current_user)
     if user:
         user.is_premium = True
         db.session.commit()

@@ -51,7 +51,7 @@ export const PremiumComponent = () => {
       console.log(error);
     } else {
       console.log(paymentMethod);
-      axios({
+      await axios({
         url: "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/investment/",
         method: "POST",
         data: {
@@ -60,12 +60,14 @@ export const PremiumComponent = () => {
           amount: changedata.amount,
         },
       });
-      console.log(object);
-      await axios.put(
-        "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/paypremium/" +
-          "4",
+      /* console.log(object); TRAER USUARIOOOOOOO */
+      await fetch(
+        "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/paypremium",
         {
-          is_premium: true,
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${store.token}`,
+          },
         }
       );
     }
