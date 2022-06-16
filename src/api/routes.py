@@ -113,11 +113,11 @@ def edit_pass_user():
     else:
         return jsonify({"modified":False, "msg":"Lack of Info"}), 400
 
-@api.route('/userprojects', methods=["GET"])
-@jwt_required()
-def get_user_projects():
-    current_user = get_jwt_identity()
-    projects = User.query.get(current_user).projects
+@api.route('/userprojects/<int:key>', methods=["GET"])
+#@jwt_required()
+def get_user_projects(key):
+    #current_user = get_jwt_identity()
+    projects = User.query.get(key).projects
     return jsonify({"response":list(map(lambda project : project.serialize(), projects))}),200
 
 @api.route('/project/<int:key>', methods=["GET"])

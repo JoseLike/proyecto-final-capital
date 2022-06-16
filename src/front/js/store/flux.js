@@ -42,7 +42,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       deleteFav: async (project) => {
         const store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/delete/favs/" +
+          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/delete/favs/" +
             project.id,
           {
             method: "DELETE",
@@ -96,7 +96,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         let actions = getActions();
         if (datos.email != null && datos.password.trim() != "") {
           const response = await fetch(
-            "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/login",
+            "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/login",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -104,11 +104,11 @@ const getState = ({ getStore, getActions, setStore }) => {
             }
           );
           const data = await response.json();
-          localStorage.setItem("token", data.token);
           if (data.logged == true) {
+            localStorage.setItem("token", data.token);
             actions.setLogged();
             setStore({ current_user: data.user });
-            setStore({ user_projects: data.user.projects });
+            //setStore({ user_projects: data.user.projects });
             setStore({ favourites: data.user.favorites });
           }
           console.log(data);
@@ -118,7 +118,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       getSingleProject: async (key) => {
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/project/" +
+          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/project/" +
             key
         );
         const gettedproject = await response.json();
@@ -129,12 +129,13 @@ const getState = ({ getStore, getActions, setStore }) => {
       getUserProjects: async () => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/userprojects",
+          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/userprojects/" +
+            store.current_user.id,
           {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              Authorization: "Bearer " + localStorage.getItem("token"),
+              //Authorization: "Bearer " + localStorage.getItem("token"),
             },
           }
         );
@@ -146,7 +147,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       changeUserInfo: async (changedata) => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/edituser/" +
+          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/edituser/" +
             store.current_user.id,
           {
             method: "PUT",
@@ -164,7 +165,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       changeUserPassword: async (changedata) => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/editpassword/" +
+          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/editpassword/" +
             store.current_user.id,
           {
             method: "PUT",
@@ -181,7 +182,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       getUserStadistics: async () => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/stadistics/" +
+          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/stadistics/" +
             store.current_user.id
         );
         const data = await response.json();

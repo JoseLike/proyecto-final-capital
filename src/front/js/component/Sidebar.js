@@ -242,7 +242,7 @@ export const Sidebar = () => {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#" onclick={clicklogout()}>
+                  <a className="dropdown-item" href="#" onClick={clicklogout()}>
                     Sign out
                   </a>
                 </li>

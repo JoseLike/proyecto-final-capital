@@ -48,7 +48,7 @@ export const Login = () => {
       <div className=" main-box-login m-auto p-2 rounded justify-content-center">
         <div className="p-3  div-arrow-login">
           <Link to={"./"}>
-            <i class="fa-solid fa-caret-left fa-2xl arrow-login"></i>
+            <i className="fa-solid fa-caret-left fa-2xl arrow-login"></i>
           </Link>
         </div>
         <div className="info-log justify-content-center">

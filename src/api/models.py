@@ -17,29 +17,29 @@ class User(db.Model):
     user_longevity = db.Column(db.Date()) 
     inversor_type = db.Column(db.String(120), default=None) 
     acepted_conditions = db.Column(db.Boolean(),nullable=False, default=False)
-    projects = db.relationship('Project', backref='user')
+    projects = db.relationship('Project', backref='user') 
     favorites = db.relationship('Favorites', backref='user')
-    messages = db.relationship('Mensajes', backref='user')
+    
 
 
-    def serialize(self):        
-                return {
-                "id": self.id,
-                "email": self.email,
-                "is_premium":self.is_premium,
-                "country":self.country,
-                "name":self.name,
-                "last_name":self.last_name,
-                "user_type":self.user_type,
-                "inversor_type":self.inversor_type,
-                "acepted_conditions":self.acepted_conditions,
-                "is_company":self.is_company,
-                "profile_picture":self.profile_picture,
-                "user_longevity":self.user_longevity,
-                "projects":list(map(lambda project: project.serialize(),self.projects)),
-                "favorites":list(map(lambda favorite: favorite.serialize(),self.favorites)),
-                "messages":list(map(lambda message: message.serialize(),self.messages))
-            }
+    def serialize(self):    
+        return {
+            "id": self.id,
+            "email": self.email,
+            "is_premium":self.is_premium,
+            "country":self.country,
+            "name":self.name,
+            "last_name":self.last_name,
+            "user_type":self.user_type,
+            "inversor_type":self.inversor_type,
+            "acepted_conditions":self.acepted_conditions,
+            "is_company":self.is_company,
+            "profile_picture":self.profile_picture,
+            "user_longevity":self.user_longevity,
+            "favorites":list(map(lambda favorite: favorite.serialize(),self.favorites)),
+            "sended_messages":list(map(lambda message: message.serialize(),self.enviados)),
+            "received_messages":list(map(lambda message: message.serialize(),self.recibidos))        
+        }
             
 class Usertype(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -77,7 +77,7 @@ class Project(db.Model):
     project_picture= db.Column(db.String(120))
     investment_capacity=db.Column(db.String(120))
     views= db.Column(db.Integer)
-    user = db.relationship('User', backref='Project') 
+    
 
     def serialize(self): 
         return{
@@ -97,7 +97,7 @@ class Project(db.Model):
             "project_picture":self.project_picture,
             "investment_capacity":self.investment_capacity,
             "views":self.views,
-            "user":self.user,
+            "user":self.user.serialize()
         }
 
 class Category(db.Model):
@@ -111,19 +111,21 @@ class Category(db.Model):
 
 class Mensajes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    project_id=project_id= db.Column(db.Integer, db.ForeignKey('project.id'))
-    sender_user = db.Column(db.Integer, db.ForeignKey("user.id"))
-    receiver_user = db.Column(db.Integer, db.ForeignKey("user.id"))
+    project_id=project_id= db.Column(db.Integer, db.ForeignKey("project.id"))
+    sender_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    receiver_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     text= db.Column(db.Text, nullable=False)
     subject = db.Column(db.String(120), nullable=False)
     readed=db.Column(db.Boolean(), nullable=False, default=False)
+    sender = db.relationship('User',foreign_keys=[sender_id], backref="enviados")
+    receiver = db.relationship('User',foreign_keys=[receiver_id], backref="recibidos")
     def serialize(self):
         return{
         "id": self.id,
         "project_id":self.project_id,
-        "emisor": self.sender_user,
+        "emisor": self.sender_id,
         "subject":self.subject,
-        "receptor": self.receiver_user,
+        "receptor": self.receiver_id,
         "text":self.text,
         "readed":self.readed
         }
