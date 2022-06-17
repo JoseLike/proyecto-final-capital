@@ -17,7 +17,7 @@ export const BuscarProyecto = () => {
 
   const searchProject = async () => {
     const response = await fetch(
-      "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/buscar-proyecto/",
+      "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/buscar-proyecto/",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -36,7 +36,7 @@ export const BuscarProyecto = () => {
 
   const getCategory = async () => {
     const response = await fetch(
-      "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/category/"
+      "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/category/"
     );
     const data = await response.json();
     console.log(data.cate);

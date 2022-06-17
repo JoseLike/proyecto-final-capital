@@ -12,8 +12,26 @@ export const MessagesView = () => {
     <div className="container mt-5  rounded shadow p-3">
       <div className="row">
         <div className="text-center mx-auto pb-4">Mis Mensajes</div>
-        <MessagesCard />
-        <MessagesCard />
+        <div>Recibidos</div>
+        {store.current_user.received_messages.map((messages) => {
+          return (
+            <MessagesCard
+              key={messages.id}
+              emisor={messages.emisor}
+              texto={messages.text}
+            />
+          );
+        })}
+        <div>Enviados</div>
+        {store.current_user.sended_messages.map((messages) => {
+          return (
+            <MessagesCard
+              key={messages.id}
+              emisor={messages.emisor}
+              texto={messages.text}
+            />
+          );
+        })}
       </div>
     </div>
   );

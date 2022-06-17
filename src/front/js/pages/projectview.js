@@ -9,10 +9,11 @@ export const ProjectView = () => {
   const { theid } = useParams();
 
   const [mensaje, setMensaje] = useState({
-    project_id: theid,
-    receiver_user: "",
+    project_id: store.singleproject.id,
+    receiver_user: store.project_user.name,
+    sender_user: store.current_user.id,
     subject: "",
-    text: store.current_user.id,
+    text: "",
     readed: false,
   });
 
@@ -38,7 +39,7 @@ export const ProjectView = () => {
         "") /* CORROBORAR QUE SE PUEDE HACER LA COMPROBACION ASI Y SABER COMO SE HACE EN LOS CHECKBOX */
     ) {
       const response = await fetch(
-        "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/send-message",
+        "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/send-message",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -122,7 +123,7 @@ export const ProjectView = () => {
               alt="..."
             />
             <div className="card-body">
-              <h5 className="card-title">Nombre y apellidos</h5>
+              <h5 className="card-title">{store.project_user.name}</h5>
             </div>
             <ul className="list-group list-group-flush">
               <li className="list-group-item">Ranking: </li>
@@ -161,20 +162,20 @@ export const ProjectView = () => {
               ></button>
             </div>
             <div class="modal-body">
-              <div>Destinatario:</div>
+              <div>Destinatario: {store.project_user.name}</div>
               <div>De: {store.current_user.name}</div>
               <input
                 placeholder="Asunto"
                 id="exampleFormControlSelect1"
                 className="w-50 mt-3"
-                name="asunto"
+                name="subject"
                 onChange={handleInputChange}
               ></input>
               <input
                 placeholder="Escribe aqui"
                 id="exampleFormControlSelect1"
                 className="w-100 mt-3"
-                name="cuerpo"
+                name="text"
                 onChange={handleInputChange}
               ></input>
             </div>

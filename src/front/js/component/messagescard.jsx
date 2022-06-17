@@ -16,7 +16,7 @@ export const MessagesCard = (props) => {
       <div className="card-header">Enviado por: {props.emisor}</div>
       <div className="card-body">
         <h5 className="card-title">Light card title</h5>
-        <p className="card-text">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa{props.texto}</p>
+        <p className="card-text">{props.texto}</p>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
       </div>
     </div>

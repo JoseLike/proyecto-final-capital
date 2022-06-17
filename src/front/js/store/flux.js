@@ -2,30 +2,13 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       current_user: {},
-
       logged: false,
       project_user_data: [],
       favourites: [],
-      singleproject: {
-        id: 99,
-        title: "Proyecto de Prueba en objeto",
-        concept: "aaaaa",
-        desired_capital: 250000,
-        raised_capital: 150000,
-        invested_capital: 5000,
-        category: "Sanidad",
-        deadline: true,
-        loans: 0,
-        business_plan:
-          "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
-        patent: false,
-        terms: true,
-        project_files: "",
-        project_picture: "",
-        investment_capacity: 250000,
-        views: 0,
-      },
-
+      sended_messages: [],
+      received_messages: [],
+      singleproject: {},
+      project_user: {},
       user_projects: [],
       user_stadistics: {},
     },
@@ -110,6 +93,8 @@ const getState = ({ getStore, getActions, setStore }) => {
             setStore({ current_user: data.user });
             //setStore({ user_projects: data.user.projects });
             setStore({ favourites: data.user.favorites });
+            setStore({ sended_messages: data.user.sended_messages });
+            setStore({ received_messages: data.user.received_messages });
           }
           console.log(data);
         } else {
@@ -123,7 +108,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         );
         const gettedproject = await response.json();
         console.log(gettedproject);
-        //setStore({ singleproject: gettedproject.result.properties });
+        setStore({ singleproject: gettedproject.response });
+        setStore({ project_user: gettedproject.response.user });
       },
 
       getUserProjects: async () => {
