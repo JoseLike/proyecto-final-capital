@@ -8,10 +8,7 @@ import { useHistory } from "react-router-dom";
 export const Sidebar = () => {
   let navigate = useHistory();
   const { store, actions } = useContext(Context);
-  const clicklogout = () => {
-    actions.setLogOut();
-    //navigate.push("./");
-  };
+
   {
     if (store.current_user.user_type != 2) {
       return (
@@ -124,7 +121,13 @@ export const Sidebar = () => {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#" onClick={clicklogout()}>
+                  <a
+                    className="dropdown-item"
+                    href="#"
+                    onClick={() => {
+                      actions.logOut();
+                    }}
+                  >
                     Sign out
                   </a>
                 </li>
@@ -242,7 +245,13 @@ export const Sidebar = () => {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#" onclick={clicklogout()}>
+                  <a
+                    className="dropdown-item"
+                    href="#"
+                    onClick={() => {
+                      actions.logOut();
+                    }}
+                  >
                     Sign out
                   </a>
                 </li>

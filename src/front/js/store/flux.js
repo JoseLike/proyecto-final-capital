@@ -29,13 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       user_stadistics: {},
     },
     actions: {
-      setLogged: () => {
-        const store = getStore();
-        setStore({ logged: true });
-      },
-
       logOut: () => {
-        setStore({ logged: false });
         localStorage.removeItem("token");
       },
       deleteFav: async (project) => {
@@ -103,16 +97,16 @@ const getState = ({ getStore, getActions, setStore }) => {
             }
           );
           const data = await response.json();
-          localStorage.setItem("token", data.token);
           if (data.logged == true) {
-            actions.setLogged();
+            localStorage.setItem("token", data.token);
             setStore({ current_user: data.user });
             setStore({ user_projects: data.user.projects });
             setStore({ favourites: data.user.favorites });
           }
-          console.log(data);
+          return true;
         } else {
-          return alert("Falta informacion");
+          alert("Falta informacion");
+          return false;
         }
       },
       getSingleProject: async (key) => {
@@ -188,9 +182,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({
           user_stadistics: { total_projects: data.response.projects.length },
         });
-      },
-      setLogOut: () => {
-        localStorage.removeItem("token");
       },
     },
   };

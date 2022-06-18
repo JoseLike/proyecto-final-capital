@@ -24,14 +24,14 @@ export const Login = () => {
     return exregex.test(password) ? true : false;
   };
 
-  const verify = () => {
+  const verify = async () => {
     if (verify_email(datos.email) != true) {
       alert("El formato del email no es valido");
     }
     if (verify_password(datos.password) != true) {
       alert("Contraseña invalida");
     } else {
-      actions.sendUserInfo(datos);
+      await actions.sendUserInfo(datos);
       navigate.push("/personal");
     }
   };

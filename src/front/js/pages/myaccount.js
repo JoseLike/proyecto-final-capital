@@ -15,6 +15,7 @@ export const MyAccount = () => {
     last_name: store.current_user.last_name,
     email: store.current_user.email,
     password: "",
+    profile_picture: null,
   });
 
   const verify_email = (email) => {
@@ -55,6 +56,31 @@ export const MyAccount = () => {
     });
   };
 
+  const handleImageChange = (e) => {
+    setChangedata({
+      ...changedata,
+      [e.target.name]: e.target.files[0],
+    });
+  };
+
+  const uploadImage = (evt) => {
+    evt.preventDefault();
+    console.log("aqui esta el archivo@@@@@@@@@@@", changedata);
+    let body = new FormData();
+    body.append("profile_picture", changedata.profile_picture);
+    const options = {
+      method: "PUT",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      body: body,
+    };
+    fetch(
+      "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/subir",
+      options
+    );
+  };
+
   return (
     <div>
       <div className="container-fluid mt-1  rounded shadow p-3">
@@ -78,7 +104,7 @@ export const MyAccount = () => {
                     <input
                       type="text"
                       className="form-control"
-                      placeholder={store.current_user.last_name}
+                      placeholder={store.current_user.name}
                       name="name"
                       aria-label="name"
                       aria-describedby="addon-wrapping"
@@ -143,12 +169,25 @@ export const MyAccount = () => {
               <div className="mb-3">
                 <img
                   className="img-fluid shadow"
-                  src="https://images.ecestaticos.com/pqIAcGCEagnkjdIBVKVbC9i5FH4=/0x0:1920x1278/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fe8e%2Fe27%2F2bf%2Fe8ee272bfd36f69679936351209d708c.jpg"
+                  src={store.current_user.profile_picture}
                   alt="projectphoto"
                 />
               </div>
               <div className="mb-3 mx-auto ">
-                <input className="form-control" type="file" id="formFile" />
+                <input
+                  className="form-control"
+                  type="file"
+                  id="formFile"
+                  onChange={handleImageChange}
+                  name="profile_picture"
+                />
+                <button
+                  type="button"
+                  className="btn btn-warning btt-sendchanges"
+                  onClick={uploadImage}
+                >
+                  Guardar Cambios
+                </button>
               </div>
             </div>
           </div>
