@@ -217,3 +217,11 @@ def set_message_readed(messageid):
         return jsonify({"modified":True, "message":message.serialize()}), 200
     else:
         return jsonify({"modified":False, "msg":"Lack of Info"}), 400
+
+@api.route('/delete/message/<int:messageid>', methods=['DELETE'])
+#@jwt_required()
+def del_message(messageid):
+    del_message= Mensajes.query.get(messageid)
+    db.session.delete(del_message)
+    db.session.commit()
+    return jsonify({"deleted":True}),200

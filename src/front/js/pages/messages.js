@@ -8,6 +8,27 @@ export const MessagesView = () => {
   const { store, actions } = useContext(Context);
   const { theid } = useParams();
 
+  const deleteFav = async (messageid) => {
+    const response = await fetch(
+      "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/delete/message/" +
+        messageid,
+      {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    const data = await response.json();
+    if (data.deleted == true) {
+      //setStore({
+      // favourites: store.favourites.filter(
+      // (item) => item.project_id != project.project_id
+      //),
+      //});
+
+      console.log(data);
+    }
+  };
+
   return (
     <div className="container-fluid ct-principal-mensajes m-5  rounded shadow p-3">
       <div className="row">
@@ -15,13 +36,6 @@ export const MessagesView = () => {
           Mis Mensajes
         </div>
         <div className="messages-tittle-recibidos">Recibidos</div>
-        <MessagesCard
-          key={1}
-          emisor={2}
-          texto={"pruebas"}
-          subject="pruebas"
-          project_id={2}
-        />
         {store.received_messages.map((messages) => {
           return (
             <MessagesCard
@@ -30,6 +44,9 @@ export const MessagesView = () => {
               subject={messages.subject}
               emisor={messages.emisor}
               texto={messages.text}
+              delete={() => {
+                deleteFav(messages.id);
+              }}
             />
           );
         })}
@@ -42,6 +59,9 @@ export const MessagesView = () => {
               subject={messages.subject}
               emisor={messages.emisor}
               texto={messages.text}
+              delete={() => {
+                deleteFav(messages.id);
+              }}
             />
           );
         })}

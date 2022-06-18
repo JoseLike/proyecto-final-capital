@@ -19,6 +19,10 @@ export const MessagesCard = (props) => {
     readed: false,
   });
 
+
+  const insertprops = async () => {
+    setMensaje({ ...mensaje, project_id: props.project_id, receiver_id: props.emisor })
+  }
   const handleInputChange = (e) => {
     setMensaje({
       ...mensaje,
@@ -26,6 +30,7 @@ export const MessagesCard = (props) => {
     });
   };
   const sendNewMessage = async () => {
+    console.log(mensaje);
     if (
       (mensaje.subject,
         mensaje.receiver_user,
@@ -49,12 +54,14 @@ export const MessagesCard = (props) => {
 
   return (<>
 
-    <div className="card bg-light mb-3" style={{ "maxWidth": "100%" }} onClick={() => setMessageView(<><div className="card-header">Enviado por: {props.emisor}</div>
+    <div className="card bg-light mb-3" style={{ "maxWidth": "100%" }} onClick={() => setMessageView(<><div className="card-header">Enviado por: {props.emisor} <button className="float-end delete-msg-btn" onClick={props.delete}>
+      X
+    </button></div>
       <div className="card-body">
         <h5 className="card-title">{props.subject}</h5>
         <p className="card-text">{props.texto}</p>
         <button type="button" className="btn btn-primary" data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop" onClick={() => { setMensaje(...mensaje, { project_id: props.project_id, receiver_id: props.emisor }) }}>Responder</button>
+          data-bs-target="#staticBackdrop" onClick={() => insertprops()}>Responder</button>
       </div></>)} >
       {MessageView}
 
@@ -124,6 +131,7 @@ export const MessagesCard = (props) => {
 };
 
 MessagesCard.propTypes = {
+  delete: PropTypes.func,
   project_id: PropTypes.number,
   subject: PropTypes.string,
   emisor: PropTypes.number,
