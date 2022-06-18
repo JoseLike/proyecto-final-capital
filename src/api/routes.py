@@ -224,6 +224,18 @@ def update_raised_capital(project_id):
         return jsonify({"modified":False, "msg":"Lack of Info"}), 400
 
 
+@api.route('subir', methods=["PUT"])
+@jwt_required()
+def handle_subir():
+    current_id = get_jwt_identity()
+    user = User.query.get(current_id)
+    result = cloudinary.uploader.upload(request.files['profile_picture'])
+    print(result['secure_url'])
+    user.profile_picture = result['secure_url']
+    db.session.commit()
+    return jsonify({"updated": True}),200
+
+
 @api.route('/paypremium', methods=["PUT"])
 @jwt_required()
 def pay_premium():
