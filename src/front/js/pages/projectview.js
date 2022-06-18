@@ -9,9 +9,9 @@ export const ProjectView = () => {
   const { theid } = useParams();
 
   const [mensaje, setMensaje] = useState({
-    project_id: store.singleproject.id,
-    receiver_user: store.project_user.name,
-    sender_user: store.current_user.id,
+    project_id: Number(theid),
+    receiver_id: store.project_user.id,
+    sender_id: store.current_user.id,
     subject: "",
     text: "",
     readed: false,

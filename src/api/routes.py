@@ -192,15 +192,15 @@ def payment():
 @api.route("/send-message", methods=["POST"])
 #@jwt_required()
 def create_message():
-    body_sender_user=request.json.get("sender_user")
-    body_receiver_user=request.json.get("receiver_user")
+    body_sender_id=request.json.get("sender_id")
+    body_receiver_id=request.json.get("receiver_id")
     body_text=request.json.get("text")
     body_project_id=request.json.get("project_id")
     body_subject=request.json.get("subject")
     body_readed=request.json.get("readed")
     
-    if body_sender_user and body_project_id and body_receiver_user and body_text and body_subject:
-        new_message = Mensaje(sender_user=body_sender_user,receiver_user = body_receiver_user, text = body_text, readed = body_readed, subject=body_subject, project_id=body_project_id)
+    if body_sender_id and body_project_id and body_receiver_id and body_text and body_subject:
+        new_message = Mensajes(sender_id=body_sender_id,receiver_id = body_receiver_id, text = body_text, readed = body_readed, subject=body_subject, project_id=body_project_id)
         db.session.add(new_message)
         db.session.commit()
         return jsonify({"created":True, "message":new_message.serialize()}), 200

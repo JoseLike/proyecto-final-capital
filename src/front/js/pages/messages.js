@@ -9,24 +9,37 @@ export const MessagesView = () => {
   const { theid } = useParams();
 
   return (
-    <div className="container mt-5  rounded shadow p-3">
+    <div className="container-fluid ct-principal-mensajes m-5  rounded shadow p-3">
       <div className="row">
-        <div className="text-center mx-auto pb-4">Mis Mensajes</div>
-        <div>Recibidos</div>
-        {store.current_user.received_messages.map((messages) => {
+        <div className="messages-tittle text-center mx-auto pb-4">
+          Mis Mensajes
+        </div>
+        <div className="messages-tittle-recibidos">Recibidos</div>
+        <MessagesCard
+          key={1}
+          emisor={2}
+          texto={"pruebas"}
+          subject="pruebas"
+          project_id={2}
+        />
+        {store.received_messages.map((messages) => {
           return (
             <MessagesCard
               key={messages.id}
+              project_id={messages.project_id}
+              subject={messages.subject}
               emisor={messages.emisor}
               texto={messages.text}
             />
           );
         })}
-        <div>Enviados</div>
-        {store.current_user.sended_messages.map((messages) => {
+        <div className="messages-tittle-enviados">Enviados</div>
+        {store.sended_messages.map((messages) => {
           return (
             <MessagesCard
+              project_id={messages.project_id}
               key={messages.id}
+              subject={messages.subject}
               emisor={messages.emisor}
               texto={messages.text}
             />
