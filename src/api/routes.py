@@ -223,6 +223,7 @@ def update_raised_capital(project_id):
     else:
         return jsonify({"modified":False, "msg":"Lack of Info"}), 400
 
+
 @api.route('subir', methods=["PUT"])
 @jwt_required()
 def handle_subir():
@@ -233,3 +234,18 @@ def handle_subir():
     user.profile_picture = result['secure_url']
     db.session.commit()
     return jsonify({"updated": True}),200
+
+
+@api.route('/paypremium', methods=["PUT"])
+@jwt_required()
+def pay_premium():
+    current_user = get_jwt_identity()
+    print(current_user)
+    user = User.query.get(current_user)
+    if user:
+        user.is_premium = True
+        db.session.commit()
+        return jsonify({"modified":True, "user":user.serialize()}), 200
+    else:
+        return jsonify({"modified":False, "msg":"Lack of Info"}), 400
+

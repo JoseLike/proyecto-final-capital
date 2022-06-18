@@ -2,7 +2,6 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       current_user: {},
-
       logged: false,
       project_user_data: [],
       favourites: [],
@@ -29,9 +28,12 @@ const getState = ({ getStore, getActions, setStore }) => {
       user_stadistics: {},
     },
     actions: {
+
       logOut: () => {
         localStorage.removeItem("token");
       },
+
+
       deleteFav: async (project) => {
         const store = getStore();
         const response = await fetch(
@@ -97,6 +99,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             }
           );
           const data = await response.json();
+
           if (data.logged == true) {
             localStorage.setItem("token", data.token);
             setStore({ current_user: data.user });
