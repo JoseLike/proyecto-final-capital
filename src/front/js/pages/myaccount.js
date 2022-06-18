@@ -219,9 +219,11 @@ export const MyAccount = () => {
                 {store.current_user.is_premium != true ? (
                   <div>
                     No eres premium
-                    <button type="button" className="btn btn-success ms-4">
-                      Hacerse Premium
-                    </button>
+                    <Link to="/premium">
+                      <button type="button" className="btn btn-success ms-4">
+                        Hacerse Premium
+                      </button>
+                    </Link>
                   </div>
                 ) : (
                   "Usuario Premium"

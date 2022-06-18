@@ -99,7 +99,7 @@ export const Sidebar = () => {
                 aria-expanded="false"
               >
                 <img
-                  src="https://github.com/mdo.png"
+                  src={store.current_user.profile_picture}
                   alt="mdo"
                   width="50"
                   height="50"
@@ -223,7 +223,7 @@ export const Sidebar = () => {
                 aria-expanded="false"
               >
                 <img
-                  src="https://github.com/mdo.png"
+                  src={store.current_user.profile_picture}
                   alt="mdo"
                   width="50"
                   height="50"

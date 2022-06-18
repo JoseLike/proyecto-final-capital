@@ -68,7 +68,8 @@ export const PremiumComponent = () => {
           headers: {
             Authorization: `Bearer ${store.token}`,
           },
-        }
+        },
+        console.log(store.current_user)
       );
     }
   };
