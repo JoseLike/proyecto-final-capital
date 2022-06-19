@@ -224,4 +224,5 @@ def del_message(messageid):
     del_message= Mensajes.query.get(messageid)
     db.session.delete(del_message)
     db.session.commit()
-    return jsonify({"deleted":True}),200
+    return jsonify({"deleted":True, "msg":del_message.serialize()}),200
+

@@ -180,6 +180,48 @@ const getState = ({ getStore, getActions, setStore }) => {
       setLogOut: () => {
         localStorage.removeItem("token");
       },
+      deleteFav: async (messageid) => {
+        let store = getStore();
+        const response = await fetch(
+          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/delete/message/" +
+            messageid,
+          {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+        const data = await response.json();
+        if (data.deleted == true) {
+          console.log(data);
+          if (data.msg.emisor != store.current_user.id) {
+            setStore({
+              received_messages: store.received_messages.filter(
+                (item) => item.messageid != messageid
+              ),
+            });
+          } else {
+            setStore({
+              sended_messages: store.sended_messages.filter(
+                (item) => item.messageid != messageid
+              ),
+            });
+          }
+          console.log(data);
+        }
+      },
+      getUserMessages: async () => {
+        let store = getStore();
+        const response = await fetch(
+          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/stadistics/" +
+            store.current_user.id
+        );
+        const data = await response.json();
+
+        setStore({ sended_messages: data.response.sended_messages });
+        setStore({ received_messages: data.response.received_messages });
+
+        console.log(data);
+      },
     },
   };
 };

@@ -21,6 +21,12 @@ img {
   width: 50%;
 }
 
+.delete-msg-btn {
+  color: white;
+  background-color: red;
+  border-radius: 25%;
+}
+
 .card {
   width: 300px;
 }
