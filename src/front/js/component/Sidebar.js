@@ -49,29 +49,12 @@ export const Sidebar = () => {
                 </ul>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="nav-link py-3 border-bottom"
-                  data-bs-toggle="dropdown"
-                >
-                  <i className="fas fa-envelope icono-mensajes-sidebar fa-xl"></i>
-                  <small>Mensajes</small>
-                </a>
-                <ul
-                  className="dropdown-menu text-small shadow"
-                  aria-labelledby="dropdownUser3"
-                >
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Recibidos
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Enviados
-                    </a>
-                  </li>
-                </ul>
+                <Link to="/messages">
+                  <div href="#" className="nav-link py-3 border-bottom">
+                    <i className="fas fa-envelope"></i>
+                    <small>Mensajes</small>
+                  </div>
+                </Link>
               </li>
               <li>
                 <Link to="/stadistics">
@@ -175,29 +158,12 @@ export const Sidebar = () => {
                 </ul>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="nav-link py-3 border-bottom"
-                  data-bs-toggle="dropdown"
-                >
-                  <i className="fas fa-envelope"></i>
-                  <small>Mensajes</small>
-                </a>
-                <ul
-                  className="dropdown-menu text-small shadow"
-                  aria-labelledby="dropdownUser3"
-                >
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Recibidos
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Enviados
-                    </a>
-                  </li>
-                </ul>
+                <Link to="/messages">
+                  <div href="#" className="nav-link py-3 border-bottom">
+                    <i className="fas fa-envelope"></i>
+                    <small>Mensajes</small>
+                  </div>
+                </Link>
               </li>
               <li>
                 <Link to="/stadistics">
@@ -248,9 +214,11 @@ export const Sidebar = () => {
                   <a
                     className="dropdown-item"
                     href="#"
+
                     onClick={() => {
                       actions.logOut();
                     }}
+
                   >
                     Sign out
                   </a>

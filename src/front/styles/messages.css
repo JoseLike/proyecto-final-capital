@@ -1,0 +1,19 @@
+.messages-tittle-enviados {
+  font-size: 30px;
+  border-bottom: 3px solid #000;
+  margin-bottom: 10px;
+}
+
+.messages-tittle-recibidos {
+  font-size: 30px;
+  margin-bottom: 10px;
+
+  border-bottom: 3px solid #000;
+}
+.messages-tittle {
+  font-size: 42px;
+}
+
+.ct-principal-mensajes {
+  background-color: white;
+}

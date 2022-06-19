@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Project, Category, Favorites
+from api.models import db, User, Project, Category, Favorites, Mensajes
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
 import cloudinary
@@ -109,10 +109,11 @@ def edit_user(user_id):
     else:
         return jsonify({"modified":False, "msg":"Lack of Info"}), 400
 
-@api.route('/editpassword/<int:user_id>', methods=["PUT"])
-def edit_pass_user(user_id):
+@api.route('/editpassword', methods=["PUT"])
+@jwt_required()
+def edit_pass_user():
     body_pass = request.json.get("password")
-    user = User.query.get(user_id)
+    user = get_jwt_identity()
     if user:
         user.password = body_password
         db.session.commit()
@@ -120,11 +121,11 @@ def edit_pass_user(user_id):
     else:
         return jsonify({"modified":False, "msg":"Lack of Info"}), 400
 
-@api.route('/userprojects', methods=["GET"])
-@jwt_required()
-def get_user_projects():
-    current_user = get_jwt_identity()
-    projects = User.query.get(current_user).projects
+@api.route('/userprojects/<int:key>', methods=["GET"])
+#@jwt_required()
+def get_user_projects(key):
+    #current_user = get_jwt_identity()
+    projects = User.query.get(key).projects
     return jsonify({"response":list(map(lambda project : project.serialize(), projects))}),200
 
 @api.route('/project/<int:key>', methods=["GET"])
@@ -211,6 +212,45 @@ def payment():
         print(e)
         return "error"
 
+
+@api.route("/send-message", methods=["POST"])
+#@jwt_required()
+def create_message():
+    body_sender_id=request.json.get("sender_id")
+    body_receiver_id=request.json.get("receiver_id")
+    body_text=request.json.get("text")
+    body_project_id=request.json.get("project_id")
+    body_subject=request.json.get("subject")
+    body_readed=request.json.get("readed")
+    
+    if body_sender_id and body_project_id and body_receiver_id and body_text and body_subject:
+        new_message = Mensajes(sender_id=body_sender_id,receiver_id = body_receiver_id, text = body_text, readed = body_readed, subject=body_subject, project_id=body_project_id)
+        db.session.add(new_message)
+        db.session.commit()
+        return jsonify({"created":True, "message":new_message.serialize()}), 200
+    else:
+        return jsonify({"created":False, "msg":"Lack of Info"}), 400
+
+@api.route('/message-readed/<int:messageid>', methods=["PUT"])
+@jwt_required()
+def set_message_readed(messageid):
+    message = Mensajes.query.get(messageid)
+    if message:
+        message.readed = True
+        db.session.commit()
+        return jsonify({"modified":True, "message":message.serialize()}), 200
+    else:
+        return jsonify({"modified":False, "msg":"Lack of Info"}), 400
+
+@api.route('/delete/message/<int:messageid>', methods=['DELETE'])
+#@jwt_required()
+def del_message(messageid):
+    del_message= Mensajes.query.get(messageid)
+    db.session.delete(del_message)
+    db.session.commit()
+    return jsonify({"deleted":True, "msg":del_message.serialize()}),200
+
+
 @api.route('investor/<int:project_id>', methods=["PUT"])
 def update_raised_capital(project_id):
     body_raised = request.json.get("raised_capital")
@@ -248,4 +288,5 @@ def pay_premium():
         return jsonify({"modified":True, "user":user.serialize()}), 200
     else:
         return jsonify({"modified":False, "msg":"Lack of Info"}), 400
+
 

@@ -5,25 +5,10 @@ const getState = ({ getStore, getActions, setStore }) => {
       logged: false,
       project_user_data: [],
       favourites: [],
-      singleproject: {
-        /*         id: 99,
-        title: "Proyecto de Prueba en objeto",
-        concept: "aaaaa",
-        desired_capital: 250000,
-        raised_capital: 150000,
-        invested_capital: 5000,
-        category: "Sanidad",
-        deadline: true,
-        loans: 0,
-        business_plan: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-        patent: false,
-        terms: true,
-        project_files: "",
-        project_picture: "",
-        investment_capacity: 250000,
-        views: 0, */
-      },
-
+      sended_messages: [],
+      received_messages: [],
+      singleproject: {},
+      project_user: {},
       user_projects: [],
       user_stadistics: {},
     },
@@ -37,7 +22,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       deleteFav: async (project) => {
         const store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/delete/favs/" +
+          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/delete/favs/" +
             project.id,
           {
             method: "DELETE",
@@ -99,12 +84,13 @@ const getState = ({ getStore, getActions, setStore }) => {
             }
           );
           const data = await response.json();
-
           if (data.logged == true) {
             localStorage.setItem("token", data.token);
             setStore({ current_user: data.user });
-            setStore({ user_projects: data.user.projects });
+            //setStore({ user_projects: data.user.projects });
             setStore({ favourites: data.user.favorites });
+            setStore({ sended_messages: data.user.sended_messages });
+            setStore({ received_messages: data.user.received_messages });
           }
           return true;
         } else {
@@ -120,17 +106,19 @@ const getState = ({ getStore, getActions, setStore }) => {
         const gettedproject = await response.json();
         console.log(gettedproject);
         setStore({ singleproject: gettedproject.response });
+        setStore({ project_user: gettedproject.response.user });
       },
 
       getUserProjects: async () => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/userprojects",
+          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/userprojects/" +
+            store.current_user.id,
           {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              Authorization: "Bearer " + localStorage.getItem("token"),
+              //Authorization: "Bearer " + localStorage.getItem("token"),
             },
           }
         );
@@ -142,7 +130,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       changeUserInfo: async (changedata) => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/edituser/" +
+          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/edituser/" +
             store.current_user.id,
           {
             method: "PUT",
@@ -160,7 +148,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       changeUserPassword: async (changedata) => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/editpassword/" +
+          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/editpassword/" +
             store.current_user.id,
           {
             method: "PUT",
@@ -177,7 +165,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       getUserStadistics: async () => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/stadistics/" +
+          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/stadistics/" +
             store.current_user.id
         );
         const data = await response.json();
@@ -185,6 +173,51 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({
           user_stadistics: { total_projects: data.response.projects.length },
         });
+      },
+      setLogOut: () => {
+        localStorage.removeItem("token");
+      },
+      deleteFav: async (messageid) => {
+        let store = getStore();
+        const response = await fetch(
+          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/delete/message/" +
+            messageid,
+          {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+        const data = await response.json();
+        if (data.deleted == true) {
+          console.log(data);
+          if (data.msg.emisor != store.current_user.id) {
+            setStore({
+              received_messages: store.received_messages.filter(
+                (item) => item.messageid != messageid
+              ),
+            });
+          } else {
+            setStore({
+              sended_messages: store.sended_messages.filter(
+                (item) => item.messageid != messageid
+              ),
+            });
+          }
+          console.log(data);
+        }
+      },
+      getUserMessages: async () => {
+        let store = getStore();
+        const response = await fetch(
+          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/stadistics/" +
+            store.current_user.id
+        );
+        const data = await response.json();
+
+        setStore({ sended_messages: data.response.sended_messages });
+        setStore({ received_messages: data.response.received_messages });
+
+        console.log(data);
       },
     },
   };

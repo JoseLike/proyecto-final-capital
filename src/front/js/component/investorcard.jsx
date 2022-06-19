@@ -11,7 +11,9 @@ export const InvestorCard = (props) => {
   let navigate = useHistory();
 
   return (
-    <Link to={"/project/" + props.id}>
+
+    <Link to={"/project/" + (props.id)}>
+
       <div className="card investor-card m-2">
         <img
           className="card-img-top"
