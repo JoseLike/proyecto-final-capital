@@ -11,7 +11,9 @@ export const InvestorCard = (props) => {
   let navigate = useHistory();
 
   return (
+
     <Link to={"/project/" + (props.id)}>
+
       <div className="card investor-card m-2">
         <img
           className="card-img-top"
@@ -33,7 +35,6 @@ export const InvestorCard = (props) => {
         </div>
       </div>
     </Link>
-
   );
 };
 
@@ -44,5 +45,5 @@ InvestorCard.propTypes = {
   capital: PropTypes.number,
   eta: PropTypes.string,
   enlace: PropTypes.func,
-  fav: PropTypes.string
+  fav: PropTypes.string,
 };

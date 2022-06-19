@@ -13,15 +13,12 @@ const getState = ({ getStore, getActions, setStore }) => {
       user_stadistics: {},
     },
     actions: {
-      setLogged: () => {
-        const store = getStore();
-        setStore({ logged: true });
-      },
 
       logOut: () => {
-        setStore({ logged: false });
         localStorage.removeItem("token");
       },
+
+
       deleteFav: async (project) => {
         const store = getStore();
         const response = await fetch(
@@ -79,7 +76,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         let actions = getActions();
         if (datos.email != null && datos.password.trim() != "") {
           const response = await fetch(
-            "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/login",
+            "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/login",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -89,21 +86,21 @@ const getState = ({ getStore, getActions, setStore }) => {
           const data = await response.json();
           if (data.logged == true) {
             localStorage.setItem("token", data.token);
-            actions.setLogged();
             setStore({ current_user: data.user });
             //setStore({ user_projects: data.user.projects });
             setStore({ favourites: data.user.favorites });
             setStore({ sended_messages: data.user.sended_messages });
             setStore({ received_messages: data.user.received_messages });
           }
-          console.log(data);
+          return true;
         } else {
-          return alert("Falta informacion");
+          alert("Falta informacion");
+          return false;
         }
       },
       getSingleProject: async (key) => {
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/project/" +
+          "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/project/" +
             key
         );
         const gettedproject = await response.json();

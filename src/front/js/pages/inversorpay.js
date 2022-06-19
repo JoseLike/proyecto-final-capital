@@ -61,6 +61,14 @@ export const InversorPayComponent = () => {
           amount: changedata.amount,
         },
       });
+      console.log(store.singleproject);
+      await axios.put(
+        "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/investor/" +
+          store.singleproject.id,
+        {
+          raised_capital: changedata.amount,
+        }
+      );
     }
   };
 

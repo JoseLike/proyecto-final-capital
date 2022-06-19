@@ -5,6 +5,8 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Project, Category, Favorites, Mensajes
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
+import cloudinary
+import cloudinary.uploader
 import stripe
 from os import getenv
 
@@ -52,24 +54,30 @@ def login_user():
 
 
 @api.route("/crear-proyecto", methods=["POST"])
-@jwt_required()
+#@jwt_required()
 def create_project():
-    body_title=request.json.get("title")
-    body_userid=request.json.get("user_id")
-    body_concept=request.json.get("concept")
-    body_desired_capital=request.json.get("desired_capital")
-    body_invested_capital=request.json.get("invested_capital")
-    body_category=request.json.get("category")
-    body_deadline=request.json.get("deadline")
-    body_loans=request.json.get("loans")
-    body_business_plan=request.json.get("business_plan")
-    body_patent=request.json.get("patent")
-    body_terms=request.json.get("terms")
-    body_project_files=request.json.get("project_files")
-    body_project_picture=request.json.get("project_picture")
-    body_investment_capacity=request.json.get("investment_capacity")
-    print(request.json)
+    body_title=request.form.get("title")
+    body_userid= 1 #request.form.get("user_id") 
+    body_concept=request.form.get("concept")
+    body_desired_capital=request.form.get("desired_capital")
+    body_invested_capital=request.form.get("invested_capital")
+    body_category=request.form.get("category")
+    body_deadline=request.form.get("deadline")
+    body_loans=request.form.get("loans")
+    body_business_plan=request.form.get("business_plan")
+    body_patent=request.form.get("patent")
+    body_terms=request.form.get("terms")
+    body_investment_capacity=request.form.get("investment_capacity")
+    if "project_files" in request.files:
+        result = cloudinary.uploader.upload(request.files['project_files'])
+        body_project_files = result['secure_url']
+    body_project_picture = ""
+    if "project_picture" in request.files:
+        result = cloudinary.uploader.upload(request.files['project_picture'])
+        body_project_picture = result['secure_url']
     if body_title and body_concept and body_desired_capital and body_invested_capital and body_category and body_loans and body_business_plan and body_investment_capacity:
+        body_terms = True if body_terms == "true" else False
+        body_patent = True if body_patent == "true" else False
         new_project = Project(user_id=body_userid,title = body_title, concept = body_concept, desired_capital = body_desired_capital, invested_capital = body_invested_capital, category_id = body_category, loans = body_loans, business_plan = body_business_plan, patent = body_patent, terms = body_terms, project_files= body_project_files, project_picture = body_project_picture, investment_capacity = body_investment_capacity)
         db.session.add(new_project)
         db.session.commit()
@@ -149,6 +157,21 @@ def get_all_projects():
     return jsonify({"projects": projects_serialize}), 200
 
 
+
+@api.route('upload', methods=["POST"])
+def handle_upload():
+
+    result = cloudinary.uploader.upload(request.files['project_picture'])
+    response_body = {
+        "message": "hello world",
+        "image_url": result['secure_url']
+    }
+    print(request.files['project_picture'])
+    print(result['secure_url'])
+
+
+    return jsonify(response_body),200
+  
 @api.route("/favoritos", methods=["POST"])
 #@jwt_required()
 def add_favs():
@@ -189,6 +212,7 @@ def payment():
         print(e)
         return "error"
 
+
 @api.route("/send-message", methods=["POST"])
 #@jwt_required()
 def create_message():
@@ -225,4 +249,44 @@ def del_message(messageid):
     db.session.delete(del_message)
     db.session.commit()
     return jsonify({"deleted":True, "msg":del_message.serialize()}),200
+
+
+@api.route('investor/<int:project_id>', methods=["PUT"])
+def update_raised_capital(project_id):
+    body_raised = request.json.get("raised_capital")
+    project = Project.query.get(project_id)
+    if project:
+        project.raised_capital= float(project.raised_capital) + float(body_raised)
+        db.session.commit()
+        print(project.raised_capital)
+        return jsonify({"modified":True, "project":project.serialize()}), 200
+    else:
+        return jsonify({"modified":False, "msg":"Lack of Info"}), 400
+
+
+@api.route('subir', methods=["PUT"])
+@jwt_required()
+def handle_subir():
+    current_id = get_jwt_identity()
+    user = User.query.get(current_id)
+    result = cloudinary.uploader.upload(request.files['profile_picture'])
+    print(result['secure_url'])
+    user.profile_picture = result['secure_url']
+    db.session.commit()
+    return jsonify({"updated": True}),200
+
+
+@api.route('/paypremium', methods=["PUT"])
+@jwt_required()
+def pay_premium():
+    current_user = get_jwt_identity()
+    print(current_user)
+    user = User.query.get(current_user)
+    if user:
+        user.is_premium = True
+        db.session.commit()
+        return jsonify({"modified":True, "user":user.serialize()}), 200
+    else:
+        return jsonify({"modified":False, "msg":"Lack of Info"}), 400
+
 
