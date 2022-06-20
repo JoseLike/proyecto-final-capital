@@ -14,7 +14,7 @@ class User(db.Model):
     user_type = db.Column(db.Integer, db.ForeignKey('usertype.id'), nullable=False ) 
     is_company = db.Column(db.Boolean(), default=False) 
     profile_picture = db.Column(db.String(120))
-    user_longevity = db.Column(db.Date()) 
+    longevity = db.Column(db.Date()) 
     inversor_type = db.Column(db.String(120), default=None) 
     acepted_conditions = db.Column(db.Boolean(),nullable=False, default=False)
     projects = db.relationship('Project', backref='user') 
@@ -35,7 +35,7 @@ class User(db.Model):
             "acepted_conditions":self.acepted_conditions,
             "is_company":self.is_company,
             "profile_picture":self.profile_picture,
-            "user_longevity":self.user_longevity,
+            "longevity":self.longevity,
             "favorites":list(map(lambda favorite: favorite.serialize(),self.favorites)),
             "sended_messages":list(map(lambda message: message.serialize(),self.enviados)),
             "received_messages":list(map(lambda message: message.serialize(),self.recibidos))        

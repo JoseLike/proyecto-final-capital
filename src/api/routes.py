@@ -9,6 +9,7 @@ import cloudinary
 import cloudinary.uploader
 import stripe
 from os import getenv
+import datetime
 
 
 
@@ -31,7 +32,7 @@ def create_user():
         used_email = User.query.filter_by(email=body_email).first()
         if used_email :
             return jsonify({"created":False, "msg":"Email already in use"}), 400
-        new_user = User(email = body_email, password = body_password, country=body_country, name=body_name, last_name=body_last_name, user_type=body_user_type, inversor_type=body_user_type, acepted_conditions=body_acepted_conditions, is_premium=body_is_premium)
+        new_user = User(email = body_email, password = body_password, country=body_country, name=body_name, last_name=body_last_name, user_type=body_user_type, inversor_type=body_user_type, acepted_conditions=body_acepted_conditions, is_premium=body_is_premium, longevity= datetime.date.today())
         db.session.add(new_user)
         db.session.commit()
         return jsonify({"created":True, "user":new_user.serialize()}), 200
@@ -54,36 +55,44 @@ def login_user():
 
 
 @api.route("/crear-proyecto", methods=["POST"])
-#@jwt_required()
+@jwt_required()
 def create_project():
-    body_title=request.form.get("title")
-    body_userid= 1 #request.form.get("user_id") 
-    body_concept=request.form.get("concept")
-    body_desired_capital=request.form.get("desired_capital")
-    body_invested_capital=request.form.get("invested_capital")
-    body_category=request.form.get("category")
-    body_deadline=request.form.get("deadline")
-    body_loans=request.form.get("loans")
-    body_business_plan=request.form.get("business_plan")
-    body_patent=request.form.get("patent")
-    body_terms=request.form.get("terms")
-    body_investment_capacity=request.form.get("investment_capacity")
-    if "project_files" in request.files:
-        result = cloudinary.uploader.upload(request.files['project_files'])
-        body_project_files = result['secure_url']
-    body_project_picture = ""
-    if "project_picture" in request.files:
-        result = cloudinary.uploader.upload(request.files['project_picture'])
-        body_project_picture = result['secure_url']
-    if body_title and body_concept and body_desired_capital and body_invested_capital and body_category and body_loans and body_business_plan and body_investment_capacity:
-        body_terms = True if body_terms == "true" else False
-        body_patent = True if body_patent == "true" else False
-        new_project = Project(user_id=body_userid,title = body_title, concept = body_concept, desired_capital = body_desired_capital, invested_capital = body_invested_capital, category_id = body_category, loans = body_loans, business_plan = body_business_plan, patent = body_patent, terms = body_terms, project_files= body_project_files, project_picture = body_project_picture, investment_capacity = body_investment_capacity)
-        db.session.add(new_project)
-        db.session.commit()
-        return jsonify({"created":True, "project":new_project.serialize()}), 200
+    user_id = get_jwt_identity()
+    user= User.query.get(user_id)
+    if user: 
+        body_title=request.form.get("title")
+        body_concept=request.form.get("concept")
+        body_desired_capital=request.form.get("desired_capital")
+        body_invested_capital=request.form.get("invested_capital")
+        body_category=request.form.get("category")
+        body_deadline=request.form.get("deadline")
+        body_loans=request.form.get("loans")
+        body_business_plan=request.form.get("business_plan")
+        body_patent=request.form.get("patent")
+        body_terms=request.form.get("terms")
+        body_investment_capacity=request.form.get("investment_capacity")
+        body_project_files = ""
+        if "project_files" in request.files:
+            result = cloudinary.uploader.upload(request.files['project_files'])
+            body_project_files = result['secure_url']
+        body_project_picture = ""
+        if "project_picture" in request.files:
+            result = cloudinary.uploader.upload(request.files['project_picture'])
+            body_project_picture = result['secure_url']
+        if body_title and body_concept and body_desired_capital and body_invested_capital and body_category and body_loans and body_business_plan and body_investment_capacity:
+            body_terms = True if body_terms == "true" else False
+            body_patent = True if body_patent == "true" else False
+            new_project = Project(user_id=user.id,title = body_title, concept = body_concept, desired_capital = body_desired_capital, invested_capital = body_invested_capital, category_id = body_category, loans = body_loans, business_plan = body_business_plan, patent = body_patent, terms = body_terms, project_files= body_project_files, project_picture = body_project_picture, investment_capacity = body_investment_capacity, deadline = body_deadline)
+            db.session.add(new_project)
+            db.session.commit()
+            return jsonify({"created":True, "project":new_project.serialize()}), 200
+        else:
+            return jsonify({"created":False, "msg":"Lack of Info"}), 400
     else:
         return jsonify({"created":False, "msg":"Lack of Info"}), 400
+        
+
+
 
 
 

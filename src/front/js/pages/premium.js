@@ -66,7 +66,7 @@ export const PremiumComponent = () => {
         {
           method: "PUT",
           headers: {
-            Authorization: `Bearer ${store.token}`,
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         },
         console.log(store.current_user)

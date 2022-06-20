@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: a75da5983a67
+Revision ID: 99c6e8d2339f
 Revises: 
-Create Date: 2022-06-16 16:53:06.309071
+Create Date: 2022-06-20 15:11:43.883621
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'a75da5983a67'
+revision = '99c6e8d2339f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -39,7 +39,7 @@ def upgrade():
     sa.Column('user_type', sa.Integer(), nullable=False),
     sa.Column('is_company', sa.Boolean(), nullable=True),
     sa.Column('profile_picture', sa.String(length=120), nullable=True),
-    sa.Column('user_longevity', sa.Date(), nullable=True),
+    sa.Column('longevity', sa.Date(), nullable=True),
     sa.Column('inversor_type', sa.String(length=120), nullable=True),
     sa.Column('acepted_conditions', sa.Boolean(), nullable=False),
     sa.ForeignKeyConstraint(['user_type'], ['usertype.id'], ),
@@ -79,12 +79,14 @@ def upgrade():
     op.create_table('mensajes',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('project_id', sa.Integer(), nullable=True),
-    sa.Column('sender_user', sa.Integer(), nullable=True),
+    sa.Column('sender_id', sa.Integer(), nullable=True),
+    sa.Column('receiver_id', sa.Integer(), nullable=True),
     sa.Column('text', sa.Text(), nullable=False),
     sa.Column('subject', sa.String(length=120), nullable=False),
     sa.Column('readed', sa.Boolean(), nullable=False),
     sa.ForeignKeyConstraint(['project_id'], ['project.id'], ),
-    sa.ForeignKeyConstraint(['sender_user'], ['user.id'], ),
+    sa.ForeignKeyConstraint(['receiver_id'], ['user.id'], ),
+    sa.ForeignKeyConstraint(['sender_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###

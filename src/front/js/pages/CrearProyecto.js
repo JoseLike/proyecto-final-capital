@@ -25,6 +25,7 @@ export const CrearProyecto = () => {
   });
 
   const [cate, setCate] = useState([]);
+  const [showDeadline, setShowDeadline] = useState(false);
 
   const sendNewProject = async () => {
     if (
@@ -52,6 +53,9 @@ export const CrearProyecto = () => {
         {
           method: "POST",
           body: body,
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         }
       );
       const data = await response.json();
@@ -149,12 +153,31 @@ export const CrearProyecto = () => {
             </span>
             <input
               type="checkbox"
+              checked={showDeadline}
               id="exampleFormControlSelect1"
               className="w-25"
               name="deadline"
+              onChange={(e) => {
+                setShowDeadline(!showDeadline);
+                if (e.target.checked == false) {
+                  setInfo({ ...info, deadline: null });
+                }
+              }}
             ></input>
           </div>
           <br />
+
+          <input
+            type="date"
+            id="start"
+            name="trip-start"
+            value={info.deadline}
+            min={new Date()}
+            disabled={!showDeadline}
+            onChange={(e) => {
+              setInfo({ ...info, deadline: e.target.value });
+            }}
+          />
           <div className="d-flex container">
             <span className="input-group-text offset-1 w-25">
               Capital deseado
