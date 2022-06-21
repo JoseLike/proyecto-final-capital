@@ -1,14 +1,11 @@
 import React, { useContext, useState, useEffect } from "react";
+import logo2 from "/workspace/proyecto-final-capital/src/front/img/logosimple.png";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import "../../styles/myaccount.css";
 
 export const MyAccount = () => {
   const { store, actions } = useContext(Context);
-
-  //useEffect(() => {
-  //actions.getSingleProject(theid);
-  //}, []);
 
   const [changedata, setChangedata] = useState({
     name: store.current_user.name,

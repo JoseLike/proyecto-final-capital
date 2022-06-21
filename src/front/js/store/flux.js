@@ -13,11 +13,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       user_stadistics: {},
     },
     actions: {
-
       logOut: () => {
         localStorage.removeItem("token");
       },
-
 
       deleteFav: async (project) => {
         const store = getStore();
@@ -76,7 +74,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         let actions = getActions();
         if (datos.email != null && datos.password.trim() != "") {
           const response = await fetch(
-            "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/login",
+            "https://3001-joselike-proyectofinalc-0a7j3wq69bv.ws-eu47.gitpod.io/api/login",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -87,6 +85,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           if (data.logged == true) {
             localStorage.setItem("token", data.token);
             setStore({ current_user: data.user });
+            setStore({ logged: true });
             //setStore({ user_projects: data.user.projects });
             setStore({ favourites: data.user.favorites });
             setStore({ sended_messages: data.user.sended_messages });
@@ -94,13 +93,12 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
           return true;
         } else {
-          alert("Falta informacion");
           return false;
         }
       },
       getSingleProject: async (key) => {
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/project/" +
+          "https://3001-joselike-proyectofinalc-0a7j3wq69bv.ws-eu47.gitpod.io/api/project/" +
             key
         );
         const gettedproject = await response.json();
@@ -112,7 +110,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       getUserProjects: async () => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/userprojects/" +
+          "https://3001-joselike-proyectofinalc-0a7j3wq69bv.ws-eu47.gitpod.io/api/userprojects/" +
             store.current_user.id,
           {
             method: "GET",
@@ -165,7 +163,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       getUserStadistics: async () => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/stadistics/" +
+          "https://3001-joselike-proyectofinalc-0a7j3wq69bv.ws-eu47.gitpod.io/api/stadistics/" +
             store.current_user.id
         );
         const data = await response.json();
@@ -180,7 +178,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       deleteFav: async (messageid) => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/delete/message/" +
+          "https://3001-joselike-proyectofinalc-0a7j3wq69bv.ws-eu47.gitpod.io/api/delete/message/" +
             messageid,
           {
             method: "DELETE",
@@ -209,7 +207,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       getUserMessages: async () => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/stadistics/" +
+          "https://3001-joselike-proyectofinalc-0a7j3wq69bv.ws-eu47.gitpod.io/api/stadistics/" +
             store.current_user.id
         );
         const data = await response.json();
