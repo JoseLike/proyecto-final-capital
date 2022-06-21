@@ -164,20 +164,19 @@ export const CrearProyecto = () => {
                 }
               }}
             ></input>
+            <input
+              type="date"
+              id="start"
+              name="trip-start"
+              value={info.deadline}
+              min={new Date()}
+              disabled={!showDeadline}
+              onChange={(e) => {
+                setInfo({ ...info, deadline: e.target.value });
+              }}
+            />
           </div>
           <br />
-
-          <input
-            type="date"
-            id="start"
-            name="trip-start"
-            value={info.deadline}
-            min={new Date()}
-            disabled={!showDeadline}
-            onChange={(e) => {
-              setInfo({ ...info, deadline: e.target.value });
-            }}
-          />
           <div className="d-flex container">
             <span className="input-group-text offset-1 w-25">
               Capital deseado
