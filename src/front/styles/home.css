@@ -1,7 +1,52 @@
-/*
-    home.css: This website contains selectors only used in home.css
+@import "~bootstrap/dist/css/bootstrap.css";
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+.Home {
+  width: 100vw;
+  height: 100vh;
+  color: white;
+}
+
+.fsize {
+  width: 50px;
+}
+
+.button-log {
+  width: 4000px;
+}
+
+.img-ilutrator {
+  width: 200px;
+  height: 200px;
+}
+
+p {
+  font-family: "Racing Sans One";
+  font-size: 24px;
+}
+
+.btn-outline-light {
+  color: white;
+}
+
+.principal {
+  font-family: "Courgette", cursive;
+  font-size: 34px;
+}
+
+.row {
+  display: flex;
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+  color: black;
+}
+.icon {
+  padding: 0px;
+  margin-right: 10px;
+  color: black;
+}
+
+.title {
+  text-decoration: none;
+  color: black;
+}

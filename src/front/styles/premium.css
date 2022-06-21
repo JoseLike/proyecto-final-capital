@@ -1,0 +1,81 @@
+.inp-capital-span {
+  width: 150px;
+}
+.premium-page {
+  height: 88vh;
+}
+.btn-pay {
+  color: white;
+}
+
+.btn-flotante-atras {
+  font-size: 12px; /* Cambiar el tamaño de la tipografia */
+  width: 50px;
+  height: 50px;
+  text-transform: uppercase; /* Texto en mayusculas */
+  font-weight: bold; /* Fuente en negrita o bold */
+  color: #000000; /* Color del texto */
+  border-radius: 90px; /* Borde del boton */
+  letter-spacing: 2px; /* Espacio entre letras */
+  padding: 10px 10px; /* Relleno del boton */
+  position: fixed;
+  left: 50px;
+  transition: all 300ms ease 0ms;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  z-index: 99;
+}
+.btn-flotante-atras:hover {
+  background-color: rgb(39, 170, 240); /* Color de fondo al pasar el cursor */
+  color: white;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-7px);
+}
+@media only screen and (max-width: 600px) {
+  .btn-flotante-atras {
+    font-size: 14px;
+    padding: 12px 20px;
+    right: 20px;
+  }
+}
+
+.li-izq {
+  width: 50%;
+}
+
+.li-dcha {
+  width: 50%;
+}
+
+.lst {
+  margin: 5px;
+  border-bottom: 2px solid black;
+}
+
+.divizq {
+  background-color: white;
+}
+
+.free-title {
+  background-color: #00000077;
+  color: white;
+}
+
+.premium-title {
+  background-color: #0b18ca91;
+  color: white;
+}
+
+.btn-free {
+  color: black;
+  font-size: 24px;
+}
+
+.btn-premium {
+  background-color: #0b18ca91;
+  color: white;
+  font-size: 30px;
+}
+
+.btn-pay {
+  font-size: 24px;
+}

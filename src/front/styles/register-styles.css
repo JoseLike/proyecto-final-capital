@@ -1,0 +1,80 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+div .account-type-box {
+  margin-top: 70px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: rgba(14, 14, 14, 0.342);
+}
+
+.base-register {
+  background-color: rgba(51, 144, 194, 0.445);
+  height: 88vh;
+  display: flex;
+  align-items: center;
+}
+.contenido {
+  width: 100%;
+}
+.main-box-register {
+  background-color: rgb(51, 144, 194);
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.titulo-selector-cuenta {
+  color: white;
+  width: 100%;
+}
+.arrow-left-reg1 {
+  width: 50px;
+}
+
+.logo-register {
+  width: 180px;
+  height: 80px;
+}
+.register-title {
+  font-size: 28px;
+  padding-top: 5px;
+}
+
+div .rw-main-box-register {
+  text-align: justify;
+}
+
+.input-basic-register {
+  padding-bottom: 15px;
+}
+.input-text-register {
+  font-size: 12px;
+}
+
+.form-control {
+  width: 280px;
+}
+
+.btt-account-type {
+  color: black;
+}
+
+.btt-account-type-over {
+  background-color: rgba(154, 211, 243, 0.65);
+}
+
+.dropdown-toggle {
+  background-color: white;
+}
+.custom-select {
+  width: 325px;
+}
+
+.input-group-text {
+  width: 140px;
+  justify-content: center;
+  background-color: rgb(189, 226, 247);
+  border: none;
+}
+
+.icono-atras {
+  color: rgb(51, 144, 194);
+}
