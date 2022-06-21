@@ -32,7 +32,12 @@ export const Login = () => {
       alert("Contraseña invalida");
     } else {
       await actions.sendUserInfo(datos);
-      navigate.push("/personal");
+
+      if (store.logged == true) {
+        navigate.push("/personal");
+      } else {
+        alert("sorry");
+      }
     }
   };
 
