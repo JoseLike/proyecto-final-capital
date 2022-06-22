@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-import { RegisterType } from "/workspace/proyecto-final-capital/src/front/js/component/regUserSelection.jsx";
-import logo2 from "/workspace/proyecto-final-capital/src/front/img/logosimple.png";
-import profit from "/workspace/proyecto-final-capital/src/front/img/profit.png";
-import solution from "/workspace/proyecto-final-capital/src/front/img/solution.png";
+import { RegisterType } from "../component/regUserSelection";
+import logo2 from "../../img/logosimple";
+import profit from "../../img/profit.png";
+import solution from "../../img/img/solution.png";
 import "../../styles/register-styles.css";
 import { useHistory } from "react-router-dom";
 

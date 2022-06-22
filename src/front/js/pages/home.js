@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-import { LandingCard } from "/workspace/proyecto-final-capital/src/front/js/component/landingcard.jsx";
-import logosimple from "/workspace/proyecto-final-capital/src/front/img/logosimple.png";
+import { LandingCard } from "../component/landingcard.jsx";
+import logosimple from "../../img/logosimple";
 
 import "../../styles/landing.css";
 

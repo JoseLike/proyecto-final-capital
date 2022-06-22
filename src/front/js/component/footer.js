@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import logo2 from "/workspace/proyecto-final-capital/src/front/img/logo2.png";
-import "/workspace/proyecto-final-capital/src/front/styles/home.css";
-import logosimple from "/workspace/proyecto-final-capital/src/front/img/logosimple.png";
+import logo2 from "../../img/logo2";
+import "../../styles/home.css";
+import logosimple from "../../img/logo";
 import "../../styles/footer.css";
 
 export const Footer = () => {
