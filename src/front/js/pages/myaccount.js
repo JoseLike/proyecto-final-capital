@@ -72,10 +72,7 @@ export const MyAccount = () => {
       },
       body: body,
     };
-    fetch(
-      "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/subir",
-      options
-    );
+    fetch("https://proyecto-final-investup.herokuapp.com//api/subir", options);
   };
 
   return (

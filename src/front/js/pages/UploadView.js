@@ -25,10 +25,7 @@ export const UploadView = () => {
       method: "POST",
       body: body,
     };
-    fetch(
-      "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/upload",
-      options
-    )
+    fetch("https://proyecto-final-investup.herokuapp.com/api/upload", options)
       .then((resp) => resp.json())
       .then((data) => console.log("Exito"), data)
       .catch((error) => console.error("ERROOOOOOR"), error);

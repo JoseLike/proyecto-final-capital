@@ -48,7 +48,7 @@ export const EditarProyecto = () => {
       parseInt(info.category);
       parseInt(info.loans);
       const response = await fetch(
-        "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu46.gitpod.io/api/crear-proyecto",
+        "https://proyecto-final-investup.herokuapp.com/api/crear-proyecto",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -68,7 +68,7 @@ export const EditarProyecto = () => {
 
   const getCategory = async () => {
     const response = await fetch(
-      "https://3000-joselike-proyectofinalc-uc0zbijd8yh.ws-eu46.gitpod.io/api/category/"
+      "https://proyecto-final-investup.herokuapp.com/api/category/"
     );
     const data = await response.json();
     console.log(data.cate);
