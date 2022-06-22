@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import logo2 from "/workspace/proyecto-final-capital/src/front/img/logosimple.png";
+import logo2 from "../../img/logosimple";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import "../../styles/myaccount.css";

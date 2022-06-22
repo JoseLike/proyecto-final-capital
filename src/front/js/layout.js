@@ -7,17 +7,17 @@ import { Register } from "./pages/register";
 import { ProjectView } from "./pages/projectview";
 import { PersonalView } from "./pages/personalview";
 import { MyAccount } from "./pages/myaccount";
-import { InversorPay } from "/workspace/proyecto-final-capital/src/front/js/pages/inversorpay.js";
+import { InversorPay } from "./pages/inversorpay.js";
 import injectContext from "./store/appContext";
 import { Footer } from "./component/footer";
 import { Sidebar } from "./component/Sidebar";
-import { StadisticsView } from "/workspace/proyecto-final-capital/src/front/js/pages/stadistics.js";
-import { CrearProyecto } from "/workspace/proyecto-final-capital/src/front/js/pages/CrearProyecto.js";
+import { StadisticsView } from "./pages/stadistics.js";
+import { CrearProyecto } from "./pages/CrearProyecto.js";
 import { EditarProyecto } from "./pages/editarproyecto";
 import { BuscarProyecto } from "./pages/BuscarProyecto";
 import { UploadView } from "./pages/UploadView";
-import { Premium } from "/workspace/proyecto-final-capital/src/front/js/pages/premium.js";
-import { MessagesView } from "/workspace/proyecto-final-capital/src/front/js/pages/messages.js";
+import { Premium } from "./pages/premium.js";
+import { MessagesView } from "./pages/messages.js";
 //create your first component
 const Layout = () => {
   //the basename is used when your project is published in a subdirectory and not in the root of the domain

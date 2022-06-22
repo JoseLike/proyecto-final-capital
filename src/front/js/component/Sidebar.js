@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
-import "/workspace/proyecto-final-capital/src/front/styles/home.css";
+import "../../styles/home.css";
 import { Link } from "react-router-dom";
 import "../../styles/sidebar2.css";
 import { useHistory } from "react-router-dom";
@@ -214,11 +214,9 @@ export const Sidebar = () => {
                   <a
                     className="dropdown-item"
                     href="#"
-
                     onClick={() => {
                       actions.logOut();
                     }}
-
                   >
                     Sign out
                   </a>

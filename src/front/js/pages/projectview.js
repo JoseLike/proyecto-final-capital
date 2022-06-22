@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link, useParams } from "react-router-dom";
-import logosimple from "/workspace/proyecto-final-capital/src/front/img/logosimple.png";
+import logosimple from "../../img/logosimple";
 import "../../styles/projectview.css";
 
 export const ProjectView = () => {
