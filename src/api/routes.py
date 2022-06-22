@@ -8,7 +8,7 @@ from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_tok
 import cloudinary
 import cloudinary.uploader
 import stripe
-from os import getenv
+import os
 import datetime
 
 
@@ -208,7 +208,7 @@ def payment():
     try:
         data = request.json
         amount = int(float(data['amount'])*100)
-        stripe.api_key = 'sk_test_51L87AmKEz3UKYat7fd2xcMZ86ttOFOjOO5qEikG7qBuaLjQNWAGdXoyW4ukMijSCiMH3uwAIDQr1MfopowYG4mWV00JnzZercq'
+        stripe.api_key = os.getenv("STRIPE_KEY")
         charge = stripe.Charge.create(
         amount = amount,
         currency = "eur",
