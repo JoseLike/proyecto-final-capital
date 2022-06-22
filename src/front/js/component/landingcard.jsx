@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
-import "/workspace/proyecto-final-capital/src/front/styles/personalview.css";
+import "../../styles/personalview.css";
 import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
 
@@ -26,7 +26,6 @@ export const LandingCard = (props) => {
         <small className="text-muted">Categoria: {props.category_id}</small>
 
         <i className="fa-regular fa-star  float-end"></i>
-
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import { LandingCard } from "../component/landingcard.jsx";
-import logosimple from "../../img/logosimple";
+import logosimple from "../../img/logosimple.png";
 
 import "../../styles/landing.css";
 

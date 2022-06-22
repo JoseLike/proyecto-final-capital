@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
-import logo2 from "../../img/logo2";
+import logo2 from "../../img/logo2.png";
 import { Link } from "react-router-dom";
 import "../../styles/buscarproyecto.css";
 

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-import logo2 from "../../img/logosimple";
+import logo2 from "../../img/logosimple.png";
 import "../../styles/login-styles.css";
 import { useHistory } from "react-router-dom";
 

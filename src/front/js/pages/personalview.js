@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link, useParams } from "react-router-dom";
-import logosimple from "../../img/logosimple";
+import logosimple from "../../img/logosimple.png";
 import { Projectcard } from "../component/projectscard.jsx";
 import "../../styles/personalview.css";
 import { EmprendedorLanding } from "../component/emprendedorlanding.jsx";

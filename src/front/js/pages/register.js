@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import { RegisterType } from "../component/regUserSelection";
-import logo2 from "../../img/logosimple";
+import logo2 from "../../img/logosimple.png";
 import profit from "../../img/profit.png";
 import solution from "../../img/img/solution.png";
 import "../../styles/register-styles.css";

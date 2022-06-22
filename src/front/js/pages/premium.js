@@ -10,7 +10,7 @@ import {
   Elements,
 } from "@stripe/react-stripe-js";
 import axios from "axios";
-import getState from "/workspace/proyecto-final-capital/src/front/js/store/flux.js";
+import getState from "../store/flux";
 import { object } from "prop-types";
 
 const stripePromise = loadStripe(

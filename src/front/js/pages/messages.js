@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link, useParams } from "react-router-dom";
-import "/workspace/proyecto-final-capital/src/front/styles/messages.css";
-import { MessagesCard } from "/workspace/proyecto-final-capital/src/front/js/component/messagescard.jsx";
+import "../../styles/messages.css";
+import { MessagesCard } from "../component/messagescard.jsx";
 
 export const MessagesView = () => {
   const { store, actions } = useContext(Context);
