@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { RegisterType } from "../component/regUserSelection.jsx";
 import logo2 from "../../img/logosimple.png";
 import profit from "../../img/profit.png";
-import solution from "../../img/img/solution.png";
+import solution from "../../img/solution.png";
 import "../../styles/register-styles.css";
 import { useHistory } from "react-router-dom";
 

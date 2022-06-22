@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
-import "/workspace/proyecto-final-capital/src/front/styles/personalview.css";
+import "../../styles/personalview.css";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
@@ -11,9 +11,7 @@ export const InvestorCard = (props) => {
   let navigate = useHistory();
 
   return (
-
-    <Link to={"/project/" + (props.id)}>
-
+    <Link to={"/project/" + props.id}>
       <div className="card investor-card m-2">
         <img
           className="card-img-top"

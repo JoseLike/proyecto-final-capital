@@ -1,14 +1,19 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
-import "/workspace/proyecto-final-capital/src/front/styles/personalview.css";
+import "../../styles/personalview.css";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
 
 export const MessagesCard = (props) => {
   const { store, actions } = useContext(Context);
-  const [MessageView, setMessageView] = useState(<><div className="card-header">Enviado por: {props.emisor}  /  Asunto: {props.subject}</div>
-  </>);
+  const [MessageView, setMessageView] = useState(
+    <>
+      <div className="card-header">
+        Enviado por: {props.emisor} / Asunto: {props.subject}
+      </div>
+    </>
+  );
   let navigate = useHistory();
   const [mensaje, setMensaje] = useState({
     project_id: null,
@@ -19,10 +24,13 @@ export const MessagesCard = (props) => {
     readed: false,
   });
 
-
   const insertprops = async () => {
-    setMensaje({ ...mensaje, project_id: props.project_id, receiver_id: props.emisor })
-  }
+    setMensaje({
+      ...mensaje,
+      project_id: props.project_id,
+      receiver_id: props.emisor,
+    });
+  };
   const handleInputChange = (e) => {
     setMensaje({
       ...mensaje,
@@ -33,8 +41,8 @@ export const MessagesCard = (props) => {
     console.log(mensaje);
     if (
       (mensaje.subject,
-        mensaje.receiver_user,
-        mensaje.text !=
+      mensaje.receiver_user,
+      mensaje.text !=
         "") /* CORROBORAR QUE SE PUEDE HACER LA COMPROBACION ASI Y SABER COMO SE HACE EN LOS CHECKBOX */
     ) {
       const response = await fetch(
@@ -52,81 +60,103 @@ export const MessagesCard = (props) => {
     }
   };
 
-  return (<>
-
-    <div className="card bg-light mb-3" style={{ "maxWidth": "100%" }} onClick={() => setMessageView(<><div className="card-header">Enviado por: {props.emisor} <button className="float-end delete-msg-btn" onClick={props.delete}>
-      X
-    </button></div>
-      <div className="card-body">
-        <h5 className="card-title">{props.subject}</h5>
-        <p className="card-text">{props.texto}</p>
-        <button type="button" className="btn btn-primary" data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop" onClick={() => insertprops()}>Responder</button>
-      </div></>)} >
-      {MessageView}
-
+  return (
+    <>
       <div
-        className="modal fade"
-        id="staticBackdrop"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabIndex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
+        className="card bg-light mb-3"
+        style={{ maxWidth: "100%" }}
+        onClick={() =>
+          setMessageView(
+            <>
+              <div className="card-header">
+                Enviado por: {props.emisor}{" "}
+                <button
+                  className="float-end delete-msg-btn"
+                  onClick={props.delete}
+                >
+                  X
+                </button>
+              </div>
+              <div className="card-body">
+                <h5 className="card-title">{props.subject}</h5>
+                <p className="card-text">{props.texto}</p>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop"
+                  onClick={() => insertprops()}
+                >
+                  Responder
+                </button>
+              </div>
+            </>
+          )
+        }
       >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="staticBackdropLabel">
-                Enviar Mensaje
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-              <div>Destinatario: {props.sender_id}</div>
-              <div>De: {store.current_user.name}</div>
-              <input
-                placeholder="Asunto"
-                id="exampleFormControlSelect1"
-                className="w-50 mt-3"
-                name="subject"
-                onChange={handleInputChange}
-              ></input>
-              <input
-                placeholder="Escribe aqui"
-                id="exampleFormControlSelect1"
-                className="w-100 mt-3"
-                name="text"
-                onChange={handleInputChange}
-              ></input>
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={() => sendNewMessage()}
-              >
-                Enviar
-              </button>
+        {MessageView}
+
+        <div
+          className="modal fade"
+          id="staticBackdrop"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabIndex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="staticBackdropLabel">
+                  Enviar Mensaje
+                </h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div className="modal-body">
+                <div>Destinatario: {props.sender_id}</div>
+                <div>De: {store.current_user.name}</div>
+                <input
+                  placeholder="Asunto"
+                  id="exampleFormControlSelect1"
+                  className="w-50 mt-3"
+                  name="subject"
+                  onChange={handleInputChange}
+                ></input>
+                <input
+                  placeholder="Escribe aqui"
+                  id="exampleFormControlSelect1"
+                  className="w-100 mt-3"
+                  name="text"
+                  onChange={handleInputChange}
+                ></input>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={() => sendNewMessage()}
+                >
+                  Enviar
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </>
-
+    </>
   );
 };
 
