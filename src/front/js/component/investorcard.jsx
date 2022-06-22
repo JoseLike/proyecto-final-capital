@@ -17,12 +17,12 @@ export const InvestorCard = (props) => {
       <div className="card investor-card m-2">
         <img
           className="card-img-top"
-          src="https://t2.ea.ltmcdn.com/es/posts/8/2/2/tipos_de_pinguinos_21228_600_square.jpg"
+          src={props.imagen}
           alt="Card image cap"
         />
         <div className="card-body">
           <h5 className="card-title text-center">{props.name}</h5>
-          <p className="card-text text-start">Fecha limite {props.eta}</p>
+          <p className="card-text text-start">Fecha limite: {props.eta}</p>
           <p className="card-text text-start">
             Capital Requerido: {props.capital}
           </p>
@@ -40,6 +40,7 @@ export const InvestorCard = (props) => {
 
 InvestorCard.propTypes = {
   category: PropTypes.string,
+  imagen: PropTypes.string,
   id: PropTypes.number,
   name: PropTypes.string,
   capital: PropTypes.number,

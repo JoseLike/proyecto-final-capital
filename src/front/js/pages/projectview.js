@@ -77,7 +77,7 @@ export const ProjectView = () => {
         <div className="projectphoto col-md-5 ">
           <img
             className="img-fluid shadow imagen-proyecto-single"
-            src="https://images.ecestaticos.com/pqIAcGCEagnkjdIBVKVbC9i5FH4=/0x0:1920x1278/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fe8e%2Fe27%2F2bf%2Fe8ee272bfd36f69679936351209d708c.jpg"
+            src={store.singleproject.project_picture}
             alt="projectphoto"
           />
         </div>

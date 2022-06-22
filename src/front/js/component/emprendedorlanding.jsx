@@ -27,6 +27,7 @@ export const EmprendedorLanding = (props) => {
                     return (<Projectcard
                         key={projects.id}
                         id={projects.id}
+                        imagen={projects.project_picture}
                         category={projects.category_id}
                         name={projects.title}
                         eta={projects.deadline}
