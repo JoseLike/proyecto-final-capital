@@ -39,7 +39,7 @@ export const ProjectView = () => {
         "") /* CORROBORAR QUE SE PUEDE HACER LA COMPROBACION ASI Y SABER COMO SE HACE EN LOS CHECKBOX */
     ) {
       const response = await fetch(
-        "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/send-message",
+        "https://proyecto-final-investup.herokuapp.com/api/send-message",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

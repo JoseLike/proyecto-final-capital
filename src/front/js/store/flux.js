@@ -20,7 +20,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       deleteFav: async (project) => {
         const store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/delete/favs/" +
+          "https://proyecto-final-investup.herokuapp.com/api/delete/favs/" +
             project.id,
           {
             method: "DELETE",
@@ -41,7 +41,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       sendFav: async (name) => {
         const store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-uc0zbijd8yh.ws-eu47.gitpod.io/api/favoritos",
+          "https://proyecto-final-investup.herokuapp.com/api/favoritos",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -74,7 +74,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         let actions = getActions();
         if (datos.email != null && datos.password.trim() != "") {
           const response = await fetch(
-            "https://3001-joselike-proyectofinalc-0a7j3wq69bv.ws-eu47.gitpod.io/api/login",
+            "https://proyecto-final-investup.herokuapp.com/api/login",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -98,8 +98,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       getSingleProject: async (key) => {
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-0a7j3wq69bv.ws-eu47.gitpod.io/api/project/" +
-            key
+          "https://proyecto-final-investup.herokuapp.com/api/project/" + key
         );
         const gettedproject = await response.json();
         console.log(gettedproject);
@@ -110,7 +109,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       getUserProjects: async () => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-0a7j3wq69bv.ws-eu47.gitpod.io/api/userprojects/" +
+          "https://proyecto-final-investup.herokuapp.com/api/userprojects/" +
             store.current_user.id,
           {
             method: "GET",
@@ -128,7 +127,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       changeUserInfo: async (changedata) => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/edituser/" +
+          "https://proyecto-final-investup.herokuapp.com/api/edituser/" +
             store.current_user.id,
           {
             method: "PUT",
@@ -146,7 +145,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       changeUserPassword: async (changedata) => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-5r81xxko7fm.ws-eu47.gitpod.io/api/editpassword/" +
+          "https://proyecto-final-investup.herokuapp.com/api/editpassword/" +
             store.current_user.id,
           {
             method: "PUT",
@@ -163,7 +162,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       getUserStadistics: async () => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-0a7j3wq69bv.ws-eu47.gitpod.io/api/stadistics/" +
+          "https://proyecto-final-investup.herokuapp.com/api/stadistics/" +
             store.current_user.id
         );
         const data = await response.json();
@@ -178,7 +177,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       deleteFav: async (messageid) => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-0a7j3wq69bv.ws-eu47.gitpod.io/api/delete/message/" +
+          "https://proyecto-final-investup.herokuapp.com/api/delete/message/" +
             messageid,
           {
             method: "DELETE",
@@ -207,7 +206,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       getUserMessages: async () => {
         let store = getStore();
         const response = await fetch(
-          "https://3001-joselike-proyectofinalc-0a7j3wq69bv.ws-eu47.gitpod.io/api/stadistics/" +
+          "https://proyecto-final-investup.herokuapp.com/api/stadistics/" +
             store.current_user.id
         );
         const data = await response.json();

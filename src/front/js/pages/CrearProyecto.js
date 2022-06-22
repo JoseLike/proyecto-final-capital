@@ -49,7 +49,7 @@ export const CrearProyecto = () => {
         body.append(key, info[key]);
       }
       const response = await fetch(
-        "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/crear-proyecto",
+        "https://proyecto-final-investup.herokuapp.com/api/crear-proyecto",
         {
           method: "POST",
           body: body,
@@ -71,7 +71,7 @@ export const CrearProyecto = () => {
 
   const getCategory = async () => {
     const response = await fetch(
-      "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/category/"
+      "https://proyecto-final-investup.herokuapp.com/api/category/"
     );
     const data = await response.json();
     console.log(data.cate);

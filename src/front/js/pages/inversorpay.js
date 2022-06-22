@@ -53,7 +53,7 @@ export const InversorPayComponent = () => {
     } else {
       console.log(paymentMethod);
       axios({
-        url: "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/investment/",
+        url: "https://proyecto-final-investup.herokuapp.com/api/investment/",
         method: "POST",
         data: {
           id: paymentMethod.id,
@@ -63,7 +63,7 @@ export const InversorPayComponent = () => {
       });
       console.log(store.singleproject);
       await axios.put(
-        "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/investor/" +
+        "https://proyecto-final-investup.herokuapp.com/api/investor/" +
           store.singleproject.id,
         {
           raised_capital: changedata.amount,
