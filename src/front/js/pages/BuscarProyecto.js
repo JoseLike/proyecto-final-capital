@@ -4,7 +4,7 @@ import logo2 from "../../img/logo2.png";
 import { Link } from "react-router-dom";
 import "../../styles/buscarproyecto.css";
 
-import { InvestorCard } from "/workspace/proyecto-final-capital/src/front/js/component/investorcard.jsx";
+import { InvestorCard } from "../component/investorcard";
 
 export const BuscarProyecto = () => {
   const { store, actions } = useContext(Context);
