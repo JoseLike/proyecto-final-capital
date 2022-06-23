@@ -107,7 +107,7 @@ export const BuscarProyecto = () => {
         <div className="d-flex container justify-content-center">
           {projects.map((projects) => {
             return (
-              <div className="p-2">
+              <div className="p-2 d-flex justify-content center container">
                 <InvestorCard
                   key={projects.id}
                   imagen={projects.project_picture}
