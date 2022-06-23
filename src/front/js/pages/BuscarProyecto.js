@@ -104,7 +104,7 @@ export const BuscarProyecto = () => {
       </div>
 
       <div className="bg-secondary d-flex justify-content center container">
-        <div className="d-flex container justify-content-center">
+        <div className="d-flex container justify-content-center overflow-auto">
           {projects.map((projects) => {
             return (
               <div className="p-2 d-flex justify-content center container">
