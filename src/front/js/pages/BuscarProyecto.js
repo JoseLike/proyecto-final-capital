@@ -110,6 +110,7 @@ export const BuscarProyecto = () => {
               <div className="p-2">
                 <InvestorCard
                   key={projects.id}
+                  imagen={projects.project_picture}
                   id={projects.id}
                   category={projects.category_id}
                   name={projects.title}

@@ -18,22 +18,23 @@ export const EmprendedorLanding = (props) => {
         <div className="personal-title text-center">
           Bienvenido a tu vista personal como Emprendedor
         </div>
-      </div>
-      <div className="personal-title-row row">
-        <div className="personal-title text-center mt-4">Tus Proyectos</div>
-        <div className="d-flex">
-          {store.user_projects.map((projects) => {
-            return (
-              <Projectcard
-                key={projects.id}
-                id={projects.id}
-                category={projects.category_id}
-                name={projects.title}
-                eta={projects.deadline}
-                capital={projects.desired_capital}
-              />
-            );
-          })}
+        <div className="personal-title-row row">
+          <div className="personal-title text-center mt-4">Tus Proyectos</div>
+          <div className="d-flex">
+            {store.user_projects.map((projects) => {
+              return (
+                <Projectcard
+                  key={projects.id}
+                  id={projects.id}
+                  imagen={projects.project_picture}
+                  category={projects.category_id}
+                  name={projects.title}
+                  eta={projects.deadline}
+                  capital={projects.desired_capital}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
       <Link to="/crearproyecto">
