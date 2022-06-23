@@ -46,7 +46,7 @@ export const Home = () => {
             eres un emprendedor...date a conocer y encuentra el capital para tu
             idea
           </div>
-          <div className="d-flex flex-wrap">
+          <div className="d-flex">
             <LandingCard
               category="Maquinaria"
               name="Sistema dinámico de extrusion 3D"
@@ -58,12 +58,6 @@ export const Home = () => {
               name="Investigacion con celulas madre"
               eta="05/08/2023"
               capital="250000€"
-            />
-            <LandingCard
-              category="Negocio"
-              name="Ecommerce de muebles de madera"
-              eta="01/01/2023"
-              capital="10000€"
             />
           </div>
         </div>
