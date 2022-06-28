@@ -59,6 +59,8 @@ def login_user():
 def create_project():
     user_id = get_jwt_identity()
     user= User.query.get(user_id)
+    print(user_id)
+    print(user)
     if user: 
         body_title=request.form.get("title")
         body_concept=request.form.get("concept")
@@ -82,7 +84,7 @@ def create_project():
         if body_title and body_concept and body_desired_capital and body_invested_capital and body_category and body_loans and body_business_plan and body_investment_capacity:
             body_terms = True if body_terms == "true" else False
             body_patent = True if body_patent == "true" else False
-            new_project = Project(user_id=user.id,title = body_title, concept = body_concept, desired_capital = body_desired_capital, invested_capital = body_invested_capital, category_id = body_category, loans = body_loans, business_plan = body_business_plan, patent = body_patent, terms = body_terms, project_files= body_project_files, project_picture = body_project_picture, investment_capacity = body_investment_capacity, deadline = body_deadline)
+            new_project = Project(user_id=user.id,title = body_title, concept = body_concept, desired_capital = body_desired_capital, invested_capital = body_invested_capital, category_id = body_category, loans = body_loans, business_plan = body_business_plan, patent = body_patent, terms = body_terms, project_files= body_project_files, project_picture = body_project_picture, investment_capacity = body_investment_capacity, deadline = body_deadline if body_deadline != "null" else None)
             db.session.add(new_project)
             db.session.commit()
             return jsonify({"created":True, "project":new_project.serialize()}), 200

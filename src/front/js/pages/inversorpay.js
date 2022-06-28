@@ -53,7 +53,7 @@ export const InversorPayComponent = () => {
     } else {
       console.log(paymentMethod);
       axios({
-        url: "https://proyecto-final-investup.herokuapp.com/api/investment/",
+        url: store.url + "/investment/",
         method: "POST",
         data: {
           id: paymentMethod.id,
@@ -62,13 +62,9 @@ export const InversorPayComponent = () => {
         },
       });
       console.log(store.singleproject);
-      await axios.put(
-        "https://proyecto-final-investup.herokuapp.com/api/investor/" +
-          store.singleproject.id,
-        {
-          raised_capital: changedata.amount,
-        }
-      );
+      await axios.put(store.url + "/investor/" + store.singleproject.id, {
+        raised_capital: changedata.amount,
+      });
     }
   };
 
@@ -103,7 +99,7 @@ export const InversorPayComponent = () => {
           <div className="project-photo col-4 mt-2 mb-2 ">
             <img
               className="shadow "
-              src="https://images.ecestaticos.com/pqIAcGCEagnkjdIBVKVbC9i5FH4=/0x0:1920x1278/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fe8e%2Fe27%2F2bf%2Fe8ee272bfd36f69679936351209d708c.jpg"
+              src={store.singleproject.project_picture}
               alt="projectphoto"
             />
           </div>

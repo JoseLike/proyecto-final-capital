@@ -25,7 +25,7 @@ export const UploadView = () => {
       method: "POST",
       body: body,
     };
-    fetch("https://proyecto-final-investup.herokuapp.com/api/upload", options)
+    fetch(store.url + "/upload", options)
       .then((resp) => resp.json())
       .then((data) => console.log("Exito"), data)
       .catch((error) => console.error("ERROOOOOOR"), error);

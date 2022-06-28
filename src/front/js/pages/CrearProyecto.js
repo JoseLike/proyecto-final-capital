@@ -9,11 +9,10 @@ export const CrearProyecto = () => {
   let navigate = useHistory();
   const [info, setInfo] = useState({
     title: "",
-    user_id: store.current_user.id,
     concept: "",
     desired_capital: 0,
     invested_capital: 0,
-    category: 0,
+    category: 1,
     loans: 0,
     business_plan: "",
     patent: false,
@@ -48,16 +47,13 @@ export const CrearProyecto = () => {
       for (let key in info) {
         body.append(key, info[key]);
       }
-      const response = await fetch(
-        "https://proyecto-final-investup.herokuapp.com/api/crear-proyecto",
-        {
-          method: "POST",
-          body: body,
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
+      const response = await fetch(store.url + "/crear-proyecto", {
+        method: "POST",
+        body: body,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
       const data = await response.json();
       navigate.push("/personal");
       console.log(data);
@@ -70,9 +66,7 @@ export const CrearProyecto = () => {
   }, []);
 
   const getCategory = async () => {
-    const response = await fetch(
-      "https://proyecto-final-investup.herokuapp.com/api/category/"
-    );
+    const response = await fetch(store.url + "/category/");
     const data = await response.json();
     console.log(data.cate);
     setCate(data.cate);

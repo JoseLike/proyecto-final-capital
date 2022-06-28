@@ -59,17 +59,14 @@ export const Register = () => {
   const sendNewUser = async () => {
     //verify();
     if (datos.email != null && datos.password.trim() != "") {
-      const response = await fetch(
-        "https://proyecto-final-investup.herokuapp.com/api/register",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(datos),
-        }
-      );
+      const response = await fetch(store.url + "/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(datos),
+      });
       const data = await response.json();
       console.log(data);
-      navigate.push("./");
+      navigate.push("/");
     } else {
       return alert("Falta informacion");
     }

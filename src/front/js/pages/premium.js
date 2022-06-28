@@ -52,7 +52,7 @@ export const PremiumComponent = () => {
     } else {
       console.log(paymentMethod);
       await axios({
-        url: "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/investment/",
+        url: store.url + "/investment/",
         method: "POST",
         data: {
           id: paymentMethod.id,
@@ -61,8 +61,8 @@ export const PremiumComponent = () => {
         },
       });
       /* console.log(object); TRAER USUARIOOOOOOO */
-      await fetch(
-        "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api/paypremium",
+      const response = await fetch(
+        store.url + "/paypremium",
         {
           method: "PUT",
           headers: {
@@ -71,6 +71,9 @@ export const PremiumComponent = () => {
         },
         console.log(store.current_user)
       );
+      if (response.status == 200) {
+        alert("Su pago se tramito con exito");
+      }
     }
   };
 

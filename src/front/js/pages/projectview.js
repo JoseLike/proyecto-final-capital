@@ -38,14 +38,11 @@ export const ProjectView = () => {
       mensaje.text !=
         "") /* CORROBORAR QUE SE PUEDE HACER LA COMPROBACION ASI Y SABER COMO SE HACE EN LOS CHECKBOX */
     ) {
-      const response = await fetch(
-        "https://proyecto-final-investup.herokuapp.com/api/send-message",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(mensaje),
-        }
-      );
+      const response = await fetch(store.url + "/send-message", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(mensaje),
+      });
       const data = await response.json();
       console.log(data);
     } else {

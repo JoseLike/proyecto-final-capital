@@ -72,7 +72,7 @@ export const MyAccount = () => {
       },
       body: body,
     };
-    fetch("https://proyecto-final-investup.herokuapp.com//api/subir", options);
+    fetch(store.url + "/subir", options);
   };
 
   return (

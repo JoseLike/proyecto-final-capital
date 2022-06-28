@@ -16,14 +16,11 @@ export const BuscarProyecto = () => {
   const [projects, setProjects] = useState([]);
 
   const searchProject = async () => {
-    const response = await fetch(
-      "https://proyecto-final-investup.herokuapp.com/api/buscar-proyecto/",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(find),
-      }
-    );
+    const response = await fetch(store.url + "/buscar-proyecto/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(find),
+    });
     const data = await response.json();
     setProjects(data.projects);
   };
@@ -35,9 +32,7 @@ export const BuscarProyecto = () => {
   }, []);
 
   const getCategory = async () => {
-    const response = await fetch(
-      "https://proyecto-final-investup.herokuapp.com/api/category/"
-    );
+    const response = await fetch(store.url + "/category/");
     const data = await response.json();
     console.log(data.cate);
     setCate(data.cate);

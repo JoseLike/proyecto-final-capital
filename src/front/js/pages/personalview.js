@@ -11,9 +11,9 @@ export const PersonalView = () => {
   const { store, actions } = useContext(Context);
   const { theid } = useParams();
 
-  //useEffect(() => {
-  //actions.getUserProjects();
-  //}, []);
+  useEffect(() => {
+    actions.getUserProjects();
+  }, []);
   {
     if (store.current_user.user_type != 2) {
       return <InvestorLanding />;

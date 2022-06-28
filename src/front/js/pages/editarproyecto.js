@@ -47,14 +47,11 @@ export const EditarProyecto = () => {
       parseInt(info.invested_capital);
       parseInt(info.category);
       parseInt(info.loans);
-      const response = await fetch(
-        "https://proyecto-final-investup.herokuapp.com/api/crear-proyecto",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(info),
-        }
-      );
+      const response = await fetch(store.url + "/crear-proyecto", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(info),
+      });
       const data = await response.json();
       navigate.push("/personal");
       console.log(data);
@@ -67,9 +64,7 @@ export const EditarProyecto = () => {
   }, []);
 
   const getCategory = async () => {
-    const response = await fetch(
-      "https://proyecto-final-investup.herokuapp.com/api/category/"
-    );
+    const response = await fetch(store.url + "/category/");
     const data = await response.json();
     console.log(data.cate);
     setCate(data.cate);

@@ -104,15 +104,17 @@ export const Sidebar = () => {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a
-                    className="dropdown-item"
-                    href="#"
-                    onClick={() => {
-                      actions.logOut();
-                    }}
-                  >
-                    Sign out
-                  </a>
+                  <Link to="/">
+                    <a
+                      className="dropdown-item"
+                      href="#"
+                      onClick={() => {
+                        actions.logOut();
+                      }}
+                    >
+                      Sign out
+                    </a>
+                  </Link>
                 </li>
               </ul>
             </div>

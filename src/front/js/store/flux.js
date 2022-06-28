@@ -11,6 +11,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       project_user: {},
       user_projects: [],
       user_stadistics: {},
+      url: "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu47.gitpod.io/api",
     },
     actions: {
       logOut: () => {
@@ -19,14 +20,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       deleteFav: async (project) => {
         const store = getStore();
-        const response = await fetch(
-          "https://proyecto-final-investup.herokuapp.com/api/delete/favs/" +
-            project.id,
-          {
-            method: "DELETE",
-            headers: { "Content-Type": "application/json" },
-          }
-        );
+        const response = await fetch(url + "/delete/favs/" + project.id, {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+        });
         const data = await response.json();
         if (data.deleted == true) {
           setStore({
@@ -40,14 +37,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       sendFav: async (name) => {
         const store = getStore();
-        const response = await fetch(
-          "https://proyecto-final-investup.herokuapp.com/api/favoritos",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(name),
-          }
-        );
+        const response = await fetch(url + "/favoritos", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(name),
+        });
         const data = await response.json();
         setStore({ favourites: [...store.favourites, data.favorite] });
         console.log(data);
@@ -73,14 +67,11 @@ const getState = ({ getStore, getActions, setStore }) => {
       sendUserInfo: async (datos) => {
         let actions = getActions();
         if (datos.email != null && datos.password.trim() != "") {
-          const response = await fetch(
-            "https://proyecto-final-investup.herokuapp.com/api/login",
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(datos),
-            }
-          );
+          const response = await fetch(getStore().url + "/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(datos),
+          });
           const data = await response.json();
           if (data.logged == true) {
             localStorage.setItem("token", data.token);
@@ -97,9 +88,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
       getSingleProject: async (key) => {
-        const response = await fetch(
-          "https://proyecto-final-investup.herokuapp.com/api/project/" + key
-        );
+        const response = await fetch(getStore().url + "/project/" + key);
         const gettedproject = await response.json();
         console.log(gettedproject);
         setStore({ singleproject: gettedproject.response });
@@ -109,8 +98,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       getUserProjects: async () => {
         let store = getStore();
         const response = await fetch(
-          "https://proyecto-final-investup.herokuapp.com/api/userprojects/" +
-            store.current_user.id,
+          getStore().url + "/userprojects/" + store.current_user.id,
           {
             method: "GET",
             headers: {
@@ -127,8 +115,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       changeUserInfo: async (changedata) => {
         let store = getStore();
         const response = await fetch(
-          "https://proyecto-final-investup.herokuapp.com/api/edituser/" +
-            store.current_user.id,
+          getStore().url + "/edituser/" + store.current_user.id,
           {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
@@ -145,8 +132,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       changeUserPassword: async (changedata) => {
         let store = getStore();
         const response = await fetch(
-          "https://proyecto-final-investup.herokuapp.com/api/editpassword/" +
-            store.current_user.id,
+          getStore().url + "/editpassword/" + store.current_user.id,
           {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
@@ -162,8 +148,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       getUserStadistics: async () => {
         let store = getStore();
         const response = await fetch(
-          "https://proyecto-final-investup.herokuapp.com/api/stadistics/" +
-            store.current_user.id
+          getStore().url + "/stadistics/" + store.current_user.id
         );
         const data = await response.json();
         console.log(data);
@@ -177,8 +162,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       deleteFav: async (messageid) => {
         let store = getStore();
         const response = await fetch(
-          "https://proyecto-final-investup.herokuapp.com/api/delete/message/" +
-            messageid,
+          getStore().url + "/delete/message/" + messageid,
           {
             method: "DELETE",
             headers: { "Content-Type": "application/json" },
@@ -206,8 +190,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       getUserMessages: async () => {
         let store = getStore();
         const response = await fetch(
-          "https://proyecto-final-investup.herokuapp.com/api/stadistics/" +
-            store.current_user.id
+          getStore().url + "/stadistics/" + store.current_user.id
         );
         const data = await response.json();
 
