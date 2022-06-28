@@ -9,6 +9,7 @@ export const StadisticsView = () => {
 
   useEffect(() => {
     actions.getUserStadistics();
+    store.current_user;
   }, []);
 
   return (
@@ -20,12 +21,12 @@ export const StadisticsView = () => {
         <div className="col-6 mx-auto">
           <ul className="list-group">
             <li className="list-group-item">
+              Estas en Investup desde: {store.current_user.longevity}
+            </li>
+            <li className="list-group-item">
               Proyectos publicados: {store.user_stadistics.total_projects}
             </li>
-            <li className="list-group-item">Proyectos con exito: </li>
             <li className="list-group-item">Total capital obtenido: </li>
-            <li className="list-group-item">Vistas totales: </li>
-            <li className="list-group-item">Ranking de Emprendedores: </li>
           </ul>
         </div>
       </div>

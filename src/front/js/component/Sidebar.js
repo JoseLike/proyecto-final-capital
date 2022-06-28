@@ -109,7 +109,6 @@ export const Sidebar = () => {
                   <Link to="/">
                     <a
                       className="dropdown-item"
-                      href="#"
                       onClick={() => {
                         actions.logOut();
                       }}

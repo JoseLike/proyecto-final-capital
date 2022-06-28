@@ -148,9 +148,14 @@ def get_single_project(key):
 def get_user_stadistics(user_id):
     #current_user = get_jwt_identity()
     user = User.query.get(user_id)
-    print(user)
+    projects = Project.query.filter_by(user=user).all()
+    capital = 0
+    for project in projects:
+        capital = capital + project.desired_capital
+    print("@@@@@@@@@@@@")
+    print(capital)
     data=[]
-    
+
     return jsonify({"response":user.serialize()}),200
 
 @api.route("/buscar-proyecto", methods=["POST"])
@@ -299,5 +304,4 @@ def pay_premium():
         return jsonify({"modified":True, "user":user.serialize()}), 200
     else:
         return jsonify({"modified":False, "msg":"Lack of Info"}), 400
-
 
