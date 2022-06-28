@@ -152,7 +152,6 @@ def get_user_stadistics(user_id):
     capital = 0
     for project in projects:
         capital = capital + project.desired_capital
-    print("@@@@@@@@@@@@")
     print(capital)
     data=[]
 
