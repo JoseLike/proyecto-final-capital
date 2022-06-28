@@ -19,9 +19,11 @@ export const Sidebar = () => {
           >
             <ul className="nav nav-pills nav-flush flex-column mb-auto text-center">
               <li className="nav-item  ">
-                <a href="#" className="nav-link active py-3 border-bottom">
-                  <i className="fa fa-home"></i> <small>Home</small>
-                </a>
+                <Link to="/personal">
+                  <a href="#" className="nav-link active py-3 border-bottom">
+                    <i className="fa fa-home"></i> <small>Home</small>
+                  </a>
+                </Link>
               </li>
               <li className="">
                 <a
