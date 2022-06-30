@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link, useParams } from "react-router-dom";
 import "../../styles/home.css";
+import moment from "moment";
 
 export const StadisticsView = () => {
   const { store, actions } = useContext(Context);
@@ -21,11 +22,13 @@ export const StadisticsView = () => {
         <div className="col-6 mx-auto">
           <ul className="list-group">
             <li className="list-group-item">
-              Estas en Investup desde: {store.current_user.longevity}
+              Estas en Investup desde:
+              {moment(store.current_user.longevity).format("ll")}
             </li>
             <li className="list-group-item">
               Proyectos publicados: {store.user_stadistics.total_projects}
             </li>
+            <li className="list-group-item">Total capital requerido:{}</li>
             <li className="list-group-item">Total capital obtenido: </li>
           </ul>
         </div>

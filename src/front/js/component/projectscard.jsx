@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import "../../styles/personalview.css";
 import PropTypes from "prop-types";
+import moment from "moment";
 
 export const Projectcard = (props) => {
   const { store, actions } = useContext(Context);
@@ -16,7 +17,9 @@ export const Projectcard = (props) => {
       />
       <div className="card-body">
         <h5 className="card-title text-center">{props.name}</h5>
-        <p className="card-text text-start">Fecha limite {props.eta}</p>
+        <p className="card-text text-start">
+          Fecha limite: {moment(props.eta).format("ll")};
+        </p>
         <p className="card-text text-start">
           Capital Requerido {props.capital}
         </p>

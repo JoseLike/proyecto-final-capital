@@ -34,7 +34,6 @@ export const BuscarProyecto = () => {
   const getCategory = async () => {
     const response = await fetch(store.url + "/category/");
     const data = await response.json();
-    console.log(data.cate);
     setCate(data.cate);
   };
 

@@ -149,13 +149,14 @@ def get_user_stadistics(user_id):
     #current_user = get_jwt_identity()
     user = User.query.get(user_id)
     projects = Project.query.filter_by(user=user).all()
-    capital = 0
+    raised_capital = 0
+    desired_capital= 0
     for project in projects:
-        capital = capital + project.desired_capital
-    print(capital)
+        desired_capital = desired_capital + project.desired_capital
+        raised_capital = raised_capital + project.raised_capital
     data=[]
-
-    return jsonify({"response":user.serialize()}),200
+    response= {"user": user.serialize(), "desired_capital": desired_capital, "raised_capital":raised_capital,}
+    return jsonify({"response":response}),200
 
 @api.route("/buscar-proyecto", methods=["POST"])
 #@jwt_required()

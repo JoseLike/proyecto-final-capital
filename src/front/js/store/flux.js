@@ -153,7 +153,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         const data = await response.json();
         console.log(data);
         setStore({
-          user_stadistics: { total_projects: data.response.projects.length },
+          user_stadistics: data,
         });
       },
       setLogOut: () => {
