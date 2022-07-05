@@ -26,10 +26,16 @@ export const StadisticsView = () => {
               {moment(store.current_user.longevity).format("ll")}
             </li>
             <li className="list-group-item">
-              Proyectos publicados: {store.user_stadistics.total_projects}
+              Proyectos publicados: {store.user_stadistics.all_projects}
             </li>
-            <li className="list-group-item">Total capital requerido:{}</li>
-            <li className="list-group-item">Total capital obtenido: </li>
+            <li className="list-group-item">
+              Total capital requerido: {"€ "}
+              {store.user_stadistics.desired_capital}
+            </li>
+            <li className="list-group-item">
+              Total capital obtenido: {"€ "}
+              {store.user_stadistics.raised_capital}
+            </li>
           </ul>
         </div>
       </div>

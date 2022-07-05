@@ -155,8 +155,7 @@ def get_user_stadistics(user_id):
         desired_capital = desired_capital + project.desired_capital
         raised_capital = raised_capital + project.raised_capital
     data=[]
-    response= {"user": user.serialize(), "desired_capital": desired_capital, "raised_capital":raised_capital,}
-    return jsonify({"response":response}),200
+    return jsonify({"user": user.serialize(), "desired_capital": desired_capital, "raised_capital":raised_capital, "all_projects": len(projects)}),200
 
 @api.route("/buscar-proyecto", methods=["POST"])
 #@jwt_required()
