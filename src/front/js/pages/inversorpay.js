@@ -65,9 +65,9 @@ export const InversorPayComponent = () => {
       await axios.put(store.url + "/investor/" + store.singleproject.id, {
         raised_capital: changedata.amount,
       });
-    }
-    if (response.status == 200) {
-      alert("Su pago se tramito con exito");
+      if (response.status == 200) {
+        alert("Su pago se tramito con exito");
+      }
     }
   };
 

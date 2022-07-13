@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import { Link, useParams } from "react-router-dom";
 import logosimple from "../../img/logosimple.png";
 import "../../styles/projectview.css";
+import moment from "moment";
 
 export const ProjectView = () => {
   const { store, actions } = useContext(Context);
@@ -123,9 +124,12 @@ export const ProjectView = () => {
               <h5 className="card-title">{store.project_user.name}</h5>
             </div>
             <ul className="list-group list-group-flush">
-              <li className="list-group-item">Ranking: </li>
-              <li className="list-group-item">Desde: </li>
-              <li className="list-group-item">Proyectos publicados: </li>
+              <li className="list-group-item">
+                Desde: {moment(store.current_user.longevity).format("ll")}{" "}
+              </li>
+              <li className="list-group-item">
+                Proyectos publicados: {store.user_stadistics.all_projects}{" "}
+              </li>
             </ul>
           </div>
         </div>
