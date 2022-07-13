@@ -107,7 +107,7 @@ export const Sidebar = () => {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link>
+                  <Link to="/">
                     <a
                       className="dropdown-item"
                       href="#"
