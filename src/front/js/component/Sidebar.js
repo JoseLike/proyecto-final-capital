@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
+import "../../styles/sidebar2.css";
 import { Link } from "react-router-dom";
 import "../../styles/sidebar2.css";
 import { useHistory } from "react-router-dom";
