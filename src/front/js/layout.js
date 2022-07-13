@@ -28,7 +28,7 @@ const Layout = () => {
     <BrowserRouter basename={basename}>
       <ScrollToTop>
         <Switch>
-          <Route exact path="/home">
+          <Route exact path="/">
             <Home />
           </Route>
           <Route exact path="/login" className="d-flex">
