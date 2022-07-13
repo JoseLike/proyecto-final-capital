@@ -121,14 +121,17 @@ export const ProjectView = () => {
               alt="..."
             />
             <div className="card-body">
-              <h5 className="card-title">{store.project_user.name}</h5>
+              <h5 className="card-title">
+                {store.project_user.name} + + {store.project_user.last_name}{" "}
+              </h5>
             </div>
             <ul className="list-group list-group-flush">
               <li className="list-group-item">
-                Desde: {moment(store.current_user.longevity).format("ll")}{" "}
+                Es usuario de Investup desde:{" "}
+                {moment(store.current_user.longevity).format("ll")}{" "}
               </li>
               <li className="list-group-item">
-                Proyectos publicados: {store.user_stadistics.all_projects}{" "}
+                Proyectos publicados: {"4 proyectos hasta hoy"}
               </li>
             </ul>
           </div>
