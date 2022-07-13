@@ -10,6 +10,7 @@ import {
   Elements,
 } from "@stripe/react-stripe-js";
 import axios from "axios";
+import moment from "moment";
 
 const stripePromise = loadStripe(
   "pk_test_51L87AmKEz3UKYat7WBXzyxuvCGgjJFfcqxARPjYwWkrRxiOSsrZ6f3unPxYZpQyrTlI96NRF8DMe32MDMcwAglGV00WMMLBMNZ"
@@ -87,7 +88,8 @@ export const InversorPayComponent = () => {
             </h1>
             <div className="ms-3">
               <div className="deadline mt-3 border-bottom">
-                Fecha limite: {store.singleproject.deadline}
+                Fecha limite:{" "}
+                {moment(store.singleproject.deadline).format("ll")}
               </div>
               <div className="required-capital mt-3 border-bottom">
                 Capital requerido: {store.singleproject.desired_capital}

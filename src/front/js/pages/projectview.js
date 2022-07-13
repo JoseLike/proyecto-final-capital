@@ -65,7 +65,7 @@ export const ProjectView = () => {
           </div>
           <div className="projectETA d-flex mt-3 border project-data-single rounded p-2 shadow p-3">
             <div className="text me-4">Fecha limite: </div>
-            <div className="text">{store.singleproject.deadline}</div>
+            <div>{moment(store.singleproject.deadline).format("ll")}</div>
           </div>
           <div className="projectcategory d-flex mt-3 border project-data-single rounded p-2 shadow p-3">
             <div className="text me-4">Categoria:</div>
