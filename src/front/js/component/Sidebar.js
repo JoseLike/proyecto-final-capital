@@ -107,7 +107,7 @@ export const Sidebar = () => {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link to="/">
+                  <Link to="/login">
                     <div className="dropdown-item" href="#">
                       Sign out
                     </div>
