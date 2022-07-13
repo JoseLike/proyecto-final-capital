@@ -107,7 +107,7 @@ export const Sidebar = () => {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link to="/">
+                  <Link to="/home">
                     <a
                       className="dropdown-item"
                       onClick={() => {
