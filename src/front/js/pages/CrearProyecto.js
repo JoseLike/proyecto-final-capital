@@ -47,13 +47,16 @@ export const CrearProyecto = () => {
       for (let key in info) {
         body.append(key, info[key]);
       }
-      const response = await fetch(store.url + "/crear-proyecto", {
-        method: "POST",
-        body: body,
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const response = await fetch(
+        "https://proyecto-final-investup.herokuapp.com/api/crear-proyecto",
+        {
+          method: "POST",
+          body: body,
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       const data = await response.json();
       navigate.push("/personal");
       console.log(data);
