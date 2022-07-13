@@ -108,7 +108,7 @@ export const Sidebar = () => {
                 </li>
                 <li>
                   <Link to="/">
-                    <a className="dropdown-item">Sign out</a>
+                    <div className="dropdown-item">Sign out</div>
                   </Link>
                 </li>
               </ul>
