@@ -107,10 +107,16 @@ export const Sidebar = () => {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link to="/login">
-                    <div className="dropdown-item" href="#">
+                  <Link>
+                    <a
+                      className="dropdown-item"
+                      href="#"
+                      onClick={() => {
+                        actions.logOut();
+                      }}
+                    >
                       Sign out
-                    </div>
+                    </a>
                   </Link>
                 </li>
               </ul>
@@ -210,15 +216,17 @@ export const Sidebar = () => {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a
-                    className="dropdown-item"
-                    href="#"
-                    onClick={() => {
-                      actions.logOut();
-                    }}
-                  >
-                    Sign out
-                  </a>
+                  <Link to="/">
+                    <a
+                      className="dropdown-item"
+                      href="#"
+                      onClick={() => {
+                        actions.logOut();
+                      }}
+                    >
+                      Sign out
+                    </a>
+                  </Link>
                 </li>
               </ul>
             </div>
