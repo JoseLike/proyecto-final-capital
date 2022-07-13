@@ -35,8 +35,7 @@ export const CrearProyecto = () => {
       info.category,
       info.loans,
       info.deadline,
-      info.business_plan,
-      info.investment_capacity !=
+      info.business_plan !=
         "") /* CORROBORAR QUE SE PUEDE HACER LA COMPROBACION ASI Y SABER COMO SE HACE EN LOS CHECKBOX */
     ) {
       parseInt(info.desired_capital);

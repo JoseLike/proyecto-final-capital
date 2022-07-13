@@ -66,6 +66,9 @@ export const InversorPayComponent = () => {
         raised_capital: changedata.amount,
       });
     }
+    if (response.status == 200) {
+      alert("Su pago se tramito con exito");
+    }
   };
 
   return (
