@@ -225,30 +225,6 @@ export const MyAccount = () => {
               </div>
             </div>
           </div>
-          <div className="emprendeurperfil mt-5 mb-5  ">
-            <div className="card mx-auto shadow" style={{ width: "18rem" }}>
-              <img
-                src={store.current_user.profile_picture}
-                className="card-img-top img-fluid"
-                alt="..."
-              />
-              <div className="card-body">
-                <h5 className="card-title text-center">
-                  {store.current_user.name} {store.current_user.last_name}
-                </h5>
-              </div>
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item">Ranking: </li>
-                <li className="list-group-item">Desde: </li>
-                <li className="list-group-item">Proyectos publicados: </li>
-              </ul>
-            </div>
-            <div className="row float-end">
-              <button type="button" className="btn btn-danger ">
-                Eliminar cuenta
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     </div>

@@ -122,7 +122,7 @@ export const ProjectView = () => {
             />
             <div className="card-body">
               <h5 className="card-title">
-                {store.project_user.name} + + {store.project_user.last_name}{" "}
+                {store.project_user.name} {store.project_user.last_name}{" "}
               </h5>
             </div>
             <ul className="list-group list-group-flush">
