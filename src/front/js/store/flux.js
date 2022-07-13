@@ -11,7 +11,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       project_user: {},
       user_projects: [],
       user_stadistics: {},
-      url: "https://3001-joselike-proyectofinalc-9x2yno4h1l3.ws-eu54.gitpod.io/api",
+      url: "https://proyecto-final-investup.herokuapp.com/api",
     },
     actions: {
       logOut: () => {
