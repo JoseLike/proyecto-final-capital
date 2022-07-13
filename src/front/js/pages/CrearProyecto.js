@@ -145,7 +145,7 @@ export const CrearProyecto = () => {
           <br />
           <div className="d-flex container">
             <span className="input-group-text offset-1 w-25">
-              Tiene fecha limite el proyecto?
+              ¿Tiene fecha limite el proyecto?
             </span>
             <input
               type="checkbox"
