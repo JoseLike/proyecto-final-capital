@@ -44,7 +44,9 @@ export const Projectcard = (props) => {
       />
       <div className="card-body">
         <h5 className="card-title text-center">{props.name}</h5>
-        <p className="card-text text-start">Fecha limite {props.eta}</p>
+        <p className="card-text text-start">
+          Fecha limite {moment(props.eta).format("ll")}
+        </p>
         <p className="card-text text-start">
           Capital Requerido {props.capital}
         </p>

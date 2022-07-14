@@ -108,7 +108,7 @@ export const BuscarProyecto = () => {
                   id={projects.id}
                   category={projects.category_id}
                   name={projects.title}
-                  eta={projects.deadline}
+                  eta={moment(projects.deadline).format("ll")}
                   capital={projects.desired_capital}
                   fav={() => {
                     let send = {
